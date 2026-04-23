@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Flowchart</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f6fb;
+      color: #0f172a;
+    }
+    .wrap {
+      width: 100vw;
+      height: 100vh;
+      padding: 12px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+      height: calc(100vh - 24px);
+      display: flex;
+      flex-direction: column;
+    }
+    .head {
+      padding: 14px 18px;
+      border-bottom: 1px solid #e2e8f0;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .mermaid {
+      padding: 16px;
+      overflow: hidden;
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: relative;
+    }
+    .mermaid svg {
+      transform-origin: top left;
+      transition: transform 0.2s ease;
+    }
+  </style>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      securityLevel: "loose",
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#eef2ff",
+        primaryTextColor: "#111827",
+        primaryBorderColor: "#6366f1",
+        lineColor: "#64748b",
+        fontFamily: "Segoe UI, Arial, sans-serif",
+        fontSize: "11px"
+      },
+      flowchart: {
+        curve: "linear",
+        htmlLabels: true,
+        useMaxWidth: true,
+        nodeSpacing: 14,
+        rankSpacing: 18
+      }
+    });
+
+    function fitMermaidToScreen() {
+      const container = document.querySelector(".mermaid");
+      const svg = container ? container.querySelector("svg") : null;
+      if (!container || !svg) return;
+
+      svg.style.transform = "scale(1)";
+      const svgWidth = svg.viewBox.baseVal && svg.viewBox.baseVal.width ? svg.viewBox.baseVal.width : svg.getBBox().width;
+      const svgHeight = svg.viewBox.baseVal && svg.viewBox.baseVal.height ? svg.viewBox.baseVal.height : svg.getBBox().height;
+      if (!svgWidth || !svgHeight) return;
+
+      const availableWidth = container.clientWidth - 12;
+      const availableHeight = container.clientHeight - 12;
+      const scale = Math.min(availableWidth / svgWidth, availableHeight / svgHeight, 1);
+      svg.style.transform = `scale(${scale})`;
+    }
+
+    window.addEventListener("load", () => {
+      setTimeout(fitMermaidToScreen, 120);
+    });
+    window.addEventListener("resize", fitMermaidToScreen);
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">Loan Prequalification Agent - End-to-End Flowchart</div>
+      <div class="mermaid">
+flowchart LR
+    START([Applicant Initiates Contact]) --> SOURCES[Multi-Source Input<br/>Email, WhatsApp, Call, Documents]
+    SOURCES --> INGEST[Ingestion and Understanding<br/>OCR, ASR, LLM Extraction]
+    NEW_DATA[User Sends New Data During Processing] -.New Email or Document.-> INGEST
+    INGEST --> STATE[(Case State Store<br/>Structured Data, Confidence Scores,<br/>Flags and Conflicts, Interaction History)]
+
+    subgraph AGENT_LOOP["AGENT DECISION LOOP (AUTONOMOUS)"]
+      direction LR
+      OBSERVE[1 Observe<br/>Read case state,<br/>check completeness and confidence]
+      ANALYZE[2 Analyze<br/>Missing data, conflicts,<br/>low confidence, fraud indicators]
+      DECIDE[3 Decide Next Action<br/>KYC API, income cross-check,<br/>clarification, bureau pull,<br/>fraud check, risk calculation]
+      EXECUTE[4 Execute<br/>Perform chosen action]
+      EVALUATE[5 Evaluate Result<br/>Quality improved?<br/>Confidence increased?<br/>Conflicts resolved?]
+      UPDATE[6 Update State<br/>Write back to store]
+      OBSERVE --> ANALYZE --> DECIDE --> EXECUTE --> EVALUATE --> UPDATE
+    end
+
+    STATE --> OBSERVE
+    UPDATE --> STATE
+
+    subgraph TOOLS["TOOL LAYER (Agent Calls as Needed)"]
+      direction TB
+      KYC_API[KYC Verification<br/>Aadhaar and PAN APIs]
+      BUREAU[Credit Bureau<br/>CIBIL API]
+      OCR_ENGINE[Document Analysis<br/>Azure Document Intelligence]
+      BANK_ANALYZER[Bank Statement Parser<br/>Transaction Analysis]
+      FRAUD_CHECK[Fraud Detection<br/>Metadata and Template Checks]
+      RISK_ENGINE[Risk Computation<br/>DTI, Credit Score, Rules]
+      INCOME_VERIFY[Income Verification<br/>Cross-source Checks]
+    end
+
+    EXECUTE -.Call Tool.-> KYC_API
+    EXECUTE -.Call Tool.-> BUREAU
+    EXECUTE -.Call Tool.-> OCR_ENGINE
+    EXECUTE -.Call Tool.-> BANK_ANALYZER
+    EXECUTE -.Call Tool.-> FRAUD_CHECK
+    EXECUTE -.Call Tool.-> RISK_ENGINE
+    EXECUTE -.Call Tool.-> INCOME_VERIFY
+    KYC_API -.Result.-> EVALUATE
+    BUREAU -.Result.-> EVALUATE
+    OCR_ENGINE -.Result.-> EVALUATE
+    BANK_ANALYZER -.Result.-> EVALUATE
+    FRAUD_CHECK -.Result.-> EVALUATE
+    RISK_ENGINE -.Result.-> EVALUATE
+    INCOME_VERIFY -.Result.-> EVALUATE
+
+    EXTERNAL[External Systems<br/>Bank APIs, CIBIL or Credit Bureaus,<br/>UIDAI Aadhaar, Income Tax and PAN,<br/>EPFO Employment]
+    EXTERNAL -.API Calls.-> KYC_API
+    EXTERNAL -.API Calls.-> BUREAU
+    EXTERNAL -.API Calls.-> BANK_ANALYZER
+
+    subgraph USER_INTERACT["USER INTERACTION (Agent-Driven)"]
+      direction LR
+      ASK_USER[Agent Asks User via Email, WhatsApp, Call<br/>Missing document, discrepancy clarification,<br/>employment confirmation, loan option choice]
+      USER_RESPONDS[User Responds<br/>Uploads document or answers]
+      ASK_USER --> USER_RESPONDS
+    end
+    EXECUTE -.Ask for Info.-> ASK_USER
+    USER_RESPONDS -.New Data.-> INGEST
+
+    STATE --> CONFIDENCE_CHECK{Confidence Check<br/>All critical data present?<br/>Confidence above threshold?<br/>No blocking conflicts?}
+    CONFIDENCE_CHECK -->|Incomplete or Low Confidence| CONTINUE_LOOP[Not Ready<br/>Continue Agent Loop] --> OBSERVE
+    CONFIDENCE_CHECK -->|Complete and Confident| PROCEED[Sufficient<br/>Proceed to Decision]
+
+    PROCEED --> DECISION_ENGINE[Decision Recommendation Engine<br/>Rules and Policy Based:<br/>1 Hard Rule Check, 2 DTI, 3 Risk Score,<br/>4 Eligibility Rules, 5 Pricing,<br/>6 Alternatives if Borderline]
+    DECISION_ENGINE --> RECOMMENDATION{Agent Recommendation<br/>Approve, Adjust Loan Amount or Tenure, Reject}
+    RECOMMENDATION --> PACKAGE[Package Recommendation<br/>Decision and Top 3 Reasons,<br/>Risk Breakdown, Alternatives,<br/>All Source Evidence]
+
+    PACKAGE --> HIL_GATE[[MANDATORY HIL REVIEW GATE<br/>Credit Manager reviews recommendation,<br/>data, confidence, source docs, fraud flags<br/>Actions: Approve, Modify, Reject and Send Back]]
+    style HIL_GATE fill:#ff6b6b,stroke:#c92a2a,stroke-width:4px,color:#fff
+
+    HIL_GATE --> HIL_DECISION{Credit Manager Decision}
+    HIL_DECISION -->|Reject| REJECTED[Rejected<br/>Reasons: Insufficient Data,<br/>Fraud Suspected, Policy Violation,<br/>Need More Verification]
+    REJECTED --> FEEDBACK[Log Rejection Reason<br/>Create Refinement Task] --> OBSERVE
+
+    HIL_DECISION -->|Approve or Approve with Modifications| APPROVED[Approved<br/>Case Status Approved,<br/>Final Terms Locked]
+    APPROVED --> OFFER_ENGINE[Offer Finalization<br/>Lock Loan Amount, Interest Rate,<br/>Tenure, EMI, Fees<br/>Generate KFS and Sanction Letter]
+    OFFER_ENGINE --> EXECUTION2[Execution Layer<br/>Agreement Generation, eSign Workflow,<br/>Final Compliance Checks,<br/>Disbursement Trigger]
+    EXECUTION2 --> LOS[LOS Integration<br/>Push to Loan Origination System,<br/>Idempotent Push, Full Audit Trail,<br/>Case Closure]
+    LOS --> COMPLETE([Case Complete<br/>Applicant Notified])
+
+    classDef agentLoop fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef toolLayer fill:#fff3e0,stroke:#f57c00,stroke-width:1.5px
+    classDef userInteract fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1.5px
+    classDef criticalGate fill:#ffebee,stroke:#c62828,stroke-width:3px
+    classDef stateStore fill:#e8f5e9,stroke:#388e3c,stroke-width:1.5px
+    classDef decision fill:#fff9c4,stroke:#f9a825,stroke-width:1.5px
+
+    class OBSERVE,ANALYZE,DECIDE,EXECUTE,EVALUATE,UPDATE agentLoop
+    class KYC_API,BUREAU,OCR_ENGINE,BANK_ANALYZER,FRAUD_CHECK,RISK_ENGINE,INCOME_VERIFY toolLayer
+    class ASK_USER,USER_RESPONDS userInteract
+    class HIL_GATE criticalGate
+    class STATE stateStore
+    class CONFIDENCE_CHECK,HIL_DECISION,RECOMMENDATION decision
+      </div>
+    </div>
+  </div>
+</body>
+</html>

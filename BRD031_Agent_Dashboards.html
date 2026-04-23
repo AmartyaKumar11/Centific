@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>aegis.ai — Loan Prequalification Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0;1" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;font-size:13px;line-height:1.6;color:#0F172A;background:#F0F2F8;min-height:100vh}
+
+:root{
+  --p:#5929d0;--pl:#E8E5FF;--pb:#9B8EDE;
+  --pink:#CF008B;--pkl:#FFD6F4;
+  --ok:#16A34A;--okl:#DCFCE7;
+  --warn:#E4902E;--wl:#FEF3C7;
+  --err:#DC2626;--el:#FEE2E2;
+  --n0:#0F172A;--n1:#1E293B;--n2:#334155;--n3:#475569;--n4:#64748B;
+  --n5:#94A3B8;--n6:#CBD5E1;--n7:#E2E8F0;--n8:#F1F5F9;--n9:#FFFFFF;
+  --gb:linear-gradient(90deg,#A855F7 0%,#6B8EF0 50%,#01CAB8 100%);
+  --s1:0 1px 3px rgba(0,0,0,.08);--s2:0 4px 12px rgba(0,0,0,.10);
+  --r:8px;--rm:12px;--rl:16px;--rp:999px;
+}
+
+.mi{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;font-size:20px;line-height:1;display:inline-flex;align-items:center;justify-content:center;letter-spacing:normal;text-transform:none;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-smoothing:antialiased;font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 20}
+.mi-sm{font-size:16px}
+
+.topbar{height:56px;background:var(--n0);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100}
+.tb-brand{display:flex;align-items:center;gap:10px}
+.tb-mark{width:30px;height:30px;border-radius:8px;background:var(--pink);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800}
+.tb-name{font-size:13px;font-weight:700;color:#fff}
+.tb-sub{font-size:10px;color:var(--n5)}
+.tb-right{display:flex;align-items:center;gap:10px}
+.tb-case{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:var(--r);padding:4px 10px;color:#fff;font-size:11px}
+.tb-case span{color:var(--n5);margin-right:4px}
+.case-status{display:flex;align-items:center;gap:6px;background:rgba(22,163,74,.16);color:#4ade80;padding:4px 12px;border-radius:var(--rp);border:1px solid rgba(74,222,128,.35);font-size:11px;font-weight:600}
+
+.workspace{padding:22px;display:flex;flex-direction:column;gap:16px;max-width:1480px;margin:0 auto}
+
+.card{background:#fff;border:1px solid var(--n7);border-radius:var(--rl);box-shadow:var(--s1)}
+.card-head{padding:16px 18px 0;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.card-title{font-size:14px;font-weight:700;color:var(--n0)}
+.card-sub{font-size:11px;color:var(--n5)}
+.card-body{padding:14px 18px 18px}
+
+.case-header{background:var(--gb);border-radius:var(--rl);padding:18px 22px;color:#fff;display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.ch-meta h1{font-size:18px;font-weight:700;margin-bottom:5px}
+.ch-meta p{font-size:12px;opacity:.85}
+.summary-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;min-width:620px}
+.metric{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);border-radius:var(--rm);padding:10px 12px}
+.metric-label{font-size:10px;opacity:.78;text-transform:uppercase;letter-spacing:.06em}
+.metric-value{font-size:18px;font-weight:700;line-height:1.2;margin-top:2px}
+
+.layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(320px,.95fr);gap:16px;align-items:start}
+.left-col,.right-col{display:flex;flex-direction:column;gap:16px}
+
+.timeline{position:relative;padding-left:12px}
+.timeline::before{content:'';position:absolute;left:22px;top:6px;bottom:8px;width:2px;background:var(--n7)}
+.timeline-item{display:flex;gap:12px;position:relative;padding:10px 8px;border-radius:10px;cursor:pointer;transition:background .15s}
+.timeline-item:hover{background:var(--n8)}
+.timeline-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:1;flex-shrink:0}
+.timeline-icon.info{background:var(--pl);color:var(--p)}
+.timeline-icon.warn{background:var(--wl);color:var(--warn)}
+.timeline-icon.action{background:var(--okl);color:var(--ok)}
+.timeline-content{flex:1}
+.timeline-time{font-size:10px;color:var(--n5);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.timeline-title{font-size:13px;font-weight:600;color:var(--n1);margin-top:1px}
+.timeline-note{font-size:11px;color:var(--n4)}
+
+.kv-list{display:flex;flex-direction:column;gap:8px}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:7px 10px;background:var(--n8);border:1px solid var(--n7);border-radius:var(--r)}
+.kv-key{font-size:11px;color:var(--n4)}
+.kv-val{font-size:12px;font-weight:600;color:var(--n1);text-align:right}
+
+.warning-list{display:flex;flex-direction:column;gap:8px}
+.warning-item{display:flex;gap:8px;align-items:flex-start;padding:9px 10px;border:1px solid #fcd34d;background:var(--wl);border-radius:var(--r)}
+.warning-item .mi{color:var(--warn)}
+.warning-item div{font-size:11.5px;color:#854d0e}
+
+.recommendation{border:2px solid var(--pb);background:var(--pl);border-radius:var(--rm);padding:12px}
+.recommendation .type{display:inline-flex;padding:5px 10px;border-radius:var(--rp);font-size:11px;font-weight:700;letter-spacing:.04em;background:var(--p);color:#fff;margin-bottom:8px}
+.recommendation p{font-size:11.5px;color:var(--n2)}
+.conditions{margin-top:8px;padding-top:8px;border-top:1px dashed var(--pb);font-size:11px;color:var(--n3)}
+
+.source-list{display:flex;flex-direction:column;gap:8px}
+.source-item{display:flex;justify-content:space-between;align-items:center;background:var(--n8);border:1px solid var(--n7);padding:8px 10px;border-radius:var(--r)}
+.source-item .label{font-size:11.5px;color:var(--n2)}
+.trust{font-size:10px;font-weight:700;padding:3px 8px;border-radius:var(--rp)}
+.trust.high{background:var(--okl);color:var(--ok)}
+.trust.medium{background:var(--wl);color:var(--warn)}
+.trust.low{background:var(--el);color:var(--err)}
+
+.score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.score-card{background:var(--n8);border:1px solid var(--n7);border-radius:var(--rm);padding:12px}
+.score-card h4{font-size:12px;margin-bottom:5px;color:var(--n1)}
+.score-main{font-size:20px;font-weight:700;color:var(--n0);line-height:1.1}
+.muted{font-size:10.5px;color:var(--n5)}
+.conflict-note{margin-top:8px;font-size:11px;color:var(--n3);background:#fff;border:1px solid var(--n7);padding:7px 8px;border-radius:var(--r)}
+
+.comm-layout{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.comm-col h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--n5);margin-bottom:6px}
+.comm-item{padding:9px 10px;border:1px solid var(--n7);border-radius:var(--r);background:var(--n8);margin-bottom:8px}
+.comm-subject{font-size:11.5px;font-weight:600;color:var(--n1)}
+.comm-summary{font-size:10.8px;color:var(--n4)}
+
+.tag{display:inline-block;border-radius:var(--rp);padding:2px 9px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.tag-purple{background:var(--pl);color:var(--p)}
+.tag-red{background:var(--el);color:var(--err)}
+
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;padding:16px;z-index:500}
+.modal.open{display:flex}
+.modal-box{width:min(560px,100%);background:#fff;border-radius:var(--rl);box-shadow:var(--s2);overflow:hidden}
+.modal-head{padding:14px 16px;border-bottom:1px solid var(--n7);display:flex;justify-content:space-between;align-items:center}
+.modal-title{font-size:14px;font-weight:700;color:var(--n0)}
+.close-btn{border:none;background:transparent;font-size:20px;cursor:pointer;color:var(--n5)}
+.modal-body{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.modal-row{background:var(--n8);border:1px solid var(--n7);border-radius:var(--r);padding:10px}
+.modal-row h5{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--n5);margin-bottom:4px}
+.modal-row p{font-size:12px;color:var(--n2)}
+
+@media(max-width:1180px){
+  .layout{grid-template-columns:1fr}
+  .summary-grid{grid-template-columns:repeat(2,minmax(0,1fr));min-width:0}
+  .score-grid,.comm-layout{grid-template-columns:1fr}
+}
+
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-thumb{background:var(--n6);border-radius:3px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-brand">
+    <div class="tb-mark">C</div>
+    <div>
+      <div class="tb-name">aegis.ai</div>
+      <div class="tb-sub">AI Loan Officer Agent Workspace</div>
+    </div>
+  </div>
+  <div class="tb-right">
+    <div class="tb-case"><span>Case</span>LPA-2026-00847</div>
+    <div class="case-status"><span class="mi mi-sm">autorenew</span>Case Status: Processing</div>
+  </div>
+</div>
+
+<main class="workspace">
+  <section class="case-header">
+    <div class="ch-meta">
+      <h1>Arjun Krishnamurthy - Home Loan Case</h1>
+      <p>Agent-centric view of actions, findings, communication, and pending decisions.</p>
+    </div>
+    <div class="summary-grid">
+      <div class="metric"><div class="metric-label">Case ID</div><div class="metric-value">LPA-2026-00847</div></div>
+      <div class="metric"><div class="metric-label">Status</div><div class="metric-value">Processing</div></div>
+      <div class="metric"><div class="metric-label">Confidence</div><div class="metric-value">87%</div></div>
+      <div class="metric"><div class="metric-label">Iterations</div><div class="metric-value">11</div></div>
+      <div class="metric"><div class="metric-label">Conflicts</div><div class="metric-value">2</div></div>
+    </div>
+  </section>
+
+  <section class="layout">
+    <div class="left-col">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Case Timeline</div>
+            <div class="card-sub">Primary event stream of the AI Loan Officer Agent workflow</div>
+          </div>
+          <span class="tag tag-purple">Click Any Event</span>
+        </div>
+        <div class="card-body">
+          <div class="timeline">
+            <div class="timeline-item" data-event="email_received">
+              <div class="timeline-icon info"><span class="mi mi-sm">mail</span></div>
+              <div class="timeline-content">
+                <div class="timeline-time">22 Apr 2026, 10:34 AM</div>
+                <div class="timeline-title">Email received from applicant with salary slips</div>
+                <div class="timeline-note">Agent parsed 3 salary documents and queued verification.</div>
+              </div>
+            </div>
+            <div class="timeline-item" data-event="income_mismatch">
+              <div class="timeline-icon warn"><span class="mi mi-sm">warning</span></div>
+              <div class="timeline-content">
+                <div class="timeline-time">22 Apr 2026, 10:42 AM</div>
+                <div class="timeline-title">Income mismatch detected</div>
+                <div class="timeline-note">Salary slip and bank credits differed by 2.2% and required reconciliation.</div>
+              </div>
+            </div>
+            <div class="timeline-item" data-event="email_sent">
+              <div class="timeline-icon action"><span class="mi mi-sm">outgoing_mail</span></div>
+              <div class="timeline-content">
+                <div class="timeline-time">22 Apr 2026, 10:45 AM</div>
+                <div class="timeline-title">Email sent to applicant requesting latest bank statement</div>
+                <div class="timeline-note">Requested April credit snapshot for discrepancy closure.</div>
+              </div>
+            </div>
+            <div class="timeline-item" data-event="statement_received">
+              <div class="timeline-icon info"><span class="mi mi-sm">attach_file</span></div>
+              <div class="timeline-content">
+                <div class="timeline-time">22 Apr 2026, 10:56 AM</div>
+                <div class="timeline-title">Bank statement received and ingested</div>
+                <div class="timeline-note">Conflict auto-resolved and confidence adjusted upward.</div>
+              </div>
+            </div>
+            <div class="timeline-item" data-event="approval_requested">
+              <div class="timeline-icon action"><span class="mi mi-sm">forward_to_inbox</span></div>
+              <div class="timeline-content">
+                <div class="timeline-time">22 Apr 2026, 11:08 AM</div>
+                <div class="timeline-title">Case sent to senior loan officer for approval</div>
+                <div class="timeline-note">Agent recommendation attached with rationale and conditions.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Communication Log</div>
+            <div class="card-sub">All applicant and senior loan officer interactions via email</div>
+          </div>
+        </div>
+        <div class="card-body comm-layout">
+          <div class="comm-col">
+            <h4>Emails Sent</h4>
+            <div class="comm-item"><div class="comm-subject">Need updated bank statement</div><div class="comm-summary">Requested April salary credit proof to resolve income inconsistency.</div></div>
+            <div class="comm-item"><div class="comm-subject">Case forwarded for approval</div><div class="comm-summary">Sent summary and recommendation to senior officer with risk indicators.</div></div>
+          </div>
+          <div class="comm-col">
+            <h4>Emails Received</h4>
+            <div class="comm-item"><div class="comm-subject">Salary slips and Form 16 attached</div><div class="comm-summary">Applicant shared initial income and tax artifacts for verification.</div></div>
+            <div class="comm-item"><div class="comm-subject">April statement submitted</div><div class="comm-summary">Applicant provided requested statement, enabling conflict closure.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="right-col">
+      <div class="card">
+        <div class="card-head"><div class="card-title">Income / Risk / Credit Cards</div></div>
+        <div class="card-body score-grid">
+          <div class="score-card">
+            <h4>Income</h4>
+            <div class="score-main">₹1,18,400</div>
+            <div class="muted">Source: Salary Slip + Bank Statement</div>
+            <div class="muted">Confidence: 88%</div>
+            <div class="conflict-note">Resolution: matched after April statement upload (+6% confidence).</div>
+          </div>
+          <div class="score-card">
+            <h4>Risk</h4>
+            <div class="score-main">28 / 100</div>
+            <div class="muted">Source: Bureau + Income + DTI model</div>
+            <div class="muted">Confidence: 84%</div>
+            <div class="conflict-note">Resolution: active loan impact reduced after repayment history verification.</div>
+          </div>
+          <div class="score-card">
+            <h4>Credit</h4>
+            <div class="score-main">762</div>
+            <div class="muted">Source: CIBIL API</div>
+            <div class="muted">Confidence: 99%</div>
+            <div class="conflict-note">Resolution: no conflict; bureau pull consistent with prior records.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Open Issues</div>
+          <span class="tag tag-red">Action Needed</span>
+        </div>
+        <div class="card-body warning-list">
+          <div class="warning-item"><span class="mi mi-sm">warning</span><div>Missing property valuation document from applicant.</div></div>
+          <div class="warning-item"><span class="mi mi-sm">warning</span><div>Pending final approval from senior loan officer.</div></div>
+          <div class="warning-item"><span class="mi mi-sm">warning</span><div>Employer validation still awaiting external registry response.</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Agent Recommendation</div></div>
+        <div class="card-body">
+          <div class="recommendation">
+            <div class="type">Conditional Approval</div>
+            <p>Approve prequalification based on strong credit profile and acceptable DTI, with deferred final sanction until property valuation and employer confirmation complete.</p>
+            <div class="conditions">
+              Conditions: (1) property valuation must meet LTV policy, (2) employer validation must return match, (3) no additional liabilities disclosed in interim.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Data Trust Levels</div></div>
+        <div class="card-body source-list">
+          <div class="source-item"><span class="label">Bank statement</span><span class="trust high">High</span></div>
+          <div class="source-item"><span class="label">Salary slip</span><span class="trust medium">Medium</span></div>
+          <div class="source-item"><span class="label">User input (application form)</span><span class="trust low">Low</span></div>
+        </div>
+      </div>
+    </aside>
+  </section>
+</main>
+
+<div class="modal" id="timelineModal" aria-hidden="true">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-title" id="modalTitle">Timeline Event</div>
+      <button class="close-btn" id="modalClose" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-row">
+        <h5>Compared Values</h5>
+        <p id="modalCompared"></p>
+      </div>
+      <div class="modal-row">
+        <h5>Resolution</h5>
+        <p id="modalResolution"></p>
+      </div>
+      <div class="modal-row">
+        <h5>Impact</h5>
+        <p id="modalImpact"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const timelineDetails = {
+  email_received: {
+    title: "Email received from applicant with salary slips",
+    compared: "Declared monthly income: INR 120,000 vs extracted salary average: INR 118,400",
+    resolution: "Marked as minor variance and queued bank statement verification.",
+    impact: "Confidence held at 82% pending secondary source verification."
+  },
+  income_mismatch: {
+    title: "Income mismatch detected",
+    compared: "Salary slip average: INR 118,400 vs bank credits average: INR 115,800",
+    resolution: "Triggered clarification workflow and prepared applicant outreach.",
+    impact: "Confidence dropped from 82% to 76% until discrepancy closure."
+  },
+  email_sent: {
+    title: "Email sent to applicant requesting latest bank statement",
+    compared: "Available evidence: 3-month slips only vs required evidence: 6-month account credits",
+    resolution: "Requested additional statement and paused final recommendation lock.",
+    impact: "Case status moved to Awaiting Input with no confidence change."
+  },
+  statement_received: {
+    title: "Bank statement received and ingested",
+    compared: "New April credit record aligned with salary run and narrowed variance below threshold",
+    resolution: "Conflict closed automatically by reconciliation rules.",
+    impact: "Confidence increased from 76% to 87% after conflict resolution."
+  },
+  approval_requested: {
+    title: "Case sent to senior loan officer for approval",
+    compared: "Risk policy threshold: <=35 vs computed risk: 28, DTI threshold: <=50% vs computed: 36.8%",
+    resolution: "Submitted conditional approval recommendation with remaining blockers.",
+    impact: "Case status moved to Awaiting Approval."
+  }
+};
+
+const modal = document.getElementById("timelineModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalCompared = document.getElementById("modalCompared");
+const modalResolution = document.getElementById("modalResolution");
+const modalImpact = document.getElementById("modalImpact");
+
+document.querySelectorAll(".timeline-item").forEach((item) => {
+  item.addEventListener("click", () => {
+    const details = timelineDetails[item.dataset.event];
+    if (!details) return;
+    modalTitle.textContent = details.title;
+    modalCompared.textContent = details.compared;
+    modalResolution.textContent = details.resolution;
+    modalImpact.textContent = details.impact;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+  });
+});
+
+function closeModal() {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+}
+
+document.getElementById("modalClose").addEventListener("click", closeModal);
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) closeModal();
+});
+</script>
+</body>
+</html>

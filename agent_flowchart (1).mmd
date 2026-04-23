@@ -1,0 +1,219 @@
+flowchart TB
+    %% ═══════════════════════════════════════════════════════════
+    %% INPUT LAYER
+    %% ═══════════════════════════════════════════════════════════
+    START([Applicant Initiates Contact])
+    SOURCES[Multi-Source Input<br/>📧 Email | 💬 WhatsApp | 📞 Call | 📄 Docs]
+    
+    START --> SOURCES
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% INGESTION & UNDERSTANDING
+    %% ═══════════════════════════════════════════════════════════
+    INGEST[Ingestion & Understanding<br/>🔍 OCR | 🎤 ASR | 🤖 LLM Extraction]
+    
+    SOURCES --> INGEST
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% CASE STATE STORE (Central Memory)
+    %% ═══════════════════════════════════════════════════════════
+    STATE[(Case State Store<br/>📊 Structured Data<br/>📈 Confidence Scores<br/>🚩 Flags & Conflicts<br/>📝 Interaction History)]
+    
+    INGEST --> STATE
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% AGENT LOOP - THE CORE AUTONOMY ENGINE
+    %% ═══════════════════════════════════════════════════════════
+    subgraph AGENT_LOOP["🤖 AGENT DECISION LOOP (AUTONOMOUS)"]
+        direction TB
+        
+        OBSERVE[1️⃣ OBSERVE<br/>Read current case state<br/>Check completeness & confidence]
+        
+        ANALYZE[2️⃣ ANALYZE<br/>Identify:<br/>• Missing data<br/>• Conflicts<br/>• Low confidence fields<br/>• Fraud indicators]
+        
+        DECIDE[3️⃣ DECIDE NEXT ACTION<br/>What should I do?<br/>• Call KYC API?<br/>• Cross-verify income?<br/>• Ask user clarification?<br/>• Pull credit bureau?<br/>• Run fraud check?<br/>• Calculate risk?]
+        
+        EXECUTE[4️⃣ EXECUTE<br/>Perform chosen action]
+        
+        EVALUATE[5️⃣ EVALUATE RESULT<br/>Did it help?<br/>• Data quality improved?<br/>• Confidence increased?<br/>• Conflict resolved?]
+        
+        UPDATE[6️⃣ UPDATE STATE<br/>Write results back to<br/>Case State Store]
+        
+        OBSERVE --> ANALYZE
+        ANALYZE --> DECIDE
+        DECIDE --> EXECUTE
+        EXECUTE --> EVALUATE
+        EVALUATE --> UPDATE
+    end
+    
+    STATE --> OBSERVE
+    UPDATE --> STATE
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% TOOL LAYER (Dynamic, Called by Agent)
+    %% ═══════════════════════════════════════════════════════════
+    subgraph TOOLS["🔧 TOOL LAYER (Agent Calls as Needed)"]
+        direction LR
+        
+        KYC_API[KYC Verification<br/>Aadhaar | PAN APIs]
+        BUREAU[Credit Bureau<br/>CIBIL API]
+        OCR_ENGINE[Document Analysis<br/>Azure Doc Intelligence]
+        BANK_ANALYZER[Bank Statement Parser<br/>Transaction Analysis]
+        FRAUD_CHECK[Fraud Detection<br/>Metadata | Template Check]
+        RISK_ENGINE[Risk Computation<br/>DTI | Credit Score | Rules]
+        INCOME_VERIFY[Income Verification<br/>Cross-source Check]
+    end
+    
+    EXECUTE -.Call Tool.-> KYC_API
+    EXECUTE -.Call Tool.-> BUREAU
+    EXECUTE -.Call Tool.-> OCR_ENGINE
+    EXECUTE -.Call Tool.-> BANK_ANALYZER
+    EXECUTE -.Call Tool.-> FRAUD_CHECK
+    EXECUTE -.Call Tool.-> RISK_ENGINE
+    EXECUTE -.Call Tool.-> INCOME_VERIFY
+    
+    KYC_API -.Result.-> EVALUATE
+    BUREAU -.Result.-> EVALUATE
+    OCR_ENGINE -.Result.-> EVALUATE
+    BANK_ANALYZER -.Result.-> EVALUATE
+    FRAUD_CHECK -.Result.-> EVALUATE
+    RISK_ENGINE -.Result.-> EVALUATE
+    INCOME_VERIFY -.Result.-> EVALUATE
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% USER INTERACTION LAYER (Bidirectional)
+    %% ═══════════════════════════════════════════════════════════
+    subgraph USER_INTERACT["💬 USER INTERACTION (Agent-Driven)"]
+        direction TB
+        
+        ASK_USER[Agent Asks User<br/>📧 Email | 💬 WhatsApp | 📞 Call<br/><br/>Questions:<br/>• Missing document?<br/>• Clarify discrepancy?<br/>• Confirm employment?<br/>• Choose loan option?]
+        
+        USER_RESPONDS[User Responds<br/>Uploads doc | Answers question]
+    end
+    
+    EXECUTE -.Ask for Info.-> ASK_USER
+    ASK_USER --> USER_RESPONDS
+    USER_RESPONDS -.New Data.-> INGEST
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% CONFIDENCE & COMPLETENESS CHECK
+    %% ═══════════════════════════════════════════════════════════
+    CONFIDENCE_CHECK{Confidence Check<br/><br/>Is case complete enough?<br/>• All critical data present?<br/>• Confidence > threshold?<br/>• No blocking conflicts?}
+    
+    STATE --> CONFIDENCE_CHECK
+    
+    CONTINUE_LOOP[❌ NOT READY<br/>Continue Agent Loop]
+    CONFIDENCE_CHECK -->|Incomplete or<br/>Low Confidence| CONTINUE_LOOP
+    CONTINUE_LOOP --> OBSERVE
+    
+    PROCEED[✅ SUFFICIENT<br/>Proceed to Decision]
+    CONFIDENCE_CHECK -->|Complete &<br/>Confident| PROCEED
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% DECISION RECOMMENDATION ENGINE
+    %% ═══════════════════════════════════════════════════════════
+    DECISION_ENGINE[Decision Recommendation Engine<br/>⚙️ Rules-Based + Policy<br/><br/>Process:<br/>1. Hard Rule Check<br/>2. Calculate DTI<br/>3. Compute Risk Score<br/>4. Apply Eligibility Rules<br/>5. Generate Pricing<br/>6. Create Alternatives if Borderline]
+    
+    PROCEED --> DECISION_ENGINE
+    
+    RECOMMENDATION{Agent Recommendation<br/><br/>Options:<br/>✅ APPROVE<br/>⚠️ ADJUST Loan Amt/Tenure<br/>❌ REJECT}
+    
+    DECISION_ENGINE --> RECOMMENDATION
+    
+    %% Package recommendation with explanation
+    PACKAGE[Package Recommendation<br/>📋 Decision + Top 3 Reasons<br/>📊 Risk Breakdown<br/>💡 Alternatives if Available<br/>📎 All Source Evidence]
+    
+    RECOMMENDATION --> PACKAGE
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% HUMAN-IN-THE-LOOP REVIEW GATE (MANDATORY - NON-NEGOTIABLE)
+    %% ═══════════════════════════════════════════════════════════
+    HIL_GATE[[🚨 MANDATORY HIL REVIEW GATE 🚨<br/><br/>Credit Manager Reviews:<br/>• Agent's recommendation<br/>• All extracted data<br/>• Confidence scores<br/>• Source documents<br/>• Fraud flags<br/><br/>Credit Manager Actions:<br/>✅ APPROVE<br/>✏️ MODIFY Recommendation<br/>❌ REJECT & Send Back]]
+    
+    PACKAGE --> HIL_GATE
+    
+    style HIL_GATE fill:#ff6b6b,stroke:#c92a2a,stroke-width:4px,color:#fff
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% HIL DECISION BRANCHES
+    %% ═══════════════════════════════════════════════════════════
+    HIL_DECISION{Credit Manager<br/>Decision}
+    
+    HIL_GATE --> HIL_DECISION
+    
+    %% --- REJECTION PATH (Loop Back) ---
+    REJECTED[❌ REJECTED<br/><br/>Reason Categories:<br/>• Insufficient Data<br/>• Fraud Suspected<br/>• Policy Violation<br/>• Need More Verification]
+    
+    HIL_DECISION -->|Reject| REJECTED
+    
+    FEEDBACK[Log Rejection Reason<br/>Create Refinement Task]
+    
+    REJECTED --> FEEDBACK
+    FEEDBACK --> OBSERVE
+    
+    %% --- APPROVAL PATH (Proceed) ---
+    APPROVED[✅ APPROVED<br/><br/>Case Status: APPROVED<br/>Final Terms Locked]
+    
+    HIL_DECISION -->|Approve or<br/>Approve with Mods| APPROVED
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% OFFER ENGINE
+    %% ═══════════════════════════════════════════════════════════
+    OFFER_ENGINE[Offer Finalization<br/>💰 Lock Terms:<br/>• Loan Amount<br/>• Interest Rate<br/>• Tenure<br/>• EMI<br/>• Fees<br/><br/>Generate:<br/>• KFS Key Fact Sheet<br/>• Sanction Letter]
+    
+    APPROVED --> OFFER_ENGINE
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% EXECUTION LAYER
+    %% ═══════════════════════════════════════════════════════════
+    EXECUTION[Execution Layer<br/>📄 Agreement Generation<br/>✍️ eSign Workflow<br/>✅ Final Compliance Checks<br/>💸 Disbursement Trigger]
+    
+    OFFER_ENGINE --> EXECUTION
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% LOS INTEGRATION
+    %% ═══════════════════════════════════════════════════════════
+    LOS[LOS Integration<br/>🏦 Push to Loan Origination System<br/><br/>• Idempotent Push<br/>• Full Audit Trail<br/>• Case Closure]
+    
+    EXECUTION --> LOS
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% FINAL STATE
+    %% ═══════════════════════════════════════════════════════════
+    COMPLETE([✅ Case Complete<br/>Applicant Notified])
+    
+    LOS --> COMPLETE
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% EXTERNAL DATA SOURCES (Shown as Input to Tools)
+    %% ═══════════════════════════════════════════════════════════
+    EXTERNAL[External Systems<br/>🏦 Bank APIs<br/>📊 CIBIL / Credit Bureaus<br/>🆔 UIDAI Aadhaar<br/>📋 Income Tax / PAN<br/>🏢 EPFO Employment]
+    
+    EXTERNAL -.API Calls.-> KYC_API
+    EXTERNAL -.API Calls.-> BUREAU
+    EXTERNAL -.API Calls.-> BANK_ANALYZER
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% ADDITIONAL LOOP: User Provides More Data Mid-Process
+    %% ═══════════════════════════════════════════════════════════
+    NEW_DATA[User Sends New Data<br/>During Processing]
+    
+    NEW_DATA -.New Email/Doc.-> INGEST
+    
+    %% ═══════════════════════════════════════════════════════════
+    %% STYLE DEFINITIONS
+    %% ═══════════════════════════════════════════════════════════
+    
+    classDef agentLoop fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
+    classDef toolLayer fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef userInteract fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef criticalGate fill:#ffebee,stroke:#c62828,stroke-width:4px
+    classDef stateStore fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    classDef decision fill:#fff9c4,stroke:#f9a825,stroke-width:2px
+    
+    class OBSERVE,ANALYZE,DECIDE,EXECUTE,EVALUATE,UPDATE agentLoop
+    class KYC_API,BUREAU,OCR_ENGINE,BANK_ANALYZER,FRAUD_CHECK,RISK_ENGINE,INCOME_VERIFY toolLayer
+    class ASK_USER,USER_RESPONDS userInteract
+    class HIL_GATE criticalGate
+    class STATE stateStore
+    class CONFIDENCE_CHECK,HIL_DECISION,RECOMMENDATION decision
