@@ -1,0 +1,5 @@
+agent-workspace-react/node_modules/
+agent-workspace-react/.next/
+agent-workspace-react/.vercel/
+agent-workspace-react/.env*
+*.log
