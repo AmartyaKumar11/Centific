@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --surface-soft: #f7f9fc;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
+}
+
+body {
+  background: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(219, 234, 254, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(220, 252, 231, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 60% 30%, rgba(254, 243, 199, 0.35) 0%, transparent 55%), var(--bg);
+  color: var(--text);
+}
+
+.card-shell {
+  @apply rounded-2xl border bg-white shadow-sm;
+  border-color: var(--border);
+}
+
+.subtle-text {
+  color: var(--text-muted);
+}
