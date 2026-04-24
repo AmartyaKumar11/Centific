@@ -4,12 +4,20 @@ import { useState } from "react";
 import Link from "next/link";
 import { ApplicationReviewModal } from "@/components/Application/ApplicationReviewModal";
 import { Application } from "@/types/application";
+import { MacWindowCard } from "@/components/ui/MacWindowCard";
 
 const riskClass: Record<Application["risk"], string> = {
-  Low: "bg-emerald-100 text-emerald-700",
-  Medium: "bg-amber-100 text-amber-700",
-  High: "bg-rose-100 text-rose-700",
-  "Very High": "bg-slate-200 text-slate-700",
+  Low: "chip chip-risk-low",
+  Medium: "chip chip-risk-medium",
+  High: "chip chip-risk-high",
+  "Very High": "chip chip-risk-vhigh",
+};
+
+const decisionClass: Record<Application["decision"], string> = {
+  "STP Approved": "chip border-emerald-300 bg-emerald-100 text-emerald-800",
+  "Conditional Approval": "chip border-amber-300 bg-amber-100 text-amber-800",
+  "HIL Pending": "chip border-blue-300 bg-blue-100 text-blue-800",
+  Rejected: "chip border-rose-300 bg-rose-100 text-rose-800",
 };
 
 export function ApplicationsTable({ applications }: { applications: Application[] }) {
@@ -17,13 +25,15 @@ export function ApplicationsTable({ applications }: { applications: Application[
 
   return (
     <>
-      <section className="card-shell overflow-hidden">
-        <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-4 py-3">
-          <h3 className="text-sm font-semibold text-slate-800">Application Register</h3>
+      <MacWindowCard
+        title="Application Register"
+        bodyClassName="p-0"
+        headerRight={
           <span className="rounded-full bg-slate-200 px-3 py-1 text-xs text-slate-700">
             {applications.length} applications
           </span>
-        </div>
+        }
+      >
         <div className="overflow-x-auto">
           <table className="min-w-full text-left text-sm">
             <thead className="bg-slate-50 text-[11px] uppercase tracking-[0.08em] text-slate-500">
@@ -43,7 +53,7 @@ export function ApplicationsTable({ applications }: { applications: Application[
                 <tr
                   key={app.id}
                   onClick={() => setSelectedApplication(app)}
-                  className="cursor-pointer border-t border-slate-100 transition hover:bg-slate-50"
+                  className="cursor-pointer border-t border-slate-100 transition hover:bg-blue-50/40"
                 >
                   <td className="px-4 py-3">
                     <p className="font-medium text-slate-900">{app.applicant_name}</p>
@@ -52,7 +62,9 @@ export function ApplicationsTable({ applications }: { applications: Application[
                   <td className="px-4 py-3 text-slate-700">
                     INR {app.loan_amount.toLocaleString("en-IN")}
                   </td>
-                  <td className="px-4 py-3 text-slate-700">{app.decision}</td>
+                  <td className="px-4 py-3 text-slate-700">
+                    <span className={decisionClass[app.decision]}>{app.decision}</span>
+                  </td>
                   <td className="px-4 py-3">
                     <span className={`rounded-full px-2 py-1 text-xs ${riskClass[app.risk]}`}>
                       {app.risk}
@@ -79,7 +91,7 @@ export function ApplicationsTable({ applications }: { applications: Application[
             </tbody>
           </table>
         </div>
-      </section>
+      </MacWindowCard>
 
       <ApplicationReviewModal
         application={selectedApplication}

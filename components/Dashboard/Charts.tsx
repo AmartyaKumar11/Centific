@@ -11,6 +11,7 @@ import {
 } from "chart.js";
 import { Bar, Doughnut } from "react-chartjs-2";
 import { Application } from "@/types/application";
+import { MacWindowCard } from "@/components/ui/MacWindowCard";
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -33,9 +34,8 @@ export function Charts({ applications }: { applications: Application[] }) {
 
   return (
     <section className="grid gap-4 lg:grid-cols-3">
-      <article className="card-shell p-4">
-        <h3 className="text-sm font-semibold text-slate-800">Decision Distribution</h3>
-        <div className="mt-4 h-56">
+      <MacWindowCard title="Decision Distribution" bodyClassName="p-0">
+        <div className="h-56 p-4 pt-0">
           <Doughnut
             data={{
               labels: Object.keys(decisionCounts),
@@ -50,11 +50,10 @@ export function Charts({ applications }: { applications: Application[] }) {
             options={{ maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } }}
           />
         </div>
-      </article>
+      </MacWindowCard>
 
-      <article className="card-shell p-4">
-        <h3 className="text-sm font-semibold text-slate-800">Risk Distribution</h3>
-        <div className="mt-4 h-56">
+      <MacWindowCard title="Risk Distribution" bodyClassName="p-0">
+        <div className="h-56 p-4 pt-0">
           <Doughnut
             data={{
               labels: Object.keys(riskCounts),
@@ -69,11 +68,10 @@ export function Charts({ applications }: { applications: Application[] }) {
             options={{ maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } }}
           />
         </div>
-      </article>
+      </MacWindowCard>
 
-      <article className="card-shell p-4">
-        <h3 className="text-sm font-semibold text-slate-800">Confidence Distribution</h3>
-        <div className="mt-4 h-56">
+      <MacWindowCard title="Confidence Distribution" bodyClassName="p-0">
+        <div className="h-56 p-4 pt-0">
           <Bar
             data={{
               labels: Object.keys(confidenceBands),
@@ -93,7 +91,7 @@ export function Charts({ applications }: { applications: Application[] }) {
             }}
           />
         </div>
-      </article>
+      </MacWindowCard>
     </section>
   );
 }

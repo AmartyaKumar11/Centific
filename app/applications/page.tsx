@@ -2,6 +2,7 @@ import { ApplicationsTable } from "@/components/Dashboard/ApplicationsTable";
 import { Charts } from "@/components/Dashboard/Charts";
 import { AppTopBar } from "@/components/Layout/AppTopBar";
 import { BottomDock } from "@/components/Layout/BottomDock";
+import { MacWindowCard } from "@/components/ui/MacWindowCard";
 import { applications } from "@/lib/mockData";
 
 export default function ApplicationsPage() {
@@ -9,12 +10,9 @@ export default function ApplicationsPage() {
     <main className="mx-auto flex w-full max-w-[1500px] flex-col gap-4 px-4 py-4">
       <AppTopBar />
 
-      <section className="card-shell p-4">
+      <MacWindowCard title="All Applications" bodyClassName="p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h1 className="text-2xl font-semibold text-slate-900">All Applications</h1>
-            <p className="text-sm subtle-text">Full application register and underwriting decisions</p>
-          </div>
+          <p className="text-sm subtle-text">Full application register and underwriting decisions</p>
           <div className="flex flex-wrap gap-2">
             <input
               placeholder="Search applicant or app id"
@@ -31,7 +29,7 @@ export default function ApplicationsPage() {
             </button>
           </div>
         </div>
-      </section>
+      </MacWindowCard>
 
       <Charts applications={applications} />
       <ApplicationsTable applications={applications} />

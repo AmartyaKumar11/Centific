@@ -1,4 +1,5 @@
 import { Application } from "@/types/application";
+import { MacWindowCard } from "@/components/ui/MacWindowCard";
 
 function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
@@ -11,9 +12,8 @@ function SummaryRow({ label, value }: { label: string; value: string }) {
 
 export function ApplicationSummary({ application }: { application: Application }) {
   return (
-    <section className="card-shell p-5">
-      <h2 className="text-lg font-semibold text-slate-900">Application Summary</h2>
-      <div className="mt-4 grid gap-5 md:grid-cols-2">
+    <MacWindowCard title="Application Summary" bodyClassName="p-5">
+      <div className="grid gap-5 md:grid-cols-2">
         <div>
           <SummaryRow label="Employer" value={application.employer} />
           <SummaryRow
@@ -39,6 +39,6 @@ export function ApplicationSummary({ application }: { application: Application }
           <SummaryRow label="Confidence Score" value={`${application.confidence_score}%`} />
         </div>
       </div>
-    </section>
+    </MacWindowCard>
   );
 }

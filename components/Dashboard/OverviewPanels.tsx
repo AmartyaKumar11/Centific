@@ -11,6 +11,7 @@ import {
 } from "chart.js";
 import { Bar, Doughnut } from "react-chartjs-2";
 import { Application } from "@/types/application";
+import { MacWindowCard } from "@/components/ui/MacWindowCard";
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -21,25 +22,9 @@ function countBy<T extends string>(items: T[]) {
   }, {});
 }
 
-function WindowCard({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <article className="card-shell overflow-hidden">
-      <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-3 py-2">
-        <div className="flex items-center gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-          <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-          <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-        </div>
-        <h3 className="text-xs font-semibold text-slate-700">{title}</h3>
-      </div>
-      <div className="p-3">{children}</div>
-    </article>
-  );
-}
-
 function Gauge({ label, value, color }: { label: string; value: number; color: string }) {
   return (
-    <WindowCard title={label}>
+    <MacWindowCard title={label} className="animate-fade-up">
       <div className="h-36">
         <Doughnut
           data={{
@@ -62,7 +47,7 @@ function Gauge({ label, value, color }: { label: string; value: number; color: s
         />
       </div>
       <p className="-mt-2 text-center text-xs font-semibold text-slate-700">{value}%</p>
-    </WindowCard>
+    </MacWindowCard>
   );
 }
 
@@ -80,7 +65,7 @@ export function OverviewPanels({ applications }: { applications: Application[] }
   return (
     <section className="space-y-4">
       <div className="grid gap-3 lg:grid-cols-3">
-        <WindowCard title="Decision Distribution">
+        <MacWindowCard title="Decision Distribution" className="animate-fade-up-delay-1">
           <div className="h-52">
             <Doughnut
               data={{
@@ -97,8 +82,8 @@ export function OverviewPanels({ applications }: { applications: Application[] }
               options={{ maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } }}
             />
           </div>
-        </WindowCard>
-        <WindowCard title="Risk Tier Distribution">
+        </MacWindowCard>
+        <MacWindowCard title="Risk Tier Distribution" className="animate-fade-up-delay-2">
           <div className="h-52">
             <Doughnut
               data={{
@@ -115,8 +100,8 @@ export function OverviewPanels({ applications }: { applications: Application[] }
               options={{ maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } }}
             />
           </div>
-        </WindowCard>
-        <WindowCard title="Employer Type Split">
+        </MacWindowCard>
+        <MacWindowCard title="Employer Type Split" className="animate-fade-up-delay-3">
           <div className="h-52">
             <Doughnut
               data={{
@@ -133,11 +118,11 @@ export function OverviewPanels({ applications }: { applications: Application[] }
               options={{ maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } }}
             />
           </div>
-        </WindowCard>
+        </MacWindowCard>
       </div>
 
       <div className="grid gap-3 lg:grid-cols-2">
-        <WindowCard title="Daily Batch Volume">
+        <MacWindowCard title="Daily Batch Volume" className="animate-fade-up-delay-1">
           <div className="h-52">
             <Bar
               data={{
@@ -160,8 +145,8 @@ export function OverviewPanels({ applications }: { applications: Application[] }
               options={{ maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }}
             />
           </div>
-        </WindowCard>
-        <WindowCard title="Top Rejection Reasons">
+        </MacWindowCard>
+        <MacWindowCard title="Top Rejection Reasons" className="animate-fade-up-delay-2">
           <div className="h-52">
             <Bar
               data={{
@@ -182,29 +167,34 @@ export function OverviewPanels({ applications }: { applications: Application[] }
               }}
             />
           </div>
-        </WindowCard>
+        </MacWindowCard>
       </div>
 
-      <article className="card-shell p-3">
-        <div className="flex items-center justify-between">
-          <p className="text-sm font-semibold text-slate-800">Live Pipeline - BTC-0426-014</p>
-          <span className="rounded-full bg-emerald-100 px-2 py-1 text-[11px] font-semibold text-emerald-700">
+      <MacWindowCard
+        title="Live Pipeline - BTC-0426-014"
+        className="accent-blue animate-fade-up-delay-2"
+        headerRight={
+          <span className="pulse-live rounded-full bg-emerald-100 px-2 py-1 text-[11px] font-semibold text-emerald-700">
             PROCESSING
           </span>
-        </div>
-        <div className="mt-3 grid grid-cols-7 gap-2 text-center">
+        }
+      >
+        <div className="grid grid-cols-7 gap-2 text-center">
           {["Data Intake", "Feature Eng", "Rule Engine", "LLM Reasoning", "HIL Review", "Audit Trail", "LMS Push"].map(
             (step, idx) => (
-              <div key={step} className="rounded-md border border-slate-200 bg-slate-50 px-2 py-2">
+              <div
+                key={step}
+                className="rounded-md border border-slate-200 bg-white px-2 py-2 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
+              >
                 <p className="text-[10px] text-slate-500">{String(idx + 1).padStart(2, "0")}</p>
                 <p className="text-[11px] font-medium text-slate-700">{step}</p>
               </div>
             )
           )}
         </div>
-      </article>
+      </MacWindowCard>
 
-      <div className="grid gap-3 lg:grid-cols-4">
+      <div className="grid gap-3 lg:grid-cols-4 animate-fade-up-delay-3">
         <Gauge label="STP Rate" value={68} color="#15803d" />
         <Gauge label="Decision Accuracy" value={93} color="#2563eb" />
         <Gauge label="False Reject Rate" value={18} color="#16a34a" />

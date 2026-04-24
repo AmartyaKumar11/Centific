@@ -1,4 +1,3 @@
-import { ApplicationsTable } from "@/components/Dashboard/ApplicationsTable";
 import { KPICards } from "@/components/Dashboard/KPICards";
 import { OverviewPanels } from "@/components/Dashboard/OverviewPanels";
 import { BottomDock } from "@/components/Layout/BottomDock";
@@ -8,7 +7,9 @@ import { applications } from "@/lib/mockData";
 export default function DashboardPage() {
   return (
     <main className="mx-auto flex w-full max-w-[1500px] flex-col gap-4 px-4 py-4">
-      <AppTopBar />
+      <div className="animate-fade-up">
+        <AppTopBar />
+      </div>
 
       <KPICards
         items={[
@@ -46,7 +47,6 @@ export default function DashboardPage() {
       />
 
       <OverviewPanels applications={applications} />
-      <ApplicationsTable applications={applications.slice(0, 4)} />
       <BottomDock />
     </main>
   );

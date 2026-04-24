@@ -1,15 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { MacWindowCard } from "@/components/ui/MacWindowCard";
 
 export function AppTopBar() {
   return (
-    <header className="card-shell px-4 py-2">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <p className="text-[11px] uppercase tracking-[0.08em] text-slate-500">
-            Loan Underwriting AI Agent
-          </p>
-          <p className="text-lg font-semibold text-slate-900">Virtual Credit Underwriter</p>
-        </div>
+    <MacWindowCard
+      title="Virtual Credit Underwriter"
+      bodyClassName="p-0"
+      headerRight={
         <div className="flex items-center gap-2">
           <span className="rounded-md border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-medium text-violet-700">
             Credit Officer
@@ -18,8 +17,12 @@ export function AppTopBar() {
             Pipeline Active
           </span>
         </div>
+      }
+    >
+      <div className="border-b border-slate-100 px-4 py-2">
+        <p className="text-[11px] uppercase tracking-[0.08em] text-slate-500">Loan Underwriting AI Agent</p>
       </div>
-      <nav className="mt-2 flex flex-wrap gap-2 border-t border-slate-100 pt-2">
+      <nav className="flex flex-wrap gap-2 px-4 py-2">
         <Link href="/" className="rounded-md bg-blue-50 px-2 py-1 text-xs text-blue-700">
           Overview
         </Link>
@@ -36,6 +39,6 @@ export function AppTopBar() {
           Applications
         </Link>
       </nav>
-    </header>
+    </MacWindowCard>
   );
 }

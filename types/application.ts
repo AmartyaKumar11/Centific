@@ -44,7 +44,15 @@ export type Application = {
   reasoning_summary: string;
   income_declared: number;
   income_verified: number;
+  /** Optional when different from declared/verified average */
+  income_average?: number;
   rate_percent: number;
+  employment_tenure_years?: number;
+  bounce_frequency_per_month?: number;
+  spending_ratio?: number;
+  post_emi_surplus?: number;
+  risk_summary?: string;
+  hil_suggestions?: string[];
   timeline: TimelineStep[];
   audit_trail: AuditEvent[];
 };
