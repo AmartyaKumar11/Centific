@@ -3,3 +3,4 @@ agent-workspace-react/.next/
 agent-workspace-react/.vercel/
 agent-workspace-react/.env*
 *.log
+.cursor/
