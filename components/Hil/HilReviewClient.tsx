@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ApplicationReviewModal } from "@/components/Application/ApplicationReviewModal";
+import { ApplicationDetailModal } from "@/components/Application/ApplicationDetailModal";
 import { AppTopBar } from "@/components/Layout/AppTopBar";
 import { BottomDock } from "@/components/Layout/BottomDock";
 import { Application } from "@/types/application";
@@ -115,7 +115,7 @@ export function HilReviewClient() {
 
       <BottomDock />
 
-      <ApplicationReviewModal
+      <ApplicationDetailModal
         application={selectedApplication}
         onClose={() => setSelectedApplication(null)}
       />
