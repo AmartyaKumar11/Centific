@@ -135,3 +135,134 @@ body {
 .tooltip-fade {
   animation: tooltipFade 200ms ease-out;
 }
+
+@keyframes desktopTitleEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95) rotate(2.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes desktopDockEnter {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes iconEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  50% {
+    filter: hue-rotate(8deg) brightness(1.02);
+  }
+  100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+}
+
+@keyframes floatBlob1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(18px, -12px, 0);
+  }
+}
+
+@keyframes floatBlob2 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-14px, 14px, 0);
+  }
+}
+
+@keyframes floatBlob3 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(10px, -10px, 0);
+  }
+}
+
+.desktop-title-enter {
+  animation: desktopTitleEnter 600ms cubic-bezier(0.23, 1, 0.32, 1) 0ms both;
+}
+
+.desktop-dock-enter {
+  animation: desktopDockEnter 500ms cubic-bezier(0.23, 1, 0.32, 1) 200ms both;
+}
+
+.desktop-icon-enter {
+  animation: iconEnter 400ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.desktop-text-enter {
+  animation: textFadeIn 600ms cubic-bezier(0.4, 0, 0.2, 1) 0ms both;
+}
+
+.desktop-subtitle-enter {
+  animation: textFadeIn 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms both;
+}
+
+.desktop-card-hover {
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.desktop-card-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
+}
+
+.desktop-bg-shift {
+  animation: gradientShift 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.desktop-float-1 {
+  animation: floatBlob1 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.desktop-float-2 {
+  animation: floatBlob2 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.desktop-float-3 {
+  animation: floatBlob3 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
