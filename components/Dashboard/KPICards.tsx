@@ -17,7 +17,7 @@ const toneMap: Record<KPIItem["tone"], string> = {
 
 export function KPICards({ items }: { items: KPIItem[] }) {
   return (
-    <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+    <section className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
       {items.map((item, index) => (
         <MacWindowCard
           key={item.label}

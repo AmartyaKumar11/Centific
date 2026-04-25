@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Loan Officer Dashboard — CentificAI aegis.ai</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+/* ── TOKENS ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --primary:#5929d0;
+  --primary-soft:#ede9ff;
+  --primary-mid:#8b5cf6;
+  --pink:#CF008B;
+  --pink-soft:#fce7f8;
+  --cyan:#0891b2;
+  --cyan-soft:#e0f7fb;
+  --green:#16a34a;
+  --green-soft:#dcfce7;
+  --amber:#d97706;
+  --amber-soft:#fef3c7;
+  --red:#dc2626;
+  --red-soft:#fee2e2;
+  --violet:#7c3aed;
+  --violet-soft:#ede9fe;
+  --orange:#ea580c;
+  --orange-soft:#ffedd5;
+
+  --ink:#0f172a;
+  --ink-2:#334155;
+  --ink-3:#64748b;
+  --ink-4:#94a3b8;
+  --border:#e2e8f0;
+  --surface:#ffffff;
+  --bg:#f6f7fb;
+
+  --r-sm:8px;
+  --r-md:14px;
+  --r-lg:20px;
+  --r-pill:999px;
+
+  --sh-sm:0 1px 4px rgba(0,0,0,.06);
+  --sh-md:0 4px 16px rgba(0,0,0,.09);
+  --sh-lg:0 12px 40px rgba(0,0,0,.14);
+  --sh-xl:0 20px 60px rgba(0,0,0,.18);
+
+  --grad:linear-gradient(135deg,#a855f7 0%,#6366f1 50%,#06b6d4 100%);
+}
+
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--ink);
+  background:var(--bg);
+  min-height:100vh;
+}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+
+/* ── TOPBAR ─────────────────────────────── */
+.topbar{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:0 28px;
+  height:62px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.topbar-logo{display:flex;align-items:center;gap:10px;}
+.logo-mark{
+  width:34px;height:34px;
+  border-radius:10px;
+  background:var(--pink);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:800;color:#fff;
+  flex-shrink:0;
+}
+.logo-text{font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.logo-sub{font-size:10.5px;color:var(--ink-3);margin-top:-1px;}
+.topbar-divider{width:1px;height:28px;background:var(--border);flex-shrink:0;}
+.topbar-title{font-size:14px;font-weight:600;color:var(--ink);}
+.topbar-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
+.topbar-date{font-size:12px;color:var(--ink-3);font-weight:500;white-space:nowrap;}
+.topbar-bell{
+  width:36px;height:36px;
+  border-radius:50%;
+  background:var(--bg);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:15px;
+  position:relative;
+  transition:background .15s;
+}
+.topbar-bell:hover{background:var(--border);}
+.bell-dot{
+  position:absolute;top:7px;right:8px;
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--red);
+  border:2px solid var(--surface);
+}
+.topbar-avatar{
+  width:34px;height:34px;
+  border-radius:50%;
+  background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#fff;
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+/* ── BANNER ──────────────────────────────── */
+.banner{
+  background:var(--grad);
+  padding:11px 28px;
+  display:flex;align-items:center;gap:12px;
+  color:#fff;flex-wrap:wrap;
+}
+.banner-pulse{
+  width:8px;height:8px;border-radius:50%;
+  background:#4ade80;flex-shrink:0;
+  animation:pulse 2s infinite;
+}
+.banner-text{font-size:12.5px;font-weight:500;flex:1;min-width:180px;opacity:.95;}
+.banner-text b{font-weight:700;}
+.banner-btn{
+  border-radius:var(--r-pill);
+  padding:5px 14px;
+  font-size:11.5px;font-weight:600;
+  border:1.5px solid rgba(255,255,255,.5);
+  color:#fff;background:rgba(255,255,255,.15);
+  cursor:pointer;white-space:nowrap;
+  font-family:'DM Sans',sans-serif;
+  transition:background .15s;
+}
+.banner-btn:hover{background:rgba(255,255,255,.28);}
+
+/* ── PAGE ────────────────────────────────── */
+.page{
+  max-width:1260px;
+  margin:0 auto;
+  padding:32px 28px 64px;
+}
+.page-hdr{margin-bottom:28px;}
+.page-hdr-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.page-title{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em;}
+.page-sub{font-size:12.5px;color:var(--ink-3);margin-top:3px;}
+.refresh-btn{
+  display:flex;align-items:center;gap:6px;
+  border-radius:var(--r-pill);
+  padding:6px 16px;
+  font-size:12px;font-weight:600;
+  border:1.5px solid var(--border);
+  background:var(--surface);color:var(--ink-2);
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:all .15s;
+}
+.refresh-btn:hover{border-color:var(--primary);color:var(--primary);}
+
+/* ── METRIC GRID ─────────────────────────── */
+.metric-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:0;
+}
+.metric-card{
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:var(--r-md);
+  padding:20px 18px 16px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  text-align:left;
+  font-family:'DM Sans',sans-serif;
+  transition:box-shadow .2s,transform .18s,border-color .2s;
+  box-shadow:var(--sh-sm);
+  width:100%;
+}
+.metric-card::after{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  border-radius:3px 3px 0 0;
+}
+.metric-card:hover{box-shadow:var(--sh-md);transform:translateY(-2px);}
+.metric-card.active{transform:translateY(-2px);box-shadow:var(--sh-md);}
+
+.cc-total::after{background:var(--primary);}
+.cc-pending::after{background:var(--amber);}
+.cc-processing::after{background:var(--cyan);}
+.cc-approved::after{background:var(--green);}
+.cc-rejected::after{background:var(--red);}
+.cc-attention::after{background:var(--pink);}
+.cc-lowconf::after{background:var(--orange);}
+.cc-highrisk::after{background:var(--violet);}
+
+.cc-total.active{border-color:#9b8edf;box-shadow:0 0 0 3px rgba(89,41,208,.1),var(--sh-md);}
+.cc-pending.active{border-color:#fcd34d;box-shadow:0 0 0 3px rgba(217,119,6,.1),var(--sh-md);}
+.cc-processing.active{border-color:#67e8f9;box-shadow:0 0 0 3px rgba(8,145,178,.1),var(--sh-md);}
+.cc-approved.active{border-color:#86efac;box-shadow:0 0 0 3px rgba(22,163,74,.1),var(--sh-md);}
+.cc-rejected.active{border-color:#fca5a5;box-shadow:0 0 0 3px rgba(220,38,38,.1),var(--sh-md);}
+.cc-attention.active{border-color:#f0abdd;box-shadow:0 0 0 3px rgba(207,0,139,.1),var(--sh-md);}
+.cc-lowconf.active{border-color:#fdba74;box-shadow:0 0 0 3px rgba(234,88,12,.1),var(--sh-md);}
+.cc-highrisk.active{border-color:#c4b5fd;box-shadow:0 0 0 3px rgba(124,58,237,.1),var(--sh-md);}
+
+.metric-icon{
+  position:absolute;top:16px;right:14px;
+  width:32px;height:32px;
+  border-radius:8px;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;
+}
+.metric-label{
+  font-size:10.5px;font-weight:600;
+  color:var(--ink-3);
+  text-transform:uppercase;letter-spacing:.07em;
+  margin-bottom:8px;
+  padding-right:40px;
+}
+.metric-value{
+  font-size:30px;font-weight:700;
+  color:var(--ink);line-height:1;
+  font-family:'DM Mono',monospace;
+}
+.metric-delta{
+  font-size:11px;font-weight:500;
+  color:var(--ink-4);
+  margin-top:7px;
+}
+.metric-active-chip{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  background:var(--primary);
+  color:#fff;
+  font-size:9px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;
+  text-align:center;
+  padding:3px;
+  animation:fadeUp .2s ease;
+}
+.cc-pending .metric-active-chip{background:var(--amber);}
+.cc-processing .metric-active-chip{background:var(--cyan);}
+.cc-approved .metric-active-chip{background:var(--green);}
+.cc-rejected .metric-active-chip{background:var(--red);}
+.cc-attention .metric-active-chip{background:var(--pink);}
+.cc-lowconf .metric-active-chip{background:var(--orange);}
+.cc-highrisk .metric-active-chip{background:var(--violet);}
+
+/* ── SECTION HEADER ──────────────────────── */
+.sec-hdr{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:14px;gap:12px;flex-wrap:wrap;
+}
+.sec-title{font-size:14px;font-weight:700;color:var(--ink);}
+.sec-sub{font-size:11.5px;color:var(--ink-3);margin-top:2px;}
+.sec-link{font-size:12px;color:var(--primary);font-weight:600;cursor:pointer;white-space:nowrap;}
+
+/* ── RECOMMENDATION ──────────────────────── */
+.rec-section{margin-top:28px;margin-bottom:28px;}
+.rec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.rec-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-md);
+  padding:16px;
+  box-shadow:var(--sh-sm);
+  text-align:center;
+  transition:box-shadow .2s,transform .15s;
+}
+.rec-card:hover{box-shadow:var(--sh-md);transform:translateY(-1px);}
+.rec-value{font-size:28px;font-weight:800;line-height:1;margin-bottom:5px;font-family:'DM Mono',monospace;}
+.rec-label{font-size:11px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;line-height:1.4;}
+.rec-chip{display:inline-block;border-radius:var(--r-pill);padding:3px 10px;font-size:10.5px;font-weight:600;}
+.rec-approve .rec-value{color:var(--green);}
+.rec-approve .rec-chip{background:var(--green-soft);color:var(--green);}
+.rec-conditional .rec-value{color:var(--amber);}
+.rec-conditional .rec-chip{background:var(--amber-soft);color:#92400e;}
+.rec-reject .rec-value{color:var(--red);}
+.rec-reject .rec-chip{background:var(--red-soft);color:var(--red);}
+.rec-manual .rec-value{color:var(--primary);}
+.rec-manual .rec-chip{background:var(--primary-soft);color:var(--primary);}
+
+/* ── CHARTS ──────────────────────────────── */
+.charts-section{margin-bottom:28px;}
+.period-select{
+  font-family:'DM Sans',sans-serif;
+  font-size:12px;
+  padding:6px 12px;
+  border:1.5px solid var(--border);
+  border-radius:var(--r-pill);
+  color:var(--ink-2);
+  outline:none;
+  cursor:pointer;
+  background:var(--surface);
+}
+.charts-row-1{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;}
+.charts-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.chart-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-md);
+  padding:16px 18px;
+  box-shadow:var(--sh-sm);
+}
+.chart-title{font-size:13px;font-weight:700;color:var(--ink);}
+.chart-sub{font-size:11px;color:var(--ink-3);margin-bottom:12px;}
+.chart-wrap{height:175px;position:relative;}
+.chart-wrap-tall{height:155px;position:relative;}
+
+/* ── MODAL OVERLAY ───────────────────────── */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,.45);
+  z-index:500;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  animation:fadeOverlay .2s ease;
+}
+.modal{
+  background:var(--surface);
+  border-radius:var(--r-lg);
+  box-shadow:var(--sh-xl);
+  width:100%;max-width:820px;
+  max-height:88vh;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  animation:slideUp .25s cubic-bezier(.4,0,.2,1);
+}
+.modal-header{
+  padding:20px 24px 18px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:12px;
+  flex-shrink:0;
+}
+.modal-title{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.modal-sub{font-size:12px;color:var(--ink-3);margin-top:2px;}
+.modal-close{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:var(--ink-3);
+  cursor:pointer;flex-shrink:0;
+  transition:all .15s;
+  font-family:'DM Sans',sans-serif;
+}
+.modal-close:hover{background:var(--border);color:var(--ink);}
+
+/* ── APP TABLE ───────────────────────────── */
+.modal-body{overflow-y:auto;flex:1;}
+.app-table{width:100%;border-collapse:collapse;}
+.app-table th{
+  font-size:10.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.07em;
+  color:var(--ink-3);
+  padding:10px 20px;
+  text-align:left;
+  border-bottom:1.5px solid var(--border);
+  background:var(--bg);
+  white-space:nowrap;
+  position:sticky;top:0;
+}
+.app-table td{
+  padding:13px 20px;
+  font-size:13px;
+  color:var(--ink-2);
+  border-bottom:1px solid var(--border);
+  vertical-align:middle;
+}
+.app-table tbody tr:last-child td{border-bottom:none;}
+.app-table tbody tr{transition:background .1s;cursor:default;}
+.app-table tbody tr:hover td{background:#fafbfe;}
+
+.applicant-wrap{display:flex;align-items:center;gap:10px;}
+.app-av{
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:#fff;
+  flex-shrink:0;
+}
+.app-name{font-size:13px;font-weight:600;color:var(--ink);}
+.app-id{font-size:10.5px;color:var(--ink-4);font-family:'DM Mono',monospace;}
+
+/* ── BADGES ──────────────────────────────── */
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  border-radius:var(--r-pill);
+  padding:3px 10px;
+  font-size:11px;font-weight:600;
+  white-space:nowrap;
+}
+.badge::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.b-approved{background:var(--green-soft);color:var(--green);}
+.b-approved::before{background:var(--green);}
+.b-pending{background:var(--amber-soft);color:#92400e;}
+.b-pending::before{background:var(--amber);}
+.b-processing{background:var(--cyan-soft);color:var(--cyan);}
+.b-processing::before{background:var(--cyan);}
+.b-rejected{background:var(--red-soft);color:var(--red);}
+.b-rejected::before{background:var(--red);}
+.b-review{background:var(--primary-soft);color:var(--primary);}
+.b-review::before{background:var(--primary);}
+
+/* ── SCORE BAR ───────────────────────────── */
+.score-wrap{display:flex;align-items:center;gap:7px;min-width:90px;}
+.score-track{flex:1;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;min-width:50px;}
+.score-fill{height:100%;border-radius:3px;}
+.score-label{font-size:11px;font-weight:700;min-width:28px;text-align:right;font-family:'DM Mono',monospace;}
+.risk-h .score-fill{background:var(--red);}
+.risk-m .score-fill{background:var(--amber);}
+.risk-l .score-fill{background:var(--green);}
+.risk-h .score-label{color:var(--red);}
+.risk-m .score-label{color:var(--amber);}
+.risk-l .score-label{color:var(--green);}
+.conf-h .score-fill{background:var(--green);}
+.conf-m .score-fill{background:var(--amber);}
+.conf-l .score-fill{background:var(--red);}
+.conf-h .score-label{color:var(--green);}
+.conf-m .score-label{color:var(--amber);}
+.conf-l .score-label{color:var(--red);}
+
+/* ── EMPTY STATE ─────────────────────────── */
+.empty{padding:56px 24px;text-align:center;}
+.empty-icon{font-size:36px;margin-bottom:12px;}
+.empty-t{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.empty-s{font-size:12.5px;color:var(--ink-3);}
+
+/* ── MODAL FOOTER ────────────────────────── */
+.modal-footer{
+  padding:12px 20px;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
+  gap:8px;
+}
+.modal-count{font-size:12px;color:var(--ink-3);font-weight:500;}
+.modal-export{
+  border-radius:var(--r-pill);
+  padding:5px 14px;
+  font-size:11.5px;font-weight:600;
+  border:1.5px solid var(--border);
+  background:var(--surface);color:var(--ink-2);
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:all .15s;
+}
+.modal-export:hover{border-color:var(--primary);color:var(--primary);}
+
+/* ── ANIMATIONS ──────────────────────────── */
+@keyframes fadeOverlay{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media(max-width:1100px){
+  .charts-row-1{grid-template-columns:repeat(2,1fr);}
+  .rec-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:900px){
+  .metric-grid{grid-template-columns:repeat(2,1fr);}
+  .page{padding:24px 20px 48px;}
+  .charts-row-1{grid-template-columns:1fr;}
+  .charts-row-2{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .topbar{padding:0 16px;}
+  .topbar-date{display:none;}
+  .banner{padding:10px 16px;}
+  .page{padding:20px 16px 48px;}
+  .metric-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .rec-grid{grid-template-columns:repeat(2,1fr);}
+  .modal{border-radius:var(--r-md) var(--r-md) 0 0;max-height:92vh;align-self:flex-end;margin:0;}
+  .modal-overlay{align-items:flex-end;padding:0;}
+  .modal-header{padding:16px 18px 14px;}
+  .modal-footer{flex-direction:column;align-items:stretch;text-align:center;}
+}
+@media(max-width:480px){
+  .metric-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .metric-value{font-size:24px;}
+  .app-table td,.app-table th{padding:10px 14px;}
+  .logo-sub{display:none;}
+  .rec-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useCallback, useEffect, useRef } = React;
+
+/* ── DATA ─────────────────────────────────── */
+const APPS = [
+  { id:'APP-031-001', name:'Anil Kapoor',  initials:'AK', color:'#5929d0', type:'Personal Loan',  status:'approved',   risk:28, conf:91, tags:['approved'] },
+  { id:'APP-031-002', name:'Meera Joshi',  initials:'MJ', color:'#CF008B', type:'Home Loan',      status:'pending',    risk:62, conf:76, tags:['pending'] },
+  { id:'APP-031-003', name:'Amit Verma',   initials:'AV', color:'#dc2626', type:'Home Loan',      status:'review',     risk:88, conf:55, tags:['high-risk','low-conf','review'] },
+  { id:'APP-031-004', name:'Sunita Rao',   initials:'SR', color:'#d97706', type:'Car Loan',       status:'pending',    risk:45, conf:83, tags:['pending','missing-docs'] },
+  { id:'APP-031-005', name:'Kiran Patel',  initials:'KP', color:'#16a34a', type:'Education Loan', status:'approved',   risk:19, conf:94, tags:['approved'] },
+  { id:'APP-031-006', name:'Vijay Singh',  initials:'VS', color:'#0891b2', type:'Business Loan',  status:'processing', risk:71, conf:68, tags:['high-risk','processing'] },
+  { id:'APP-031-007', name:'Priya Sharma', initials:'PS', color:'#7c3aed', type:'Home Loan',      status:'pending',    risk:82, conf:58, tags:['high-risk','low-conf','pending','attention'] },
+  { id:'APP-031-008', name:'Rahul Gupta',  initials:'RG', color:'#0f172a', type:'Personal Loan',  status:'rejected',   risk:91, conf:87, tags:['high-risk','rejected'] },
+  { id:'APP-031-009', name:'Sunita Patel', initials:'SP', color:'#d97706', type:'Home Loan',      status:'pending',    risk:54, conf:72, tags:['missing-docs','pending','attention'] },
+  { id:'APP-031-010', name:'Nisha Kumar',  initials:'NK', color:'#5929d0', type:'Car Loan',       status:'processing', risk:38, conf:85, tags:['processing'] },
+  { id:'APP-031-011', name:'Rohan Nair',   initials:'RN', color:'#CF008B', type:'Business Loan',  status:'review',     risk:67, conf:61, tags:['high-risk','low-conf','attention'] },
+  { id:'APP-031-012', name:'Pooja Menon',  initials:'PM', color:'#16a34a', type:'Personal Loan',  status:'approved',   risk:24, conf:92, tags:['approved'] },
+  { id:'APP-031-013', name:'Kavita Iyer',  initials:'KI', color:'#0891b2', type:'Car Loan',       status:'approved',   risk:22, conf:96, tags:['approved'] },
+  { id:'APP-031-014', name:'Deepak Mehta', initials:'DM', color:'#475569', type:'Education Loan', status:'pending',    risk:43, conf:53, tags:['low-conf','pending'] },
+  { id:'APP-031-015', name:'Arjun Das',    initials:'AD', color:'#7c3aed', type:'Home Loan',      status:'processing', risk:58, conf:74, tags:['processing'] },
+  { id:'APP-031-016', name:'Lakshmi Rao',  initials:'LR', color:'#dc2626', type:'Business Loan',  status:'rejected',   risk:85, conf:90, tags:['high-risk','rejected'] },
+];
+
+const STATUS_MAP = {
+  approved:   { label:'Approved',       cls:'b-approved'   },
+  pending:    { label:'Pending Review', cls:'b-pending'    },
+  processing: { label:'Processing',     cls:'b-processing' },
+  rejected:   { label:'Rejected',       cls:'b-rejected'   },
+  review:     { label:'Under Review',   cls:'b-review'     },
+};
+
+const CARDS = [
+  { id:'all',        label:'Total Applications', icon:'📋', cc:'cc-total',      delta:'↑ 18 vs yesterday',         filter: ()=>true },
+  { id:'pending',    label:'Pending Review',      icon:'⏳', cc:'cc-pending',    delta:'Awaiting decision',         filter: a=>a.status==='pending' },
+  { id:'processing', label:'In Processing',       icon:'⚙', cc:'cc-processing', delta:'Avg 2.4 hrs remaining',    filter: a=>a.status==='processing' },
+  { id:'approved',   label:'Approved',            icon:'✓', cc:'cc-approved',   delta:'↑ 8.2% approval rate',    filter: a=>a.status==='approved' },
+  { id:'rejected',   label:'Rejected',            icon:'✕', cc:'cc-rejected',   delta:'↓ 3 from last week',       filter: a=>a.status==='rejected' },
+  { id:'attention',  label:'Needs Attention',     icon:'⚠', cc:'cc-attention',  delta:'↑ 5 flagged today',        filter: a=>a.tags.includes('attention') },
+  { id:'low-conf',   label:'Low Confidence',      icon:'◐', cc:'cc-lowconf',    delta:'Flagged for manual review', filter: a=>a.conf<65 },
+  { id:'high-risk',  label:'High Risk Cases',     icon:'☰', cc:'cc-highrisk',   delta:'Require immediate review', filter: a=>a.risk>75 },
+];
+
+/* ── CHART CANVAS ────────────────────────── */
+function ChartCanvas({ config, height = 175 }) {
+  const canvasRef = useRef(null);
+  const chartRef  = useRef(null);
+  useEffect(() => {
+    if (!canvasRef.current) return;
+    if (chartRef.current) chartRef.current.destroy();
+    chartRef.current = new Chart(canvasRef.current, config);
+    return () => { if (chartRef.current) chartRef.current.destroy(); };
+  }, []);
+  return (
+    <div style={{height, position:'relative'}}>
+      <canvas ref={canvasRef}/>
+    </div>
+  );
+}
+
+const CC = {
+  primary:'#5929d0', pink:'#CF008B', green:'#16a34a',
+  amber:'#d97706', red:'#dc2626', cyan:'#0891b2',
+  violet:'#7c3aed', n7:'#e2e8f0'
+};
+const noLegend = { legend:{ display:false } };
+const gridColor = { color: CC.n7 };
+
+/* ── RECOMMENDATION SUMMARY ──────────────── */
+const RECS = [
+  { label:'Recommended Approvals',  value:89, note:'High confidence ≥90%',   cls:'rec-approve'     },
+  { label:'Conditional Approvals',  value:24, note:'Subject to conditions',   cls:'rec-conditional' },
+  { label:'Suggested Rejections',   value:18, note:'Risk threshold exceeded', cls:'rec-reject'      },
+  { label:'Manual Review Required', value:12, note:'Low confidence / complex',cls:'rec-manual'      },
+];
+function RecommendationSummary() {
+  return (
+    <div className="rec-section">
+      <div className="sec-hdr">
+        <div>
+          <div className="sec-title">AI Recommendation Summary</div>
+          <div className="sec-sub">Pre-assessed recommendations — all require your approval before action</div>
+        </div>
+      </div>
+      <div className="rec-grid">
+        {RECS.map(r => (
+          <div key={r.label} className={`rec-card ${r.cls}`}>
+            <div className="rec-value">{r.value}</div>
+            <div className="rec-label">{r.label}</div>
+            <div className="rec-chip">{r.note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── CHARTS SECTION ──────────────────────── */
+function ChartsSection() {
+  const trendLabels = ["Apr 10","Apr 11","Apr 12","Apr 13","Apr 14","Apr 15","Apr 16","Apr 17","Apr 18","Apr 19","Apr 20","Apr 21","Apr 22","Apr 23"];
+  return (
+    <div className="charts-section">
+      <div className="sec-hdr">
+        <div>
+          <div className="sec-title">Analytics &amp; Trends</div>
+          <div className="sec-sub">Visual insights to support fast, accurate decision-making</div>
+        </div>
+        <select className="period-select">
+          <option>Last 7 days</option>
+          <option>Last 30 days</option>
+          <option>This month</option>
+        </select>
+      </div>
+
+      <div className="charts-row-1">
+        <div className="chart-card">
+          <div className="chart-title">Application status distribution</div>
+          <div className="chart-sub">Count by current status</div>
+          <ChartCanvas config={{
+            type:'bar',
+            data:{
+              labels:['Pending','Processing','Approved','Rejected','Under Review'],
+              datasets:[{
+                data:[12,34,148,31,22],
+                backgroundColor:[CC.amber,CC.cyan,CC.green,CC.red,CC.primary],
+                borderRadius:6,
+                borderSkipped:false
+              }]
+            },
+            options:{
+              responsive:true, maintainAspectRatio:false,
+              plugins:noLegend,
+              scales:{ x:{ grid:{display:false} }, y:{ grid:gridColor, ticks:{stepSize:50} } }
+            }
+          }} />
+        </div>
+
+        <div className="chart-card">
+          <div className="chart-title">Risk distribution</div>
+          <div className="chart-sub">Portfolio risk breakdown</div>
+          <ChartCanvas config={{
+            type:'doughnut',
+            data:{
+              labels:['Low','Medium','High'],
+              datasets:[{
+                data:[108,94,45],
+                backgroundColor:[CC.green,CC.amber,CC.red],
+                borderWidth:0,
+                hoverOffset:6
+              }]
+            },
+            options:{
+              responsive:true, maintainAspectRatio:false,
+              cutout:'62%',
+              plugins:{ legend:{ position:'bottom', labels:{ padding:10, usePointStyle:true, pointStyleWidth:8 } } }
+            }
+          }} />
+        </div>
+
+        <div className="chart-card">
+          <div className="chart-title">Confidence score distribution</div>
+          <div className="chart-sub">High / Medium / Low confidence</div>
+          <ChartCanvas config={{
+            type:'bar',
+            data:{
+              labels:['High (≥80%)','Medium','Low (<60%)'],
+              datasets:[{
+                data:[143,71,33],
+                backgroundColor:[CC.green,CC.amber,CC.red],
+                borderRadius:6,
+                borderSkipped:false
+              }]
+            },
+            options:{
+              responsive:true, maintainAspectRatio:false,
+              plugins:noLegend,
+              scales:{ x:{ grid:{display:false} }, y:{ grid:gridColor } }
+            }
+          }} />
+        </div>
+      </div>
+
+      <div className="charts-row-2">
+        <div className="chart-card">
+          <div className="chart-title">Approval vs rejection trend</div>
+          <div className="chart-sub">Daily decisions over the past 2 weeks</div>
+          <ChartCanvas height={155} config={{
+            type:'line',
+            data:{
+              labels:trendLabels,
+              datasets:[
+                { label:'Approved', data:[12,15,11,18,14,16,20,13,17,15,19,21,14,16], borderColor:CC.green,  backgroundColor:'rgba(22,163,74,.08)',  fill:true, tension:.4, pointRadius:3, pointBackgroundColor:CC.green },
+                { label:'Rejected', data:[4,3,5,2,6,4,3,5,4,3,6,4,5,3],              borderColor:CC.red,    backgroundColor:'rgba(220,38,38,.06)',   fill:true, tension:.4, pointRadius:3, pointBackgroundColor:CC.red   },
+              ]
+            },
+            options:{
+              responsive:true, maintainAspectRatio:false,
+              plugins:{ legend:{ position:'top', labels:{ padding:14, usePointStyle:true, pointStyleWidth:8 } } },
+              scales:{ x:{ grid:{display:false} }, y:{ grid:gridColor } }
+            }
+          }} />
+        </div>
+
+        <div className="chart-card">
+          <div className="chart-title">Avg processing time by loan type</div>
+          <div className="chart-sub">Hours per application type</div>
+          <ChartCanvas height={155} config={{
+            type:'bar',
+            data:{
+              labels:['Home Loan','Business Loan','Car Loan','Personal Loan','Education Loan'],
+              datasets:[{
+                data:[4.8,6.2,2.1,1.4,3.5],
+                backgroundColor:[CC.primary,CC.pink,CC.cyan,CC.amber,CC.green],
+                borderRadius:6,
+                borderSkipped:false
+              }]
+            },
+            options:{
+              responsive:true, maintainAspectRatio:false,
+              indexAxis:'y',
+              plugins:noLegend,
+              scales:{
+                x:{ grid:gridColor, ticks:{ callback: v=>v+'h' } },
+                y:{ grid:{display:false} }
+              }
+            }
+          }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── SCORE CELL ──────────────────────────── */
+function ScoreBar({ value, type }) {
+  const cls = type === 'risk'
+    ? (value > 75 ? 'risk-h' : value > 50 ? 'risk-m' : 'risk-l')
+    : (value >= 75 ? 'conf-h' : value >= 60 ? 'conf-m' : 'conf-l');
+  return (
+    <div className={`score-wrap ${cls}`}>
+      <div className="score-track">
+        <div className="score-fill" style={{width:`${value}%`}}/>
+      </div>
+      <span className="score-label">{value}</span>
+    </div>
+  );
+}
+
+/* ── MODAL ───────────────────────────────── */
+function Modal({ card, apps, onClose }) {
+  const filtered = apps.filter(card.filter);
+
+  useEffect(() => {
+    const onKey = e => e.key === 'Escape' && onClose();
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  return (
+    <div className="modal-overlay" onClick={e => e.target === e.currentTarget && onClose()}>
+      <div className="modal" role="dialog" aria-modal="true">
+        <div className="modal-header">
+          <div>
+            <div className="modal-title">{card.icon} {card.label}</div>
+            <div className="modal-sub">{filtered.length} application{filtered.length !== 1 ? 's' : ''} · {card.delta}</div>
+          </div>
+          <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
+        </div>
+
+        <div className="modal-body">
+          {filtered.length === 0 ? (
+            <div className="empty">
+              <div className="empty-icon">🎉</div>
+              <div className="empty-t">All clear</div>
+              <div className="empty-s">No applications match this filter right now.</div>
+            </div>
+          ) : (
+            <table className="app-table">
+              <thead>
+                <tr>
+                  <th>Applicant</th>
+                  <th>Loan Type</th>
+                  <th>Status</th>
+                  <th>Risk Score</th>
+                  <th>Confidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map(app => {
+                  const st = STATUS_MAP[app.status] || { label: app.status, cls: 'b-review' };
+                  return (
+                    <tr key={app.id}>
+                      <td>
+                        <div className="applicant-wrap">
+                          <div className="app-av" style={{background:app.color}}>{app.initials}</div>
+                          <div>
+                            <div className="app-name">{app.name}</div>
+                            <div className="app-id">{app.id}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td style={{color:'var(--ink-3)',fontSize:'12.5px'}}>{app.type}</td>
+                      <td><span className={`badge ${st.cls}`}>{st.label}</span></td>
+                      <td><ScoreBar value={app.risk} type="risk"/></td>
+                      <td><ScoreBar value={app.conf} type="conf"/></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
+        </div>
+
+        <div className="modal-footer">
+          <span className="modal-count">Showing {filtered.length} of {apps.length} total applications</span>
+          <button className="modal-export">↓ Export CSV</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── METRIC CARD ─────────────────────────── */
+function MetricCard({ card, count, isActive, onClick }) {
+  return (
+    <button
+      className={`metric-card ${card.cc} ${isActive ? 'active' : ''}`}
+      onClick={onClick}
+      title={`View ${card.label}`}
+    >
+      <div className="metric-icon">{card.icon}</div>
+      <div className="metric-label">{card.label}</div>
+      <div className="metric-value">{count}</div>
+      <div className="metric-delta">{card.delta}</div>
+      {isActive && <div className="metric-active-chip">Viewing</div>}
+    </button>
+  );
+}
+
+/* ── APP ─────────────────────────────────── */
+function App() {
+  const [activeCard, setActiveCard] = useState(null);
+
+  const handleCardClick = useCallback((card) => {
+    setActiveCard(prev => prev?.id === card.id ? null : card);
+  }, []);
+
+  const handleClose = useCallback(() => setActiveCard(null), []);
+
+  const counts = CARDS.map(c => APPS.filter(c.filter).length);
+
+  return (
+    <>
+      {/* TOPBAR */}
+      <header className="topbar">
+        <div className="topbar-logo">
+          <div className="logo-mark">C</div>
+          <div>
+            <div className="logo-text">CentificAI</div>
+            <div className="logo-sub">aegis.ai · Loan Officer</div>
+          </div>
+        </div>
+        <div className="topbar-divider"/>
+        <span className="topbar-title">Decision Dashboard</span>
+        <div className="topbar-right">
+          <span className="topbar-date">Thu, 23 Apr 2026</span>
+          <div className="topbar-bell">🔔<span className="bell-dot"/></div>
+          <div className="topbar-avatar">RK</div>
+        </div>
+      </header>
+
+      {/* BANNER */}
+      <div className="banner">
+        <div className="banner-pulse"/>
+        <span className="banner-text">
+          <b>12 applications</b> awaiting your review — 5 high-risk · 3 low confidence · 4 missing documents
+        </span>
+        <button className="banner-btn">Review Priority</button>
+      </div>
+
+      {/* PAGE */}
+      <main className="page">
+        <div className="page-hdr">
+          <div className="page-hdr-row">
+            <div>
+              <div className="page-title">Application Overview</div>
+              <div className="page-sub">Click any card to view the applications in that group</div>
+            </div>
+            <button className="refresh-btn">↻ Refresh</button>
+          </div>
+        </div>
+
+        {/* METRIC CARDS */}
+        <div className="metric-grid">
+          {CARDS.map((card, i) => (
+            <MetricCard
+              key={card.id}
+              card={card}
+              count={counts[i]}
+              isActive={activeCard?.id === card.id}
+              onClick={() => handleCardClick(card)}
+            />
+          ))}
+        </div>
+
+        {/* AI RECOMMENDATION SUMMARY */}
+        <RecommendationSummary/>
+
+        {/* CHARTS */}
+        <ChartsSection/>
+      </main>
+
+      {/* MODAL */}
+      {activeCard && (
+        <Modal card={activeCard} apps={APPS} onClose={handleClose}/>
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
