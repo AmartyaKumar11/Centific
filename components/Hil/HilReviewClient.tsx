@@ -23,14 +23,60 @@ function scoreBand(score: number) {
 }
 
 export function HilReviewClient() {
-  const [selectedApplication, setSelectedApplication] = useState<Application | null>(null);
+  const [queueApplications, setQueueApplications] = useState<Application[]>(applications);
+  const [selectedApplicationId, setSelectedApplicationId] = useState<string | null>(null);
 
-  const awaiting = applications.filter((a) => a.hil_required_flag && a.decision === "HIL Pending");
-  const review = applications.filter(
+  const selectedApplication =
+    queueApplications.find((application) => application.id === selectedApplicationId) ?? null;
+
+  const awaiting = queueApplications.filter((a) => a.hil_required_flag && a.decision === "HIL Pending");
+  const review = queueApplications.filter(
     (a) => a.hil_required_flag && a.decision === "Conditional Approval"
   );
-  const approved = applications.filter((a) => a.decision === "STP Approved");
-  const rejected = applications.filter((a) => a.decision === "Rejected");
+  const approved = queueApplications.filter((a) => a.decision === "STP Approved");
+  const rejected = queueApplications.filter((a) => a.decision === "Rejected");
+
+  const openApplicationModal = (application: Application) => {
+    setSelectedApplicationId(application.id);
+  };
+
+  const handleModalAction = (
+    action: "approve" | "reject" | "modify_approve",
+    application: Application
+  ) => {
+    setQueueApplications((prev) =>
+      prev.map((item) => {
+        if (item.id !== application.id) return item;
+
+        if (action === "approve") {
+          return {
+            ...item,
+            decision: "STP Approved",
+            hil_required_flag: false,
+            approved_amount: item.approved_amount ?? item.loan_amount,
+          };
+        }
+
+        if (action === "modify_approve") {
+          const adjustedAmount = Math.round(item.loan_amount * 0.85);
+          return {
+            ...item,
+            decision: "Conditional Approval",
+            hil_required_flag: true,
+            approved_amount: item.approved_amount ?? adjustedAmount,
+          };
+        }
+
+        return {
+          ...item,
+          decision: "Rejected",
+          hil_required_flag: true,
+          approved_amount: null,
+        };
+      })
+    );
+    setSelectedApplicationId(null);
+  };
 
   const lanes = [
     { key: "awaiting", title: "Awaiting Review", items: awaiting },
@@ -63,11 +109,11 @@ export function HilReviewClient() {
                     key={app.id}
                     role="button"
                     tabIndex={0}
-                    onClick={() => setSelectedApplication(app)}
+                    onClick={() => openApplicationModal(app)}
                     onKeyDown={(event) => {
                       if (event.key === "Enter" || event.key === " ") {
                         event.preventDefault();
-                        setSelectedApplication(app);
+                        openApplicationModal(app);
                       }
                     }}
                     className="cursor-pointer rounded-lg border border-white bg-white p-3 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
@@ -117,7 +163,8 @@ export function HilReviewClient() {
 
       <ApplicationDetailModal
         application={selectedApplication}
-        onClose={() => setSelectedApplication(null)}
+        onClose={() => setSelectedApplicationId(null)}
+        onAction={handleModalAction}
       />
     </main>
   );

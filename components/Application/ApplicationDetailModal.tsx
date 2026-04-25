@@ -8,6 +8,7 @@ import { EventTimeline, TimelineEventItem } from "@/components/Application/Event
 type ApplicationDetailModalProps = {
   application: Application | null;
   onClose: () => void;
+  onAction?: (action: "approve" | "reject" | "modify_approve", application: Application) => void;
 };
 
 function toEventStatus(
@@ -18,7 +19,7 @@ function toEventStatus(
   return "pending";
 }
 
-export function ApplicationDetailModal({ application, onClose }: ApplicationDetailModalProps) {
+export function ApplicationDetailModal({ application, onClose, onAction }: ApplicationDetailModalProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -97,18 +98,30 @@ export function ApplicationDetailModal({ application, onClose }: ApplicationDeta
           </button>
           <button
             type="button"
+            onClick={() => {
+              onAction?.("modify_approve", application);
+              closeWithAnimation();
+            }}
             className="rounded-md bg-amber-500 px-3 py-1.5 text-xs font-semibold text-white hover:bg-amber-600"
           >
             [~] Modify & Approve
           </button>
           <button
             type="button"
+            onClick={() => {
+              onAction?.("reject", application);
+              closeWithAnimation();
+            }}
             className="rounded-md bg-rose-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-rose-700"
           >
             [x] Reject
           </button>
           <button
             type="button"
+            onClick={() => {
+              onAction?.("approve", application);
+              closeWithAnimation();
+            }}
             className="rounded-md bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-emerald-700"
           >
             [+] Approve
