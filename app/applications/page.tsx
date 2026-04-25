@@ -1,9 +1,11 @@
 import { ApplicationsTable } from "@/components/Dashboard/ApplicationsTable";
 import { Charts } from "@/components/Dashboard/Charts";
 import { MacWindowCard } from "@/components/ui/MacWindowCard";
-import { applications } from "@/lib/mockData";
+import { api } from "@/lib/api";
 
-export default function ApplicationsPage() {
+export default async function ApplicationsPage() {
+  const applications = await api.getApplications();
+
   return (
     <main className="mx-auto flex w-full max-w-[1500px] flex-col gap-4 px-4 py-4 pb-24">
       <MacWindowCard title="All Applications" bodyClassName="p-4">

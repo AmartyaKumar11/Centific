@@ -11,6 +11,7 @@ import {
 } from "chart.js";
 import { Bar, Doughnut } from "react-chartjs-2";
 import { Application } from "@/types/application";
+import { ChartData } from "@/lib/api";
 import { CompactKPICard } from "@/components/Dashboard/CompactKPICard";
 import {
   COMPACT_CHART_HEIGHT_CLASS,
@@ -49,7 +50,13 @@ const chartOptions = {
   },
 };
 
-export function CompactDashboard({ applications }: { applications: Application[] }) {
+export function CompactDashboard({
+  applications,
+  chartData,
+}: {
+  applications: Application[];
+  chartData?: ChartData;
+}) {
   const total = applications.length;
   const approved = applications.filter(
     (item) => item.decision === "STP Approved" || item.decision === "Conditional Approval"
@@ -62,15 +69,19 @@ export function CompactDashboard({ applications }: { applications: Application[]
   );
   const falseRejectRate = 18;
 
-  const decisionCounts = countBy(applications.map((item) => item.decision));
-  const riskCounts = countBy(applications.map((item) => item.risk));
-  const employerCounts = countBy(applications.map((item) => item.employer_type));
-  const rejectionReasons = {
-    HIGH_DTI: applications.filter((item) => item.dti_percent > 40).length,
-    LOW_CIBIL: applications.filter((item) => Number.parseInt(item.cibil_score, 10) < 620).length,
-    HIGH_RISK: applications.filter((item) => item.risk === "High" || item.risk === "Very High").length,
-    PROXY_SCORE: applications.filter((item) => item.cibil_score.includes("Proxy")).length,
-  };
+  const decisionCounts =
+    chartData?.decision_distribution ?? countBy(applications.map((item) => item.decision));
+  const riskCounts = chartData?.risk_distribution ?? countBy(applications.map((item) => item.risk));
+  const employerCounts =
+    chartData?.employer_split ?? countBy(applications.map((item) => item.employer_type));
+  const rejectionReasons =
+    chartData?.rejection_reasons ??
+    {
+      HIGH_DTI: applications.filter((item) => item.dti_percent > 40).length,
+      LOW_CIBIL: applications.filter((item) => Number.parseInt(item.cibil_score, 10) < 620).length,
+      HIGH_RISK: applications.filter((item) => item.risk === "High" || item.risk === "Very High").length,
+      PROXY_SCORE: applications.filter((item) => item.cibil_score.includes("Proxy")).length,
+    };
 
   return (
     <section className="grid grid-cols-1 gap-2 lg:grid-cols-12" style={{ gap: DASHBOARD_GAP }}>
@@ -161,17 +172,17 @@ export function CompactDashboard({ applications }: { applications: Application[]
           <div className="mt-1 h-[180px]">
             <Bar
               data={{
-                labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Today"],
+                labels: chartData?.daily_batch.labels ?? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Today"],
                 datasets: [
                   {
                     label: "Processed",
-                    data: [42, 76, 50, 61, 47, 20, 39],
+                    data: chartData?.daily_batch.processed ?? [42, 76, 50, 61, 47, 20, 39],
                     backgroundColor: "rgba(59,130,246,0.85)",
                     borderRadius: 4,
                   },
                   {
                     label: "Rejected",
-                    data: [9, 14, 7, 11, 8, 3, 12],
+                    data: chartData?.daily_batch.rejected ?? [9, 14, 7, 11, 8, 3, 12],
                     backgroundColor: "rgba(239,68,68,0.78)",
                     borderRadius: 4,
                   },

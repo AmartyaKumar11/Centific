@@ -1,22 +1,47 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { DesktopBackground } from "@/app/components/DesktopBackground";
-import { applications } from "@/lib/mockData";
+import { api } from "@/lib/api";
 
 type DesktopLandingPageProps = {
   backgroundImageUrl?: string;
 };
 
 export function DesktopLandingPage({ backgroundImageUrl }: DesktopLandingPageProps) {
-  const requiresReview = applications.filter((app) => app.hil_required_flag).length;
-  const reviewedToday = applications.filter(
-    (app) => app.decision === "STP Approved" || app.decision === "Rejected"
-  ).length;
-  const accepted = applications.filter(
-    (app) => app.decision === "STP Approved" || app.decision === "Conditional Approval"
-  ).length;
-  const rejected = applications.filter((app) => app.decision === "Rejected").length;
-  const total = applications.length;
+  const [snapshot, setSnapshot] = useState({
+    requiresReview: 0,
+    reviewedToday: 0,
+    accepted: 0,
+    rejected: 0,
+    total: 0,
+  });
+
+  useEffect(() => {
+    let mounted = true;
+    api
+      .getApplications()
+      .then((applications) => {
+        if (!mounted) return;
+        setSnapshot({
+          requiresReview: applications.filter((app) => app.hil_required_flag).length,
+          reviewedToday: applications.filter(
+            (app) => app.decision === "STP Approved" || app.decision === "Rejected"
+          ).length,
+          accepted: applications.filter(
+            (app) => app.decision === "STP Approved" || app.decision === "Conditional Approval"
+          ).length,
+          rejected: applications.filter((app) => app.decision === "Rejected").length,
+          total: applications.length,
+        });
+      })
+      .catch(() => {
+        if (!mounted) return;
+      });
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <main className="relative h-screen w-full overflow-hidden">
@@ -28,10 +53,10 @@ export function DesktopLandingPage({ backgroundImageUrl }: DesktopLandingPagePro
             Today&apos;s Queue Snapshot
           </p>
           <div className="mt-2.5 grid grid-cols-2 gap-2">
-            <MetricTile label="Need Review" value={requiresReview} tone="amber" />
-            <MetricTile label="Reviewed" value={reviewedToday} tone="blue" />
-            <MetricTile label="Accepted" value={accepted} tone="green" />
-            <MetricTile label="Rejected" value={rejected} tone="red" />
+            <MetricTile label="Need Review" value={snapshot.requiresReview} tone="amber" />
+            <MetricTile label="Reviewed" value={snapshot.reviewedToday} tone="blue" />
+            <MetricTile label="Accepted" value={snapshot.accepted} tone="green" />
+            <MetricTile label="Rejected" value={snapshot.rejected} tone="red" />
           </div>
         </aside>
 
@@ -40,9 +65,9 @@ export function DesktopLandingPage({ backgroundImageUrl }: DesktopLandingPagePro
             Decision Mix
           </p>
           <div className="mt-2.5 space-y-2">
-            <MixRow label="Accepted" value={accepted} total={total} color="bg-emerald-500" />
-            <MixRow label="Rejected" value={rejected} total={total} color="bg-rose-500" />
-            <MixRow label="Under Review" value={requiresReview} total={total} color="bg-amber-500" />
+            <MixRow label="Accepted" value={snapshot.accepted} total={snapshot.total} color="bg-emerald-500" />
+            <MixRow label="Rejected" value={snapshot.rejected} total={snapshot.total} color="bg-rose-500" />
+            <MixRow label="Under Review" value={snapshot.requiresReview} total={snapshot.total} color="bg-amber-500" />
           </div>
         </aside>
       </div>

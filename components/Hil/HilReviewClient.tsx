@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ApplicationDetailModal } from "@/components/Application/ApplicationDetailModal";
 import { Application } from "@/types/application";
-import { applications } from "@/lib/mockData";
+import { api, HilQueue } from "@/lib/api";
 import { MacWindowCard } from "@/components/ui/MacWindowCard";
 
 const laneStyles = {
@@ -21,59 +21,111 @@ function scoreBand(score: number) {
 }
 
 export function HilReviewClient() {
-  const [queueApplications, setQueueApplications] = useState<Application[]>(applications);
+  const [queueData, setQueueData] = useState<HilQueue>({
+    awaiting: [],
+    review: [],
+    approved: [],
+    rejected: [],
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [isActing, setIsActing] = useState(false);
   const [selectedApplicationId, setSelectedApplicationId] = useState<string | null>(null);
 
+  useEffect(() => {
+    let isMounted = true;
+    api
+      .getHilQueue()
+      .then((data) => {
+        if (!isMounted) return;
+        setQueueData(data);
+        setError(null);
+      })
+      .catch((err: unknown) => {
+        if (!isMounted) return;
+        setError(err instanceof Error ? err.message : "Failed to load HIL queue");
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const queueApplications = useMemo(
+    () => [...queueData.awaiting, ...queueData.review, ...queueData.approved, ...queueData.rejected],
+    [queueData]
+  );
   const selectedApplication =
     queueApplications.find((application) => application.id === selectedApplicationId) ?? null;
 
-  const awaiting = queueApplications.filter((a) => a.hil_required_flag && a.decision === "HIL Pending");
-  const review = queueApplications.filter(
-    (a) => a.hil_required_flag && a.decision === "Conditional Approval"
-  );
-  const approved = queueApplications.filter((a) => a.decision === "STP Approved");
-  const rejected = queueApplications.filter((a) => a.decision === "Rejected");
+  const awaiting = queueData.awaiting;
+  const review = queueData.review;
+  const approved = queueData.approved;
+  const rejected = queueData.rejected;
 
   const openApplicationModal = (application: Application) => {
     setSelectedApplicationId(application.id);
   };
 
-  const handleModalAction = (
+  const handleModalAction = async (
     action: "approve" | "reject" | "modify_approve",
     application: Application
   ) => {
-    setQueueApplications((prev) =>
-      prev.map((item) => {
-        if (item.id !== application.id) return item;
+    if (isActing) return;
+    setIsActing(true);
+    setError(null);
 
-        if (action === "approve") {
-          return {
-            ...item,
-            decision: "STP Approved",
-            hil_required_flag: false,
-            approved_amount: item.approved_amount ?? item.loan_amount,
-          };
-        }
+    const optimistic = { ...queueData };
+    const removeFromAll = (id: string) => {
+      optimistic.awaiting = optimistic.awaiting.filter((item) => item.id !== id);
+      optimistic.review = optimistic.review.filter((item) => item.id !== id);
+      optimistic.approved = optimistic.approved.filter((item) => item.id !== id);
+      optimistic.rejected = optimistic.rejected.filter((item) => item.id !== id);
+    };
 
-        if (action === "modify_approve") {
-          const adjustedAmount = Math.round(item.loan_amount * 0.85);
-          return {
-            ...item,
-            decision: "Conditional Approval",
-            hil_required_flag: true,
-            approved_amount: item.approved_amount ?? adjustedAmount,
-          };
-        }
-
-        return {
-          ...item,
-          decision: "Rejected",
+    removeFromAll(application.id);
+    if (action === "approve") {
+      optimistic.approved = [
+        {
+          ...application,
+          decision: "STP Approved",
+          hil_required_flag: false,
+          approved_amount: application.approved_amount ?? application.loan_amount,
+        },
+        ...optimistic.approved,
+      ];
+    } else if (action === "modify_approve") {
+      optimistic.review = [
+        {
+          ...application,
+          decision: "Conditional Approval",
           hil_required_flag: true,
-          approved_amount: null,
-        };
-      })
-    );
-    setSelectedApplicationId(null);
+          approved_amount: application.approved_amount ?? Math.round(application.loan_amount * 0.85),
+        },
+        ...optimistic.review,
+      ];
+    } else {
+      optimistic.rejected = [
+        { ...application, decision: "Rejected", hil_required_flag: true, approved_amount: null },
+        ...optimistic.rejected,
+      ];
+    }
+    setQueueData(optimistic);
+
+    try {
+      await api.hilAction(application.id, action);
+      const updated = await api.getHilQueue();
+      setQueueData(updated);
+      setSelectedApplicationId(null);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to submit HIL action");
+      const refreshed = await api.getHilQueue();
+      setQueueData(refreshed);
+    } finally {
+      setIsActing(false);
+    }
   };
 
   const lanes = [
@@ -87,6 +139,8 @@ export function HilReviewClient() {
     <main className="mx-auto flex w-full max-w-[1500px] flex-col gap-4 px-4 py-4 pb-24">
       <MacWindowCard title="HIL Review - Credit Officer Gate" bodyClassName="p-4">
         <p className="text-sm subtle-text">Mandatory non-bypassable review queue for flagged applications</p>
+        {loading ? <p className="mt-3 text-sm text-slate-500">Loading queue...</p> : null}
+        {error ? <p className="mt-3 text-sm text-rose-600">{error}</p> : null}
 
         <div className="mt-4 grid gap-3 lg:grid-cols-4">
           {lanes.map((lane) => (
