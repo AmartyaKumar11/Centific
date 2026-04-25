@@ -120,3 +120,18 @@ body {
 .pulse-live {
   animation: softPulse 1.8s ease-in-out infinite;
 }
+
+@keyframes tooltipFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.tooltip-fade {
+  animation: tooltipFade 200ms ease-out;
+}

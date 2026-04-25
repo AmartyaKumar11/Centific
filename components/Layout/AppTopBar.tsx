@@ -23,7 +23,7 @@ export function AppTopBar() {
         <p className="text-[11px] uppercase tracking-[0.08em] text-slate-500">Loan Underwriting AI Agent</p>
       </div>
       <nav className="flex flex-wrap gap-2 px-4 py-2">
-        <Link href="/" className="rounded-md bg-blue-50 px-2 py-1 text-xs text-blue-700">
+        <Link href="/overview" className="rounded-md bg-blue-50 px-2 py-1 text-xs text-blue-700">
           Overview
         </Link>
         <Link
@@ -33,7 +33,7 @@ export function AppTopBar() {
           HIL Review
         </Link>
         <Link
-          href="/applications"
+          href="/apps"
           className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-700"
         >
           Applications
