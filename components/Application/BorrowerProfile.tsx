@@ -1,20 +1,21 @@
 "use client";
 
 import { Application } from "@/types/application";
-
-type BorrowerMetric = {
-  label: string;
-  value: string;
-};
-
-function fmtInr(value?: number) {
-  if (typeof value !== "number") return "N/A";
-  return `INR ${value.toLocaleString("en-IN")}`;
-}
+import { MetricsGrid } from "@/components/Application/MetricsGrid";
+import type { MetricItemProps } from "@/components/Application/MetricItem";
+import { DecisionSummary } from "@/components/Application/DecisionSummary";
+import type { PolicyBreach } from "@/components/Application/DecisionSummary";
 
 function parseCibil(value: string) {
   const parsed = Number.parseInt(value.replace(/[^\d]/g, ""), 10);
   return Number.isFinite(parsed) ? parsed : null;
+}
+
+function cibilContextLabel(score: string): string {
+  const lower = score.toLowerCase();
+  if (lower.includes("proxy")) return "Bureau Pull";
+  if (parseCibil(score) !== null) return "Direct";
+  return "Cached";
 }
 
 function deriveTags(application: Application) {
@@ -34,45 +35,59 @@ function riskBarClass(risk: Application["risk"]) {
   return "bg-slate-700";
 }
 
-function recommendationClass(decision: Application["decision"]) {
-  if (decision === "Rejected") return "text-rose-700";
-  if (decision === "STP Approved") return "text-emerald-700";
-  if (decision === "Conditional Approval") return "text-amber-700";
-  return "text-blue-700";
-}
-
 export function BorrowerProfile({ application }: { application: Application }) {
   const tags = deriveTags(application);
-  const metrics: BorrowerMetric[] = [
-    { label: "CIBIL Score", value: application.cibil_score },
-    { label: "DTI Ratio", value: `${application.dti_percent}%` },
+  const cibilNumeric = parseCibil(application.cibil_score);
+  const metricItems: MetricItemProps[] = [
+    {
+      label: "CIBIL Score",
+      value: cibilNumeric ?? application.cibil_score,
+      valueKind: "plain",
+      context: cibilContextLabel(application.cibil_score),
+    },
+    {
+      label: "DTI Ratio",
+      value: application.dti_percent,
+      valueKind: "percent",
+      badge:
+        application.dti_percent > 40
+          ? { text: "High Risk", tone: "negative" }
+          : { text: "Within policy", tone: "neutral" },
+    },
     {
       label: "Bounce Frequency",
       value:
         typeof application.bounce_frequency_per_month === "number"
           ? `${application.bounce_frequency_per_month}/mo`
           : "N/A",
+      valueKind: "plain",
     },
-    { label: "Spending Ratio", value: application.spending_ratio?.toString() ?? "N/A" },
-    { label: "Post-EMI Surplus", value: fmtInr(application.post_emi_surplus) },
+    {
+      label: "Spending Ratio",
+      value: application.spending_ratio ?? "N/A",
+      valueKind: "plain",
+    },
+    {
+      label: "Post-EMI Surplus",
+      value:
+        typeof application.post_emi_surplus === "number" ? application.post_emi_surplus : "N/A",
+      valueKind: typeof application.post_emi_surplus === "number" ? "currency" : "plain",
+    },
     {
       label: "Employment Tenure",
-      value:
-        typeof application.employment_tenure_years === "number"
-          ? `${application.employment_tenure_years} yrs`
-          : "N/A",
+      value: application.employment_tenure_years ?? "N/A",
+      valueKind: typeof application.employment_tenure_years === "number" ? "duration" : "plain",
     },
   ];
 
   const policyBreaches = [
-    application.dti_percent > 40 ? "DTI threshold exceeded (>40%)." : null,
+    application.dti_percent > 40
+      ? { text: "DTI > 40% hard policy breach", severity: "critical" as const }
+      : null,
     parseCibil(application.cibil_score) !== null && parseCibil(application.cibil_score)! < 620
-      ? "Credit score below policy minimum (<620)."
+      ? { text: "CIBIL < 620 soft policy breach", severity: "warning" as const }
       : null,
-    application.cibil_score.toLowerCase().includes("proxy")
-      ? "Proxy score used, requires manual confirmation."
-      : null,
-  ].filter(Boolean) as string[];
+  ].filter((breach): breach is PolicyBreach => breach !== null);
 
   return (
     <section className="h-full space-y-3 overflow-y-auto pr-1">
@@ -101,39 +116,17 @@ export function BorrowerProfile({ application }: { application: Application }) {
 
       <div className="rounded-md border border-slate-200 bg-white p-3">
         <h4 className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-600">Key Metrics</h4>
-        <div className="mt-2 grid grid-cols-2 gap-2">
-          {metrics.map((metric) => (
-            <div key={metric.label} className="rounded border border-slate-200 bg-slate-50 p-2">
-              <p className="text-[10px] text-slate-500">{metric.label}</p>
-              <p className="text-sm font-semibold text-slate-900">{metric.value}</p>
-            </div>
-          ))}
+        <div className="mt-2">
+          <MetricsGrid items={metricItems} />
         </div>
       </div>
 
-      <div className="rounded-md border border-slate-200 bg-white p-3">
-        <h4 className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-600">Decision Summary</h4>
-        <p className={`mt-2 text-sm font-bold ${recommendationClass(application.decision)}`}>
-          Recommendation: {application.decision.toUpperCase()}
-        </p>
-
-        <ul className="mt-2 list-disc space-y-1 pl-4 text-xs text-slate-700">
-          {application.hil_suggestions?.slice(0, 3).map((reason) => <li key={reason}>{reason}</li>)}
-        </ul>
-
-        {policyBreaches.length > 0 ? (
-          <div className="mt-3 rounded border border-rose-200 bg-rose-50 p-2">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-rose-700">Policy Breaches</p>
-            <ul className="mt-1 list-disc space-y-0.5 pl-4 text-xs text-rose-700">
-              {policyBreaches.map((breach) => <li key={breach}>{breach}</li>)}
-            </ul>
-          </div>
-        ) : null}
-
-        <p className="mt-3 text-xs text-slate-600">
-          Confidence Score: <span className="font-semibold text-slate-900">{application.confidence_score}%</span>
-        </p>
-      </div>
+      <DecisionSummary
+        recommendation={application.decision}
+        reasons={application.hil_suggestions ?? []}
+        policyBreaches={policyBreaches}
+        confidence={application.confidence_score}
+      />
     </section>
   );
 }
