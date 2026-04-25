@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { ApplicationDetailModal } from "@/components/Application/ApplicationDetailModal";
-import { AppTopBar } from "@/components/Layout/AppTopBar";
-import { BottomDock } from "@/components/Layout/BottomDock";
 import { Application } from "@/types/application";
 import { applications } from "@/lib/mockData";
 import { MacWindowCard } from "@/components/ui/MacWindowCard";
@@ -86,9 +84,7 @@ export function HilReviewClient() {
   ] as const;
 
   return (
-    <main className="mx-auto flex w-full max-w-[1500px] flex-col gap-4 px-4 py-4">
-      <AppTopBar />
-
+    <main className="mx-auto flex w-full max-w-[1500px] flex-col gap-4 px-4 py-4 pb-24">
       <MacWindowCard title="HIL Review - Credit Officer Gate" bodyClassName="p-4">
         <p className="text-sm subtle-text">Mandatory non-bypassable review queue for flagged applications</p>
 
@@ -158,8 +154,6 @@ export function HilReviewClient() {
           ))}
         </div>
       </MacWindowCard>
-
-      <BottomDock />
 
       <ApplicationDetailModal
         application={selectedApplication}

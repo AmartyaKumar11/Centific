@@ -109,7 +109,7 @@ export function ApplicationReviewModal({ application, onClose }: ApplicationRevi
             </span>
             <button
               onClick={onClose}
-              className="rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:bg-slate-50"
+              className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-sm font-medium text-rose-700 transition hover:bg-rose-100"
             >
               Close
             </button>

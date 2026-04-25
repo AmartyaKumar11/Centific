@@ -1,38 +1,12 @@
 "use client";
 
-import { BarChart3, ClipboardCheck, FileText } from "lucide-react";
 import { DesktopBackground } from "@/app/components/DesktopBackground";
-import { AppIcon } from "@/app/components/AppIcon";
 
 type DesktopLandingPageProps = {
   backgroundImageUrl?: string;
 };
 
 export function DesktopLandingPage({ backgroundImageUrl }: DesktopLandingPageProps) {
-  const apps = [
-    {
-      label: "Overview",
-      route: "/overview",
-      color: "from-blue-500 to-blue-600",
-      glowClass: "hover:shadow-blue-500/50",
-      icon: BarChart3,
-    },
-    {
-      label: "HIL Review",
-      route: "/hil-review",
-      color: "from-orange-500 to-orange-600",
-      glowClass: "hover:shadow-orange-500/50",
-      icon: ClipboardCheck,
-    },
-    {
-      label: "Applications",
-      route: "/apps",
-      color: "from-green-500 to-green-600",
-      glowClass: "hover:shadow-green-500/50",
-      icon: FileText,
-    },
-  ] as const;
-
   return (
     <main className="relative h-screen w-full overflow-hidden">
       <DesktopBackground backgroundImageUrl={backgroundImageUrl} />
@@ -59,22 +33,6 @@ export function DesktopLandingPage({ backgroundImageUrl }: DesktopLandingPagePro
         </div>
       </section>
 
-      <div
-        className="desktop-dock-enter absolute bottom-[80px] left-1/2 z-40 flex -translate-x-1/2 items-center gap-6 rounded-2xl border border-slate-200 bg-white/90 px-5 py-3 shadow-lg backdrop-blur sm:gap-6"
-        style={{ willChange: "transform, opacity" }}
-      >
-        {apps.map((app, index) => (
-          <AppIcon
-            key={app.route}
-            label={app.label}
-            route={app.route}
-            color={app.color}
-            glowClass={app.glowClass}
-            icon={app.icon}
-            delayMs={400 + index * 100}
-          />
-        ))}
-      </div>
     </main>
   );
 }

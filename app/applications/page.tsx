@@ -1,15 +1,11 @@
 import { ApplicationsTable } from "@/components/Dashboard/ApplicationsTable";
 import { Charts } from "@/components/Dashboard/Charts";
-import { AppTopBar } from "@/components/Layout/AppTopBar";
-import { BottomDock } from "@/components/Layout/BottomDock";
 import { MacWindowCard } from "@/components/ui/MacWindowCard";
 import { applications } from "@/lib/mockData";
 
 export default function ApplicationsPage() {
   return (
-    <main className="mx-auto flex w-full max-w-[1500px] flex-col gap-4 px-4 py-4">
-      <AppTopBar />
-
+    <main className="mx-auto flex w-full max-w-[1500px] flex-col gap-4 px-4 py-4 pb-24">
       <MacWindowCard title="All Applications" bodyClassName="p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm subtle-text">Full application register and underwriting decisions</p>
@@ -33,7 +29,6 @@ export default function ApplicationsPage() {
 
       <Charts applications={applications} />
       <ApplicationsTable applications={applications} />
-      <BottomDock />
     </main>
   );
 }

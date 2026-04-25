@@ -73,7 +73,7 @@ export function ApplicationDetailModal({ application, onClose, onAction }: Appli
           <button
             type="button"
             onClick={closeWithAnimation}
-            className="rounded-md border border-slate-200 px-2.5 py-1 text-xs text-slate-600 hover:bg-slate-50"
+            className="rounded-md border border-rose-200 bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700 transition hover:bg-rose-100"
           >
             Close
           </button>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { TaskBar } from "@/app/components/TaskBar";
 
 export const metadata: Metadata = {
   title: "Loan Prequalification Dashboard",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <div className="min-h-screen pb-24">{children}</div>
+        <TaskBar />
+      </body>
     </html>
   );
 }
