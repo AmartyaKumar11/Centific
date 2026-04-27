@@ -5,9 +5,11 @@ from dotenv import load_dotenv
 
 
 load_dotenv(Path(__file__).resolve().parent / ".env")
-load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
-DB_URL = os.getenv("DB_CON_STR", "")
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
-SCHEMA = "defaultdb"
-DATABASE_URL = f"{DB_URL}/{SCHEMA}"
+DATABASE_URL = os.getenv("DB_CON_STR")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is not set")
+
+SCHEMA = "maria"
+DATABASE_URL = f"{DATABASE_URL}/{SCHEMA}"
+

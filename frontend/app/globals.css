@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --surface-soft: #f7f9fc;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
+}
+
+body {
+  background: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(219, 234, 254, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(220, 252, 231, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 60% 30%, rgba(254, 243, 199, 0.35) 0%, transparent 55%), var(--bg);
+  color: var(--text);
+}
+
+.card-shell {
+  @apply rounded-2xl border bg-white shadow-sm;
+  border-color: var(--border);
+}
+
+.subtle-text {
+  color: var(--text-muted);
+}
+
+.theme-card {
+  @apply overflow-hidden rounded-2xl border bg-white shadow-sm transition;
+  border-color: #dbe4f0;
+}
+
+.theme-card:hover {
+  @apply shadow-md;
+}
+
+.theme-card-head {
+  @apply flex items-center justify-between border-b px-3 py-2;
+  border-color: #e2e8f0;
+  background: linear-gradient(180deg, #eef6ff 0%, #e8edf5 100%);
+}
+
+.accent-blue {
+  @apply border-l-4 border-l-blue-500;
+}
+
+.accent-green {
+  @apply border-l-4 border-l-emerald-500;
+}
+
+.accent-amber {
+  @apply border-l-4 border-l-amber-500;
+}
+
+.accent-red {
+  @apply border-l-4 border-l-rose-500;
+}
+
+.accent-purple {
+  @apply border-l-4 border-l-violet-500;
+}
+
+.chip {
+  @apply inline-flex items-center rounded-md border px-2 py-0.5 text-[11px] font-semibold;
+}
+
+.chip-risk-low {
+  @apply border-emerald-300 bg-emerald-100 text-emerald-800;
+}
+
+.chip-risk-medium {
+  @apply border-amber-300 bg-amber-100 text-amber-800;
+}
+
+.chip-risk-high {
+  @apply border-rose-300 bg-rose-100 text-rose-800;
+}
+
+.chip-risk-vhigh {
+  @apply border-slate-300 bg-slate-200 text-slate-800;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 420ms ease-out both;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fadeUp 420ms ease-out 80ms both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fadeUp 420ms ease-out 150ms both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fadeUp 420ms ease-out 220ms both;
+}
+
+.pulse-live {
+  animation: softPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes tooltipFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.tooltip-fade {
+  animation: tooltipFade 200ms ease-out;
+}
+
+@keyframes desktopTitleEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95) rotate(2.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes desktopDockEnter {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes iconEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  50% {
+    filter: hue-rotate(8deg) brightness(1.02);
+  }
+  100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+}
+
+@keyframes floatBlob1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(18px, -12px, 0);
+  }
+}
+
+@keyframes floatBlob2 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-14px, 14px, 0);
+  }
+}
+
+@keyframes floatBlob3 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(10px, -10px, 0);
+  }
+}
+
+.desktop-title-enter {
+  animation: desktopTitleEnter 600ms cubic-bezier(0.23, 1, 0.32, 1) 0ms both;
+}
+
+.desktop-dock-enter {
+  animation: desktopDockEnter 500ms cubic-bezier(0.23, 1, 0.32, 1) 200ms both;
+}
+
+.desktop-icon-enter {
+  animation: iconEnter 400ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.desktop-text-enter {
+  animation: textFadeIn 600ms cubic-bezier(0.4, 0, 0.2, 1) 0ms both;
+}
+
+.desktop-subtitle-enter {
+  animation: textFadeIn 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms both;
+}
+
+.desktop-card-hover {
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.desktop-card-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
+}
+
+.desktop-bg-shift {
+  animation: gradientShift 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.desktop-float-1 {
+  animation: floatBlob1 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.desktop-float-2 {
+  animation: floatBlob2 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.desktop-float-3 {
+  animation: floatBlob3 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}

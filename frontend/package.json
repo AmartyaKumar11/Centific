@@ -1,0 +1,32 @@
+{
+  "name": "loan-prequalification-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean": "node -e \"const fs=require('fs');['dist','node_modules/.cache'].forEach(p=>{try{fs.rmSync(p,{recursive:true,force:true})}catch(e){}})\"",
+    "dev": "vite --port 3000",
+    "dev:clean": "npm run clean && npm run dev",
+    "build": "vite build",
+    "build:clean": "npm run clean && npm run build",
+    "start": "vite preview --port 3000",
+    "lint": "echo \"No lint configured\""
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "lucide-react": "^1.11.0",
+    "react": "^19.1.1",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.8.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^22.17.1",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  }
+}
