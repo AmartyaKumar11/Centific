@@ -1,0 +1,12 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "high_risk_cases": 313,
+    "medium_risk_cases": 407,
+    "low_risk_cases": 280
+  },
+  "key_metrics": {
+    "hil_required_count": 465,
+    "average_confidence": 70.58
+  }
+}

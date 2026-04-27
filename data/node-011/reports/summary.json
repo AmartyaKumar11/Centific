@@ -1,0 +1,24 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "input": {
+      "complete_records": 718,
+      "missing_values": 133,
+      "invalid_format": 149
+    },
+    "output": {
+      "valid_notification": 819,
+      "missing_disclaimer": 100,
+      "incorrect_type": 81
+    },
+    "text_quality": {
+      "clear_text": 762,
+      "noisy_text": 142,
+      "incomplete_text": 96
+    }
+  },
+  "key_metrics": {
+    "error_rate": 0.2315,
+    "clarity_rate": 0.762
+  }
+}

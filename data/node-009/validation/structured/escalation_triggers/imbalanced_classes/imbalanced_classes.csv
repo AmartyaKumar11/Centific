@@ -1,0 +1,158 @@
+application_id,severity,confidence_score,decision,hil_required_flag,hil_completed_flag,hil_priority,hil_reason
+APP000002,HIGH,62.08,REJECT,True,True,HIGH,High risk detected
+APP000115,HIGH,62.4,REJECT,True,True,HIGH,High risk detected
+APP000234,HIGH,64.09,REJECT,True,True,HIGH,High risk detected
+APP000264,HIGH,62.93,REVIEW,True,True,HIGH,High risk detected
+APP000271,HIGH,61.53,REVIEW,True,True,HIGH,High risk detected
+APP000464,HIGH,63.36,REJECT,True,True,HIGH,High risk detected
+APP000516,HIGH,63.72,REVIEW,True,True,HIGH,High risk detected
+APP000526,HIGH,64.27,APPROVE,True,True,HIGH,High risk detected
+APP000597,HIGH,63.41,REVIEW,True,True,HIGH,High risk detected
+APP000718,HIGH,60.72,REVIEW,True,True,HIGH,High risk detected
+APP000854,HIGH,61.04,REJECT,True,True,HIGH,High risk detected
+APP000861,HIGH,62.16,REJECT,True,True,HIGH,High risk detected
+APP000873,HIGH,63.19,REJECT,True,True,HIGH,High risk detected
+APP000001,MEDIUM,58.49,REJECT,True,True,MEDIUM,Low confidence in data
+APP000003,HIGH,67.33,APPROVE,True,True,MEDIUM,High risk detected
+APP000013,MEDIUM,51.88,REJECT,True,True,MEDIUM,Low confidence in data
+APP000015,HIGH,66.53,REJECT,True,True,MEDIUM,High risk detected
+APP000027,HIGH,67.58,REVIEW,True,True,MEDIUM,High risk detected
+APP000031,MEDIUM,56.21,REJECT,True,True,MEDIUM,Low confidence in data
+APP000051,HIGH,66.4,REVIEW,True,True,MEDIUM,High risk detected
+APP000060,HIGH,76.01,REVIEW,True,True,MEDIUM,High risk detected
+APP000072,HIGH,66.51,REVIEW,True,True,MEDIUM,High risk detected
+APP000074,HIGH,68.42,REVIEW,True,True,MEDIUM,High risk detected
+APP000075,HIGH,65.53,REVIEW,True,True,MEDIUM,High risk detected
+APP000079,HIGH,67.48,REVIEW,True,True,MEDIUM,High risk detected
+APP000104,HIGH,66.97,REVIEW,True,True,MEDIUM,High risk detected
+APP000122,HIGH,66.73,REVIEW,True,True,MEDIUM,High risk detected
+APP000126,MEDIUM,46.31,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000130,HIGH,66.67,REVIEW,True,True,MEDIUM,High risk detected
+APP000136,MEDIUM,52.47,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000151,HIGH,69.58,REVIEW,True,True,MEDIUM,High risk detected
+APP000154,MEDIUM,55.96,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000190,HIGH,66.31,REJECT,True,True,MEDIUM,High risk detected
+APP000197,HIGH,79.58,REVIEW,True,True,MEDIUM,High risk detected
+APP000203,HIGH,68.54,REVIEW,True,True,MEDIUM,High risk detected
+APP000207,HIGH,66.81,REJECT,True,True,MEDIUM,High risk detected
+APP000210,HIGH,69.56,REJECT,True,True,MEDIUM,High risk detected
+APP000221,HIGH,67.26,APPROVE,True,True,MEDIUM,High risk detected
+APP000225,MEDIUM,54.8,REJECT,True,True,MEDIUM,Low confidence in data
+APP000228,MEDIUM,48.07,REJECT,True,True,MEDIUM,Low confidence in data
+APP000230,MEDIUM,52.7,REJECT,True,True,MEDIUM,Low confidence in data
+APP000235,MEDIUM,56.91,REJECT,True,True,MEDIUM,Low confidence in data
+APP000237,HIGH,68.33,REVIEW,True,True,MEDIUM,High risk detected
+APP000246,HIGH,66.18,REVIEW,True,True,MEDIUM,High risk detected
+APP000253,HIGH,66.96,REJECT,True,True,MEDIUM,High risk detected
+APP000263,HIGH,77.19,REJECT,True,True,MEDIUM,High risk detected
+APP000269,MEDIUM,57.41,REJECT,True,True,MEDIUM,Low confidence in data
+APP000285,MEDIUM,42.15,REJECT,True,True,MEDIUM,Low confidence in data
+APP000288,HIGH,65.57,APPROVE,True,True,MEDIUM,High risk detected
+APP000293,MEDIUM,44.79,REJECT,True,True,MEDIUM,Low confidence in data
+APP000301,MEDIUM,54.58,REJECT,True,True,MEDIUM,Low confidence in data
+APP000306,HIGH,68.37,REVIEW,True,True,MEDIUM,High risk detected
+APP000308,HIGH,69.99,APPROVE,True,True,MEDIUM,High risk detected
+APP000310,MEDIUM,55.77,APPROVE,True,True,MEDIUM,Low confidence in data
+APP000321,MEDIUM,59.12,REJECT,True,True,MEDIUM,Low confidence in data
+APP000325,HIGH,78.92,APPROVE,True,True,MEDIUM,High risk detected
+APP000330,HIGH,66.36,REVIEW,True,True,MEDIUM,High risk detected
+APP000333,HIGH,69.2,APPROVE,True,True,MEDIUM,High risk detected
+APP000338,HIGH,79.18,REVIEW,True,True,MEDIUM,High risk detected
+APP000342,HIGH,65.51,REVIEW,True,True,MEDIUM,High risk detected
+APP000343,HIGH,76.13,REVIEW,True,True,MEDIUM,High risk detected
+APP000352,MEDIUM,53.47,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000358,HIGH,69.59,REVIEW,True,True,MEDIUM,High risk detected
+APP000359,MEDIUM,57.28,REJECT,True,True,MEDIUM,Low confidence in data
+APP000364,MEDIUM,54.58,REJECT,True,True,MEDIUM,Low confidence in data
+APP000366,HIGH,79.74,APPROVE,True,True,MEDIUM,High risk detected
+APP000389,HIGH,76.36,REVIEW,True,True,MEDIUM,High risk detected
+APP000398,MEDIUM,59.13,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000404,HIGH,66.71,REVIEW,True,True,MEDIUM,High risk detected
+APP000407,HIGH,69.53,APPROVE,True,True,MEDIUM,High risk detected
+APP000410,MEDIUM,47.37,REJECT,True,True,MEDIUM,Low confidence in data
+APP000412,HIGH,67.97,REVIEW,True,True,MEDIUM,High risk detected
+APP000426,HIGH,66.43,REJECT,True,True,MEDIUM,High risk detected
+APP000434,HIGH,66.59,APPROVE,True,True,MEDIUM,High risk detected
+APP000439,HIGH,67.91,REJECT,True,True,MEDIUM,High risk detected
+APP000442,HIGH,67.46,REJECT,True,True,MEDIUM,High risk detected
+APP000445,HIGH,66.51,REVIEW,True,True,MEDIUM,High risk detected
+APP000446,HIGH,78.92,REVIEW,True,True,MEDIUM,High risk detected
+APP000460,MEDIUM,56.04,REJECT,True,True,MEDIUM,Low confidence in data
+APP000467,HIGH,67.93,APPROVE,True,True,MEDIUM,High risk detected
+APP000469,HIGH,68.75,REVIEW,True,True,MEDIUM,High risk detected
+APP000478,MEDIUM,42.1,REJECT,True,True,MEDIUM,Low confidence in data
+APP000483,MEDIUM,46.83,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000488,HIGH,79.52,REVIEW,True,True,MEDIUM,High risk detected
+APP000490,HIGH,77.47,REVIEW,True,True,MEDIUM,High risk detected
+APP000491,HIGH,68.96,REJECT,True,True,MEDIUM,High risk detected
+APP000497,HIGH,79.48,REVIEW,True,True,MEDIUM,High risk detected
+APP000499,MEDIUM,52.95,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000506,MEDIUM,57.44,REJECT,True,True,MEDIUM,Low confidence in data
+APP000513,HIGH,68.47,REVIEW,True,True,MEDIUM,High risk detected
+APP000518,MEDIUM,53.06,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000523,HIGH,66.93,APPROVE,True,True,MEDIUM,High risk detected
+APP000529,HIGH,67.81,REVIEW,True,True,MEDIUM,High risk detected
+APP000543,MEDIUM,52.0,REJECT,True,True,MEDIUM,Low confidence in data
+APP000555,HIGH,75.65,APPROVE,True,True,MEDIUM,High risk detected
+APP000556,MEDIUM,53.42,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000559,MEDIUM,56.03,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000567,HIGH,79.58,REVIEW,True,True,MEDIUM,High risk detected
+APP000587,HIGH,69.82,REVIEW,True,True,MEDIUM,High risk detected
+APP000592,MEDIUM,59.42,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000600,HIGH,69.03,APPROVE,True,True,MEDIUM,High risk detected
+APP000602,HIGH,78.73,REVIEW,True,True,MEDIUM,High risk detected
+APP000611,HIGH,67.0,REVIEW,True,True,MEDIUM,High risk detected
+APP000612,HIGH,67.39,REVIEW,True,True,MEDIUM,High risk detected
+APP000617,HIGH,67.83,REVIEW,True,True,MEDIUM,High risk detected
+APP000618,HIGH,66.06,APPROVE,True,True,MEDIUM,High risk detected
+APP000635,HIGH,69.3,REVIEW,True,True,MEDIUM,High risk detected
+APP000637,HIGH,65.98,REVIEW,True,True,MEDIUM,High risk detected
+APP000650,MEDIUM,59.57,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000664,MEDIUM,58.7,REJECT,True,True,MEDIUM,Low confidence in data
+APP000672,HIGH,75.85,APPROVE,True,True,MEDIUM,High risk detected
+APP000681,HIGH,68.13,REVIEW,True,True,MEDIUM,High risk detected
+APP000701,MEDIUM,52.95,APPROVE,True,True,MEDIUM,Low confidence in data
+APP000704,MEDIUM,49.45,REJECT,True,True,MEDIUM,Low confidence in data
+APP000706,HIGH,67.48,REVIEW,True,True,MEDIUM,High risk detected
+APP000708,MEDIUM,52.63,REJECT,True,True,MEDIUM,Low confidence in data
+APP000712,HIGH,68.78,REVIEW,True,True,MEDIUM,High risk detected
+APP000722,MEDIUM,45.89,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000725,HIGH,68.36,APPROVE,True,True,MEDIUM,High risk detected
+APP000746,MEDIUM,54.64,REJECT,True,True,MEDIUM,Low confidence in data
+APP000748,HIGH,66.39,APPROVE,True,True,MEDIUM,High risk detected
+APP000755,MEDIUM,58.33,REJECT,True,True,MEDIUM,Low confidence in data
+APP000756,HIGH,67.36,APPROVE,True,True,MEDIUM,High risk detected
+APP000759,HIGH,65.84,REVIEW,True,True,MEDIUM,High risk detected
+APP000776,MEDIUM,53.98,REJECT,True,True,MEDIUM,Low confidence in data
+APP000778,HIGH,77.03,REVIEW,True,True,MEDIUM,High risk detected
+APP000789,HIGH,69.64,REVIEW,True,True,MEDIUM,High risk detected
+APP000791,MEDIUM,56.62,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000794,HIGH,70.19,REVIEW,True,True,MEDIUM,High risk detected
+APP000797,HIGH,66.62,REJECT,True,True,MEDIUM,High risk detected
+APP000805,MEDIUM,53.58,REJECT,True,True,MEDIUM,Low confidence in data
+APP000829,HIGH,68.31,REVIEW,True,True,MEDIUM,High risk detected
+APP000837,HIGH,77.08,REJECT,True,True,MEDIUM,High risk detected
+APP000847,HIGH,69.5,REVIEW,True,True,MEDIUM,High risk detected
+APP000849,MEDIUM,51.87,REJECT,True,True,MEDIUM,Low confidence in data
+APP000859,MEDIUM,55.54,REJECT,True,True,MEDIUM,Low confidence in data
+APP000882,HIGH,67.32,REVIEW,True,True,MEDIUM,High risk detected
+APP000894,HIGH,66.39,REVIEW,True,True,MEDIUM,High risk detected
+APP000898,HIGH,66.25,APPROVE,True,True,MEDIUM,High risk detected
+APP000900,HIGH,69.13,REVIEW,True,True,MEDIUM,High risk detected
+APP000901,HIGH,68.12,APPROVE,True,True,MEDIUM,High risk detected
+APP000913,HIGH,71.95,APPROVE,True,True,MEDIUM,High risk detected
+APP000918,MEDIUM,55.32,REJECT,True,True,MEDIUM,Low confidence in data
+APP000930,MEDIUM,55.63,REVIEW,True,True,MEDIUM,Low confidence in data
+APP000937,MEDIUM,55.94,REJECT,True,True,MEDIUM,Low confidence in data
+APP000944,HIGH,66.38,APPROVE,True,True,MEDIUM,High risk detected
+APP000946,HIGH,69.14,APPROVE,True,True,MEDIUM,High risk detected
+APP000950,HIGH,69.52,REVIEW,True,True,MEDIUM,High risk detected
+APP000951,HIGH,77.68,APPROVE,True,True,MEDIUM,High risk detected
+APP000953,MEDIUM,58.19,REJECT,True,True,MEDIUM,Low confidence in data
+APP000961,HIGH,65.53,APPROVE,True,True,MEDIUM,High risk detected
+APP000965,MEDIUM,46.15,REJECT,True,True,MEDIUM,Low confidence in data
+APP000978,HIGH,68.04,APPROVE,True,True,MEDIUM,High risk detected
+APP000988,HIGH,77.91,REVIEW,True,True,MEDIUM,High risk detected
+APP000993,MEDIUM,51.67,REJECT,True,True,MEDIUM,Low confidence in data
+APP000999,HIGH,66.25,REJECT,True,True,MEDIUM,High risk detected
+APP001000,HIGH,67.52,REVIEW,True,True,MEDIUM,High risk detected

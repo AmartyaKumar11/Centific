@@ -1,0 +1,15 @@
+{
+  "total_records": 7043,
+  "distribution": {
+    "complete": 4295,
+    "missing": 406,
+    "outliers": 343,
+    "imbalanced": 1722,
+    "duplicates": 277
+  },
+  "key_metrics": {
+    "human_action_rate": 0.142,
+    "duplicate_rate": 0.0393,
+    "missing_rate": 0.0576
+  }
+}

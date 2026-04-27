@@ -1,0 +1,15 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "complete_records": 761,
+    "missing_values": 93,
+    "format_inconsistencies": 146,
+    "consistent_fields": 788,
+    "inconsistent_names": 129,
+    "inconsistent_dates": 83
+  },
+  "key_metrics": {
+    "format_error_rate": 0.146,
+    "consistency_error_rate": 0.212
+  }
+}

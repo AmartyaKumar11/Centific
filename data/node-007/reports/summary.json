@@ -1,0 +1,13 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "high_confidence": 318,
+    "medium_confidence": 426,
+    "low_confidence": 256
+  },
+  "key_metrics": {
+    "high_confidence_pct": 0.318,
+    "medium_confidence_pct": 0.426,
+    "low_confidence_pct": 0.256
+  }
+}

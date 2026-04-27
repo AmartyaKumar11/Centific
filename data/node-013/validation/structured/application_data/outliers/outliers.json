@@ -1,0 +1,2589 @@
+[
+  {
+    "application_id": "APP000025",
+    "severity": "HIGH",
+    "confidence_score": 34.69,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 34.69,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "LOW_CREDIT_SCORE",
+        "INCOME_MISMATCH",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 140,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000025"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "VERIFIED",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 165,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "TRUE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": true,
+            "status": "VERIFIED"
+          },
+          "decision": "KYC consistency verified."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 104,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 623.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 134,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 198,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "LOW_CREDIT_SCORE",
+              "INCOME_MISMATCH"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 104,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 34.69
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 145,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000107",
+    "severity": "HIGH",
+    "confidence_score": 30.0,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 30.0,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "HIGH_DTI",
+        "LOW_CREDIT_SCORE",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 188,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000107"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "VERIFIED",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 158,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "TRUE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": true,
+            "status": "VERIFIED"
+          },
+          "decision": "KYC consistency verified."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 100,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 618.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 162,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 70,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "HIGH_DTI",
+              "LOW_CREDIT_SCORE"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 57,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 30.0
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 174,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000146",
+    "severity": "HIGH",
+    "confidence_score": 30.0,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 30.0,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "HIGH_DTI",
+        "LOW_CREDIT_SCORE",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 158,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000146"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "WARNING",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 62,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "FALSE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": false,
+            "status": "WARNING"
+          },
+          "decision": "KYC inconsistency detected; mark for caution."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 126,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 313.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 141,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 103,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "HIGH_DTI",
+              "LOW_CREDIT_SCORE"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 64,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 30.0
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 173,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000184",
+    "severity": "HIGH",
+    "confidence_score": 30.0,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 30.0,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "HIGH_DTI",
+        "LOW_CREDIT_SCORE",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 141,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000184"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "WARNING",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 57,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "FALSE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": false,
+            "status": "WARNING"
+          },
+          "decision": "KYC inconsistency detected; mark for caution."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 199,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 618.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 111,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 101,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "HIGH_DTI",
+              "LOW_CREDIT_SCORE"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 84,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 30.0
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 194,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000187",
+    "severity": "HIGH",
+    "confidence_score": 30.25,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 30.25,
+      "key_reasons": [
+        "HIGH_DTI",
+        "LOW_CREDIT_SCORE",
+        "INCOME_MISMATCH",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 192,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000187"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "WARNING",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 120,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "FALSE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": false,
+            "status": "WARNING"
+          },
+          "decision": "KYC inconsistency detected; mark for caution."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 163,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 502.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 161,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 85,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "HIGH_DTI",
+              "LOW_CREDIT_SCORE",
+              "INCOME_MISMATCH"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 185,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 30.25
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 123,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000214",
+    "severity": "HIGH",
+    "confidence_score": 34.51,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 34.51,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "LOW_CREDIT_SCORE",
+        "INCOME_MISMATCH",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 78,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000214"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "VERIFIED",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 52,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "TRUE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": true,
+            "status": "VERIFIED"
+          },
+          "decision": "KYC consistency verified."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 66,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 632.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 111,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 147,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "LOW_CREDIT_SCORE",
+              "INCOME_MISMATCH"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 101,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 34.51
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 69,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000248",
+    "severity": "HIGH",
+    "confidence_score": 30.0,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 30.0,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "HIGH_DTI",
+        "LOW_CREDIT_SCORE",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 65,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000248"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "VERIFIED",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 96,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "TRUE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": true,
+            "status": "VERIFIED"
+          },
+          "decision": "KYC consistency verified."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 128,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 563.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 51,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 83,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "HIGH_DTI",
+              "LOW_CREDIT_SCORE"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 97,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 30.0
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 168,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000286",
+    "severity": "HIGH",
+    "confidence_score": 30.0,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 30.0,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "HIGH_DTI",
+        "LOW_CREDIT_SCORE",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 75,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000286"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "WARNING",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 167,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "FALSE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": false,
+            "status": "WARNING"
+          },
+          "decision": "KYC inconsistency detected; mark for caution."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 50,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 347.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 185,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 129,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "HIGH_DTI",
+              "LOW_CREDIT_SCORE"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 161,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 30.0
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 108,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000425",
+    "severity": "HIGH",
+    "confidence_score": 30.0,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 30.0,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "HIGH_DTI",
+        "LOW_CREDIT_SCORE",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 197,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000425"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "WARNING",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 116,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "FALSE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": false,
+            "status": "WARNING"
+          },
+          "decision": "KYC inconsistency detected; mark for caution."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 93,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 556.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 100,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 78,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "HIGH_DTI",
+              "LOW_CREDIT_SCORE"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 171,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 30.0
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 163,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000433",
+    "severity": "HIGH",
+    "confidence_score": 30.0,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 30.0,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "HIGH_DTI",
+        "LOW_CREDIT_SCORE",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 146,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000433"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "VERIFIED",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 55,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "TRUE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": true,
+            "status": "VERIFIED"
+          },
+          "decision": "KYC consistency verified."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 87,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 321.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 86,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 157,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "HIGH_DTI",
+              "LOW_CREDIT_SCORE"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 84,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 30.0
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 130,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000447",
+    "severity": "HIGH",
+    "confidence_score": 30.0,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 30.0,
+      "key_reasons": [
+        "HIGH_DTI",
+        "LOW_CREDIT_SCORE",
+        "INCOME_MISMATCH",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 126,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000447"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "WARNING",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 110,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "FALSE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": false,
+            "status": "WARNING"
+          },
+          "decision": "KYC inconsistency detected; mark for caution."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 122,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 560.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 116,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 198,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "HIGH_DTI",
+              "LOW_CREDIT_SCORE",
+              "INCOME_MISMATCH"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 121,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 30.0
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 154,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000502",
+    "severity": "HIGH",
+    "confidence_score": 31.62,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 31.62,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "LOW_CREDIT_SCORE",
+        "MEDIUM_DTI",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 55,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000502"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "WARNING",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 160,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "FALSE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": false,
+            "status": "WARNING"
+          },
+          "decision": "KYC inconsistency detected; mark for caution."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 89,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 412.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 103,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "FALSE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": false,
+            "status": "MATCH"
+          },
+          "decision": "Income consistency confirmed."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 185,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "LOW_CREDIT_SCORE",
+              "MEDIUM_DTI"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 80,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 31.62
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 161,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  },
+  {
+    "application_id": "APP000919",
+    "severity": "HIGH",
+    "confidence_score": 31.87,
+    "hil_required_flag": true,
+    "hil_priority": "HIGH",
+    "final_summary": {
+      "decision": "REVIEW",
+      "risk": "HIGH",
+      "confidence": 31.87,
+      "key_reasons": [
+        "DEFAULT_HISTORY",
+        "HIGH_DTI",
+        "INCOME_MISMATCH",
+        "LOW_CONFIDENCE"
+      ],
+      "hil_required": true
+    },
+    "agent_metadata": {
+      "total_steps": 7,
+      "risk_level": "HIGH",
+      "processing_mode": "HUMAN_IN_LOOP"
+    },
+    "timeline": [
+      {
+        "step": "INGESTION",
+        "status": "VERIFIED",
+        "tool": "dataset_loader",
+        "api_simulated": true,
+        "latency_ms": 80,
+        "status_code": 200,
+        "triggered_by": null,
+        "impact": "Provides normalized inputs for KYC verification and downstream checks.",
+        "reasoning": {
+          "inputs": {
+            "application_id": "APP000919"
+          },
+          "thresholds": {
+            "record_presence": "required"
+          },
+          "computed_output": {
+            "ingestion_complete": true
+          },
+          "decision": "Ingestion successful; continue to KYC verification."
+        }
+      },
+      {
+        "step": "KYC_VERIFICATION",
+        "status": "VERIFIED",
+        "tool": "kyc_validator",
+        "api_simulated": true,
+        "latency_ms": 180,
+        "status_code": 200,
+        "triggered_by": "INGESTION",
+        "impact": "Determines reliability of applicant identity data for credit and income checks.",
+        "reasoning": {
+          "inputs": {
+            "data_consistency_flag": "TRUE"
+          },
+          "thresholds": {
+            "expected_consistency": true
+          },
+          "computed_output": {
+            "is_consistent": true,
+            "status": "VERIFIED"
+          },
+          "decision": "KYC consistency verified."
+        }
+      },
+      {
+        "step": "CREDIT_BUREAU",
+        "status": "WARNING",
+        "tool": "credit_bureau_lookup",
+        "api_simulated": true,
+        "latency_ms": 50,
+        "status_code": 200,
+        "triggered_by": "KYC_VERIFICATION",
+        "impact": "Feeds credit risk signal into discrepancy and confidence evaluations.",
+        "reasoning": {
+          "inputs": {
+            "cibil_score": 664.0
+          },
+          "thresholds": {
+            "clear": ">=700",
+            "warning": "650-699.99",
+            "flagged": "<650"
+          },
+          "computed_output": {
+            "status": "WARNING"
+          },
+          "decision": "Credit bureau evaluation classified as WARNING."
+        }
+      },
+      {
+        "step": "INCOME_VALIDATION",
+        "status": "MISMATCH",
+        "tool": "income_validator",
+        "api_simulated": true,
+        "latency_ms": 137,
+        "status_code": 200,
+        "triggered_by": "CREDIT_BUREAU",
+        "impact": "Contributes mismatch signal to discrepancy analysis and final confidence profile.",
+        "reasoning": {
+          "inputs": {
+            "income_mismatch_flag": "TRUE"
+          },
+          "thresholds": {
+            "match_expected": false
+          },
+          "computed_output": {
+            "income_mismatch": true,
+            "status": "MISMATCH"
+          },
+          "decision": "Income mismatch identified; escalate discrepancy attention."
+        }
+      },
+      {
+        "step": "DISCREPANCY_ANALYSIS",
+        "status": "HIGH",
+        "tool": "flag_engine_node_006",
+        "api_simulated": true,
+        "latency_ms": 191,
+        "status_code": 200,
+        "triggered_by": "INCOME_VALIDATION",
+        "impact": "Determines risk tier and drives confidence scoring penalties downstream.",
+        "reasoning": {
+          "inputs": {
+            "flags": [
+              "DEFAULT_HISTORY",
+              "HIGH_DTI",
+              "INCOME_MISMATCH"
+            ],
+            "severity": "HIGH"
+          },
+          "thresholds": {
+            "severity_levels": [
+              "HIGH",
+              "MEDIUM",
+              "LOW",
+              "NONE"
+            ]
+          },
+          "computed_output": {
+            "flag_count": 3,
+            "status": "HIGH"
+          },
+          "decision": "Discrepancy severity assessed as HIGH."
+        }
+      },
+      {
+        "step": "CONFIDENCE_SCORING",
+        "status": "LOW",
+        "tool": "confidence_engine_node_007",
+        "api_simulated": true,
+        "latency_ms": 57,
+        "status_code": 200,
+        "triggered_by": "DISCREPANCY_ANALYSIS",
+        "impact": "Sets confidence band used in HIL decision prioritization.",
+        "reasoning": {
+          "inputs": {
+            "confidence_score": 31.87
+          },
+          "thresholds": {
+            "high": ">=75",
+            "medium": "60-74.99",
+            "low": "<60"
+          },
+          "computed_output": {
+            "status": "LOW"
+          },
+          "decision": "Confidence evaluation assigned LOW band."
+        }
+      },
+      {
+        "step": "HIL_DECISION",
+        "status": "REQUIRED",
+        "tool": "hil_engine_node_009",
+        "api_simulated": true,
+        "latency_ms": 156,
+        "status_code": 200,
+        "triggered_by": "CONFIDENCE_SCORING",
+        "impact": "Determines whether manual intervention enters the underwriting workflow.",
+        "reasoning": {
+          "inputs": {
+            "hil_required_flag": true,
+            "hil_priority": "HIGH"
+          },
+          "thresholds": {
+            "manual_intervention": "required when hil_required_flag is true"
+          },
+          "computed_output": {
+            "status": "REQUIRED",
+            "manual_review_route": "HIL_QUEUE"
+          },
+          "decision": "HIL required with priority HIGH."
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "risk_profile": {
+      "complete_records": 893,
+      "missing_values": 58,
+      "outliers": 49
+    },
+    "loan_product": {
+      "complete_records": 319,
+      "imbalanced_classes": 638,
+      "outliers": 43
+    },
+    "emi": {
+      "complete_records": 760,
+      "missing_values": 165,
+      "outliers": 75
+    }
+  },
+  "key_metrics": {
+    "high_risk_rate": 0.404,
+    "eligibility_rate": 0.737,
+    "avg_emi": 38905.7521
+  }
+}

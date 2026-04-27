@@ -1,0 +1,1429 @@
+application_id,name,severity,flags,confidence_score,hil_required_flag,hil_priority,notification_type,rejection_reason,missing_fields,notification_type_output,notification_text
+APP000007,Nikhil Bansal,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,51.74,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000007) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000014,Anjali Pandey,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES,73.07,True,LOW,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000014) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000021,Kunal Chopra,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,66.81,True,LOW,REJECTION,Policy rules violation,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000021) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+Policy rules violation
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000028,Arjun Malhotra,LOW,LOW_CREDIT_SCORE,81.52,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000028) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000035,Nisha Rao,LOW,INCOME_MISMATCH,88.49,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000035) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000042,Meera Reddy,LOW,INCOME_MISMATCH,74.91,True,LOW,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000042) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000049,Ritika Malhotra,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,52.93,True,HIGH,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000049) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000056,Divya Iyer,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,52.19,True,,HIL_ESCALATION,,"[""Income Proof""]",HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000056) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000063,Poornima Nair,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,73.64,True,LOW,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000063) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000070,Abhishek Saxena,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,67.0,True,LOW,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000070) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns.
+
+Please note that this is an important notification."
+APP000077,Ishita Thakur,MEDIUM,LOW_CREDIT_SCORE|MEDIUM_DTI,78.99,True,,HIL_ESCALATION,,[],REJECTION,"Dear Customer,
+
+Your application (ID: APP000077) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000084,Nisha Pandey,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,70.81,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000084) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000091,Raj Menon,HIGH,HIGH_DTI|BANK_RISK|INCOME_MISMATCH,58.44,True,HIGH,REJECTION,"HIGH_DTI, BANK_RISK, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000091) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, BANK_RISK, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000098,Raj Malhotra,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,51.01,True,HIGH,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000098) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000105,Raj Pillai,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,65.62,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000105) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000112,Kavita Thakur,NONE,,95.87,False,,REJECTION,Policy rules,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000112) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000119,Aditya Chauhan,LOW,LOW_CREDIT_SCORE,82.38,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000119) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000126,Ritika Malhotra,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,46.31,True,,HIL_ESCALATION,,"[""PAN""]",HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000126) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000133,Meera Kapoor,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,84.62,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000133) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000140,Deepika Nambiar,LOW,INCOME_MISMATCH,86.9,False,,REJECTION,INCOME_MISMATCH,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000140) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+Please note that this is an important notification."
+APP000147,Nisha Patel,LOW,MEDIUM_DTI,92.49,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000147) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000154,Pooja Pillai,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK|HIGH_ENQUIRIES,55.96,True,MEDIUM,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000154) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000161,Mohit Pillai,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|BANK_RISK,50.32,True,HIGH,REJECTION,"DEFAULT_HISTORY, LOW_CREDIT_SCORE, BANK_RISK",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000161) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+DEFAULT_HISTORY, LOW_CREDIT_SCORE, BANK_RISK
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000168,Pooja Rao,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE,49.2,True,HIGH,STATUS_UPDATE,,"[""Income Proof""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000168) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000175,Priya Patel,HIGH,DEFAULT_HISTORY|BANK_RISK|INCOME_MISMATCH,43.27,True,HIGH,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000175) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000182,Ishita Desai,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,43.0,True,HIGH,REJECTION,"HIGH_DTI, LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000182) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000189,Neha Patel,LOW,INCOME_MISMATCH,78.63,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000189) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000196,Meera Singh,MEDIUM,BANK_RISK|INCOME_MISMATCH|MEDIUM_DTI,64.93,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000196) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000203,Ankit Chauhan,HIGH,HIGH_DTI|INCOME_MISMATCH,68.54,True,MEDIUM,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000203) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000210,Ankit Chopra,HIGH,HIGH_DTI|BANK_RISK,69.56,True,MEDIUM,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000210) is incomplete.
+
+Please provide the following:
+PAN
+
+Please note that this is an important notification."
+APP000217,Shreya Verma,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK,73.19,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000217) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000224,Abhishek Rao,MEDIUM,LOW_CREDIT_SCORE|MEDIUM_DTI,65.31,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000224) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000231,Manish Pandey,MEDIUM,BANK_RISK|INCOME_MISMATCH|MEDIUM_DTI,76.17,False,,REJECTION,Policy rules violation,[],STATUS_UPDATE,"Dear Customer,
+
+Your loan application (ID: APP000231) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+Policy rules violation
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000238,Priya Pandey,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|INCOME_MISMATCH,45.73,True,HIGH,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000238) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000245,Nisha Chauhan,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,60.96,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000245) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000252,Neha Gupta,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|BANK_RISK,51.23,True,HIGH,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000252) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000259,Vikram Shetty,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK|INCOME_MISMATCH,66.76,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000259) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000266,Mohit Shetty,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,74.35,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000266) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000273,Neha Saxena,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,66.35,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000273) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000280,Raj Mehta,LOW,LOW_CREDIT_SCORE,82.41,False,,REJECTION,LOW_CREDIT_SCORE,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000280) is incomplete.
+
+Please provide the following:
+Income Proof
+
+Please note that this is an important notification."
+APP000287,Arjun Rao,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,71.16,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000287) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000294,Swati Verma,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|INCOME_MISMATCH,64.68,True,LOW,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000294) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000301,Nisha Bhat,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|INCOME_MISMATCH,54.58,True,MEDIUM,REJECTION,"LOW_CREDIT_SCORE, HIGH_ENQUIRIES, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000301) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, HIGH_ENQUIRIES, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000308,Rahul Sharma,HIGH,HIGH_DTI|BANK_RISK,69.99,True,MEDIUM,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000308) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000315,Sneha Bansal,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,81.36,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000315) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000322,Ishita Saxena,LOW,INCOME_MISMATCH,78.93,False,,REJECTION,INCOME_MISMATCH,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000322) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000329,Ishita Bansal,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,69.3,True,LOW,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000329) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000336,Deepika Desai,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK,64.11,True,,HIL_ESCALATION,,"[""Income Proof""]",HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000336) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000343,Ankit Reddy,HIGH,HIGH_DTI,76.13,True,MEDIUM,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000343) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000350,Nisha Saxena,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,80.91,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000350) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns.
+
+Please note that this is an important notification."
+APP000357,Tanvi Kapoor,LOW,MEDIUM_DTI,90.98,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000357) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000364,Aisha Verma,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|INCOME_MISMATCH,54.58,True,MEDIUM,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000364) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000371,Rohan Iyer,LOW,INCOME_MISMATCH,88.68,False,,REJECTION,INCOME_MISMATCH,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000371) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000378,Pooja Agarwal,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,51.36,True,HIGH,STATUS_UPDATE,,"[""PAN""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000378) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000385,Suresh Bansal,HIGH,DEFAULT_HISTORY|INCOME_MISMATCH|MEDIUM_DTI,45.73,True,HIGH,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000385) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000392,Arjun Agarwal,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|BANK_RISK,54.67,True,HIGH,REJECTION,"HIGH_DTI, LOW_CREDIT_SCORE, BANK_RISK","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000392) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000399,Arjun Shetty,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,67.47,True,LOW,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000399) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000406,Vikram Mehta,MEDIUM,BANK_RISK|INCOME_MISMATCH|MEDIUM_DTI,73.87,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000406) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000413,Kavita Desai,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,66.08,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000413) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000420,Kavita Gupta,LOW,MEDIUM_DTI,90.95,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000420) is incomplete.
+
+Please provide the following:
+PAN
+
+Please note that this is an important notification."
+APP000427,Sakshi Pandey,NONE,,95.83,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000427) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000434,Sneha Bhat,HIGH,HIGH_DTI|INCOME_MISMATCH,66.59,True,MEDIUM,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000434) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000441,Tanvi Gupta,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|INCOME_MISMATCH,37.76,True,HIGH,REJECTION,Policy rules violation,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000441) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+Policy rules violation
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000448,Rahul Saxena,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,71.11,False,,STATUS_UPDATE,,"[""Income Proof""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000448) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000455,Simran Nambiar,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,84.83,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000455) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000462,Gaurav Patel,MEDIUM,BANK_RISK|MEDIUM_DTI,75.01,False,,REJECTION,Policy rules violation,"[""PAN""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000462) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000469,Rohan Verma,HIGH,HIGH_DTI,68.75,True,MEDIUM,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000469) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000476,Vikram Kumar,LOW,BANK_RISK,88.33,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000476) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000483,Mohit Kulkarni,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,46.83,True,MEDIUM,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000483) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000490,Kunal Bansal,HIGH,HIGH_DTI,77.47,True,MEDIUM,REJECTION,HIGH_DTI,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000490) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI
+
+You may reapply after addressing the above concerns.
+
+Please note that this is an important notification."
+APP000497,Tanvi Thakur,HIGH,HIGH_DTI,79.48,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000497) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000504,Gaurav Sharma,LOW,INCOME_MISMATCH,76.56,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000504) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000511,Preeti Gupta,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,62.54,False,,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000511) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000518,Simran Sharma,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|INCOME_MISMATCH,53.06,True,MEDIUM,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000518) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000525,Abhishek Iyer,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|MEDIUM_DTI,61.81,True,LOW,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000525) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000532,Deepika Pandey,LOW,INCOME_MISMATCH,77.81,False,,REJECTION,INCOME_MISMATCH,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000532) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000539,Swati Rao,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,81.96,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000539) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000546,Nikhil Thakur,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|HIGH_ENQUIRIES,38.05,True,,HIL_ESCALATION,,"[""PAN""]",HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000546) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000553,Amit Chopra,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,51.44,True,HIGH,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000553) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000560,Vikram Saxena,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|INCOME_MISMATCH,49.18,True,HIGH,REJECTION,"DEFAULT_HISTORY, LOW_CREDIT_SCORE, INCOME_MISMATCH","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000560) is incomplete.
+
+Please provide the following:
+Income Proof
+
+Please note that this is an important notification."
+APP000567,Abhishek Bhat,HIGH,HIGH_DTI,79.58,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000567) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000574,Mohit Nair,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,74.22,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000574) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000581,Deepika Bansal,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,74.31,False,,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000581) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000588,Amit Patel,NONE,,97.52,False,,STATUS_UPDATE,,"[""PAN""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000588) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000595,Shreya Rao,LOW,LOW_CREDIT_SCORE,82.64,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000595) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000602,Swati Pillai,HIGH,HIGH_DTI,78.73,True,MEDIUM,REJECTION,HIGH_DTI,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000602) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000609,Meera Bansal,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK|HIGH_ENQUIRIES,65.49,True,LOW,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000609) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000616,Swati Singh,HIGH,HIGH_DTI|INCOME_MISMATCH,59.19,True,,HIL_ESCALATION,,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000616) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000623,Poornima Bansal,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,70.69,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000623) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000630,Sakshi Patel,LOW,INCOME_MISMATCH,88.34,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000630) is incomplete.
+
+Please provide the following:
+PAN
+
+Please note that this is an important notification."
+APP000637,Gaurav Singh,HIGH,HIGH_DTI|INCOME_MISMATCH,65.98,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000637) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000644,Divya Mehta,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,72.21,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000644) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000651,Vivek Pandey,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,84.84,False,,REJECTION,Policy rules violation,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000651) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+Policy rules violation
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000658,Mohit Agarwal,LOW,INCOME_MISMATCH,89.73,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000658) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000665,Kunal Agarwal,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,66.67,True,LOW,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000665) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000672,Sanjay Nair,HIGH,HIGH_DTI,75.85,True,MEDIUM,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000672) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000679,Varun Nambiar,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,80.55,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000679) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000686,Poornima Pandey,LOW,INCOME_MISMATCH,88.62,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000686) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000693,Abhishek Singh,NONE,,85.93,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000693) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000700,Mohit Singh,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|MEDIUM_DTI,70.34,False,,REJECTION,"LOW_CREDIT_SCORE, HIGH_ENQUIRIES, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000700) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, HIGH_ENQUIRIES, MEDIUM_DTI
+
+You may reapply after addressing the above concerns.
+
+Please note that this is an important notification."
+APP000707,Pooja Singh,LOW,MEDIUM_DTI,91.87,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000707) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000714,Arjun Kulkarni,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE,44.61,True,HIGH,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000714) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000721,Nisha Iyer,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,63.32,True,LOW,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000721) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000728,Ishita Pillai,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,41.63,True,HIGH,STATUS_UPDATE,,"[""Income Proof""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000728) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000735,Mohit Saxena,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,73.0,True,LOW,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000735) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000742,Vikram Nambiar,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|MEDIUM_DTI,67.69,False,,REJECTION,"LOW_CREDIT_SCORE, HIGH_ENQUIRIES, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000742) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, HIGH_ENQUIRIES, MEDIUM_DTI
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000749,Manish Nambiar,LOW,MEDIUM_DTI,72.78,True,LOW,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000749) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000756,Pooja Malhotra,HIGH,HIGH_DTI|INCOME_MISMATCH,67.36,True,,HIL_ESCALATION,,"[""PAN""]",HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000756) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000763,Shreya Desai,NONE,,99.52,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000763) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000770,Kunal Kapoor,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,71.46,True,LOW,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],STATUS_UPDATE,"Dear Customer,
+
+Your loan application (ID: APP000770) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns.
+
+Please note that this is an important notification."
+APP000777,Poornima Gupta,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,41.13,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000777) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000784,Preeti Bansal,LOW,MEDIUM_DTI,81.86,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000784) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000791,Divya Shah,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,56.62,True,MEDIUM,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000791) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000798,Nikhil Menon,HIGH,DEFAULT_HISTORY|BANK_RISK|INCOME_MISMATCH,54.67,True,HIGH,STATUS_UPDATE,,"[""PAN""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000798) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000805,Poornima Reddy,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|INCOME_MISMATCH,53.58,True,MEDIUM,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000805) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000812,Ravi Chopra,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,71.35,False,,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000812) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000819,Neha Menon,LOW,INCOME_MISMATCH,79.2,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000819) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000826,Vivek Mishra,LOW,INCOME_MISMATCH,89.34,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000826) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000833,Shreya Patel,LOW,INCOME_MISMATCH,85.59,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000833) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000840,Ishita Reddy,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,50.65,True,HIGH,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000840) is incomplete.
+
+Please provide the following:
+Income Proof
+
+Please note that this is an important notification."
+APP000847,Swati Nair,HIGH,HIGH_DTI|INCOME_MISMATCH,69.5,True,,HIL_ESCALATION,,[],REJECTION,"Dear Customer,
+
+Your application (ID: APP000847) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000854,Aditya Shah,HIGH,DEFAULT_HISTORY|INCOME_MISMATCH,61.04,True,HIGH,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000854) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000861,Poornima Chopra,HIGH,HIGH_DTI|LOW_CREDIT_SCORE,62.16,True,HIGH,REJECTION,Policy rules violation,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000861) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+Policy rules violation
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000868,Divya Bhat,HIGH,HIGH_DTI|INCOME_MISMATCH,57.12,True,HIGH,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000868) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000875,Raj Singh,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,80.88,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000875) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000882,Preeti Shetty,HIGH,HIGH_DTI|INCOME_MISMATCH,67.32,True,MEDIUM,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000882) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000889,Manish Bansal,LOW,LOW_CREDIT_SCORE,82.84,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000889) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000896,Manish Patel,LOW,LOW_CREDIT_SCORE,74.77,True,,HIL_ESCALATION,,"[""Income Proof""]",HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000896) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000903,Tanvi Sharma,MEDIUM,BANK_RISK|INCOME_MISMATCH,77.59,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000903) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000910,Varun Nambiar,HIGH,HIGH_DTI|INCOME_MISMATCH,58.06,True,HIGH,REJECTION,"HIGH_DTI, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000910) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+Please note that this is an important notification."
+APP000917,Nisha Iyer,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,72.54,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000917) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000924,Aisha Verma,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,74.76,False,,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000924) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000931,Shreya Kumar,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|BANK_RISK,54.59,True,HIGH,REJECTION,"HIGH_DTI, LOW_CREDIT_SCORE, BANK_RISK",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000931) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, LOW_CREDIT_SCORE, BANK_RISK
+
+You may reapply after addressing the above concerns.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000938,Preeti Verma,LOW,INCOME_MISMATCH,78.51,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000938) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000945,Kunal Mehta,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|HIGH_ENQUIRIES,50.56,True,HIGH,MISSING_FIELDS,,[],MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000945) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000952,Aditya Kapoor,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,83.97,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000952) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000959,Deepika Saxena,LOW,MEDIUM_DTI,93.18,False,,STATUS_UPDATE,,[],STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000959) is currently being processed.
+
+We will update you shortly.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000966,Abhishek Sharma,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES,74.92,True,,HIL_ESCALATION,,"[""PAN""]",HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000966) is incomplete.
+
+Please provide the following:
+PAN
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000973,Divya Agarwal,NONE,,96.1,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000973) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000980,Nisha Agarwal,HIGH,DEFAULT_HISTORY|INCOME_MISMATCH,50.85,True,HIGH,REJECTION,"DEFAULT_HISTORY, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000980) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+DEFAULT_HISTORY, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns.
+
+Please note that this is an important notification."
+APP000987,Raj Malhotra,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,74.75,True,,HIL_ESCALATION,,[],HIL_ESCALATION,"Dear Customer,
+
+Your application (ID: APP000987) is under review by our credit officer.
+
+Priority level: None
+
+You will be notified once the review is completed.
+
+This is a system-generated communication.
+
+Please note that this is an important notification."
+APP000994,Ritika Reddy,LOW,MEDIUM_DTI,91.1,False,,MISSING_FIELDS,,"[""Income Proof""]",MISSING_FIELDS,"Dear Customer,
+
+Your application (ID: APP000994) is incomplete.
+
+Please provide the following:
+Income Proof
+
+This is a system-generated communication.
+
+Please note that this is an important notification."

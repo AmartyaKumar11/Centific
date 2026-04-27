@@ -1,0 +1,16 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "hil_required": 465,
+    "no_hil_required": 535,
+    "high_priority": 219,
+    "medium_priority": 144,
+    "low_priority": 102
+  },
+  "key_metrics": {
+    "hil_required_pct": 0.465,
+    "high_priority_pct": 0.219,
+    "medium_priority_pct": 0.144,
+    "low_priority_pct": 0.102
+  }
+}

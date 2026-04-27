@@ -1,0 +1,13 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "high_severity": 313,
+    "medium_severity": 407,
+    "low_severity": 229,
+    "none_severity": 51
+  },
+  "key_metrics": {
+    "total_flagged_records": 949,
+    "unflagged_records": 51
+  }
+}

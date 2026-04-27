@@ -1,0 +1,15 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "complete_records": 818,
+    "missing_values": 114,
+    "outliers": 68,
+    "consistent_income": 686,
+    "inconsistent_income": 200,
+    "missing_documentation": 114
+  },
+  "key_metrics": {
+    "avg_dti": 1.3249,
+    "high_risk_rate": 0.499
+  }
+}

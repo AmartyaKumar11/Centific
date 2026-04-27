@@ -1,0 +1,13 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "complete_records": 1000,
+    "missing_values": 0,
+    "outliers": 0
+  },
+  "key_metrics": {
+    "within_tolerance": 339,
+    "low_mismatch": 514,
+    "high_mismatch": 147
+  }
+}

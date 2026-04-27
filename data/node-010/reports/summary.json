@@ -1,0 +1,25 @@
+{
+  "total_records": 1000,
+  "distribution": {
+    "identity": {
+      "accurate_identity": 780,
+      "inaccurate_identity": 90,
+      "partial_identity": 130
+    },
+    "credit_data": {
+      "complete_records": 789,
+      "missing_values": 105,
+      "outliers": 106
+    },
+    "raw_response": {
+      "well_formed_json": 800,
+      "malformed_json": 100,
+      "unexpected_fields": 100
+    }
+  },
+  "key_metrics": {
+    "missing_rate": 0.105,
+    "outlier_rate": 0.106,
+    "malformed_rate": 0.1
+  }
+}

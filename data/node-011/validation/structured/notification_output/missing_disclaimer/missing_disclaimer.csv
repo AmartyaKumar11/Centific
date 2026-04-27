@@ -1,0 +1,701 @@
+application_id,name,severity,flags,confidence_score,hil_required_flag,hil_priority,notification_type,rejection_reason,missing_fields,notification_type_output,notification_text
+APP000010,Swati Nair,HIGH,HIGH_DTI|INCOME_MISMATCH,55.87,True,HIGH,REJECTION,"HIGH_DTI, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000010) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000020,Suresh Verma,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,53.63,True,HIGH,REJECTION,"HIGH_DTI, LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000020) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000030,Kunal Nambiar,NONE,,96.7,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000030) is incomplete.
+
+Please provide the following:
+PAN"
+APP000040,Suresh Mehta,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,83.05,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000040) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000050,Pooja Agarwal,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,82.17,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000050) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000060,Sanjay Mishra,HIGH,HIGH_DTI,76.01,True,MEDIUM,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000060) is incomplete.
+
+Please provide the following:
+PAN"
+APP000070,Abhishek Saxena,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,67.0,True,LOW,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000070) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000080,Shreya Pillai,LOW,INCOME_MISMATCH,76.71,False,,REJECTION,INCOME_MISMATCH,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000080) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000090,Nikhil Malhotra,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,61.39,True,LOW,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000090) is incomplete.
+
+Please provide the following:
+PAN"
+APP000100,Sneha Mishra,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,80.71,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000100) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000110,Raj Verma,LOW,INCOME_MISMATCH,86.99,False,,REJECTION,INCOME_MISMATCH,[],STATUS_UPDATE,"Dear Customer,
+
+Your loan application (ID: APP000110) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000120,Aditya Thakur,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|INCOME_MISMATCH,49.28,True,HIGH,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000120) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000130,Sanjay Rao,HIGH,HIGH_DTI|INCOME_MISMATCH,66.67,True,MEDIUM,REJECTION,"HIGH_DTI, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000130) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000140,Deepika Nambiar,LOW,INCOME_MISMATCH,86.9,False,,REJECTION,INCOME_MISMATCH,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000140) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000150,Shreya Agarwal,MEDIUM,BANK_RISK|MEDIUM_DTI,76.3,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000150) is incomplete.
+
+Please provide the following:
+PAN"
+APP000160,Raj Gupta,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|HIGH_ENQUIRIES,54.57,True,HIGH,REJECTION,"HIGH_DTI, LOW_CREDIT_SCORE, HIGH_ENQUIRIES","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000160) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000170,Simran Pillai,MEDIUM,LOW_CREDIT_SCORE|MEDIUM_DTI,76.49,False,,REJECTION,"LOW_CREDIT_SCORE, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000170) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000180,Tanvi Shetty,HIGH,HIGH_DTI|INCOME_MISMATCH,58.55,True,HIGH,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000180) is incomplete.
+
+Please provide the following:
+PAN"
+APP000190,Arjun Joshi,HIGH,HIGH_DTI|INCOME_MISMATCH,66.31,True,MEDIUM,REJECTION,"HIGH_DTI, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000190) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000200,Pooja Sharma,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,84.58,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000200) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000210,Ankit Chopra,HIGH,HIGH_DTI|BANK_RISK,69.56,True,MEDIUM,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000210) is incomplete.
+
+Please provide the following:
+PAN"
+APP000220,Deepika Joshi,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,69.65,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],STATUS_UPDATE,"Dear Customer,
+
+Your loan application (ID: APP000220) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000230,Divya Nambiar,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|INCOME_MISMATCH,52.7,True,MEDIUM,REJECTION,"LOW_CREDIT_SCORE, HIGH_ENQUIRIES, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000230) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, HIGH_ENQUIRIES, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000240,Swati Mehta,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK|INCOME_MISMATCH,63.19,True,LOW,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000240) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000250,Ritika Chauhan,LOW,INCOME_MISMATCH,77.15,False,,REJECTION,INCOME_MISMATCH,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000250) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000260,Tanvi Thakur,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,83.63,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000260) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000270,Preeti Pandey,LOW,INCOME_MISMATCH,86.68,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000270) is incomplete.
+
+Please provide the following:
+PAN"
+APP000280,Raj Mehta,LOW,LOW_CREDIT_SCORE,82.41,False,,REJECTION,LOW_CREDIT_SCORE,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000280) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000290,Sakshi Menon,HIGH,HIGH_DTI|INCOME_MISMATCH,57.28,True,HIGH,REJECTION,"HIGH_DTI, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000290) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000300,Rahul Iyer,LOW,LOW_CREDIT_SCORE,84.23,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000300) is incomplete.
+
+Please provide the following:
+PAN"
+APP000310,Preeti Malhotra,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,55.77,True,MEDIUM,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000310) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000320,Preeti Pandey,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,68.66,False,,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000320) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000330,Simran Pandey,HIGH,HIGH_DTI,66.36,True,MEDIUM,REJECTION,Policy rules violation,"[""PAN""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000330) is incomplete.
+
+Please provide the following:
+PAN"
+APP000340,Rohan Desai,HIGH,HIGH_DTI|INCOME_MISMATCH,57.1,True,HIGH,REJECTION,"HIGH_DTI, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000340) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000350,Nisha Saxena,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,80.91,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000350) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000360,Simran Iyer,MEDIUM,BANK_RISK|INCOME_MISMATCH|MEDIUM_DTI,76.23,False,,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000360) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000370,Neha Mehta,LOW,MEDIUM_DTI,82.62,False,,REJECTION,MEDIUM_DTI,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000370) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000380,Anjali Mishra,MEDIUM,BANK_RISK|INCOME_MISMATCH|MEDIUM_DTI,76.0,False,,REJECTION,"BANK_RISK, INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000380) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+BANK_RISK, INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000390,Ishita Menon,LOW,INCOME_MISMATCH,86.8,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000390) is incomplete.
+
+Please provide the following:
+PAN"
+APP000400,Neha Shah,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|INCOME_MISMATCH,46.55,True,HIGH,REJECTION,"DEFAULT_HISTORY, LOW_CREDIT_SCORE, INCOME_MISMATCH","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000400) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000410,Swati Kapoor,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,47.37,True,MEDIUM,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000410) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000420,Kavita Gupta,LOW,MEDIUM_DTI,90.95,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000420) is incomplete.
+
+Please provide the following:
+PAN"
+APP000430,Ishita Joshi,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,82.05,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000430) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000440,Deepika Kapoor,MEDIUM,LOW_CREDIT_SCORE|MEDIUM_DTI,76.2,False,,REJECTION,"LOW_CREDIT_SCORE, MEDIUM_DTI","[""Income Proof""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000440) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000450,Mohit Patel,LOW,INCOME_MISMATCH,85.54,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000450) is incomplete.
+
+Please provide the following:
+PAN"
+APP000460,Sneha Agarwal,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK|HIGH_ENQUIRIES,56.04,True,MEDIUM,REJECTION,"LOW_CREDIT_SCORE, BANK_RISK, HIGH_ENQUIRIES",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000460) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, BANK_RISK, HIGH_ENQUIRIES
+
+You may reapply after addressing the above concerns."
+APP000470,Rahul Iyer,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,52.09,True,HIGH,REJECTION,"HIGH_DTI, LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000470) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000480,Suresh Nair,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,67.03,True,LOW,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000480) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000490,Kunal Bansal,HIGH,HIGH_DTI,77.47,True,MEDIUM,REJECTION,HIGH_DTI,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000490) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI
+
+You may reapply after addressing the above concerns."
+APP000500,Anjali Malhotra,MEDIUM,LOW_CREDIT_SCORE|MEDIUM_DTI,66.09,False,,REJECTION,"LOW_CREDIT_SCORE, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000500) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000510,Pooja Mishra,MEDIUM,BANK_RISK|INCOME_MISMATCH|MEDIUM_DTI,76.02,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000510) is incomplete.
+
+Please provide the following:
+PAN"
+APP000520,Amit Reddy,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,66.96,False,,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000520) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000530,Vivek Mehta,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK|INCOME_MISMATCH,62.61,True,LOW,REJECTION,"LOW_CREDIT_SCORE, BANK_RISK, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000530) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, BANK_RISK, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000540,Arjun Gupta,HIGH,HIGH_DTI|INCOME_MISMATCH,56.63,True,HIGH,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000540) is incomplete.
+
+Please provide the following:
+PAN"
+APP000550,Suresh Agarwal,HIGH,HIGH_DTI|INCOME_MISMATCH,56.73,True,HIGH,REJECTION,"HIGH_DTI, INCOME_MISMATCH",[],STATUS_UPDATE,"Dear Customer,
+
+Your loan application (ID: APP000550) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000560,Vikram Saxena,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|INCOME_MISMATCH,49.18,True,HIGH,REJECTION,"DEFAULT_HISTORY, LOW_CREDIT_SCORE, INCOME_MISMATCH","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000560) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000570,Amit Kapoor,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,82.22,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000570) is incomplete.
+
+Please provide the following:
+PAN"
+APP000580,Sneha Menon,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,62.96,False,,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000580) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000590,Vivek Pillai,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,72.03,True,LOW,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000590) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000600,Vivek Menon,HIGH,HIGH_DTI|INCOME_MISMATCH,69.03,True,MEDIUM,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000600) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000610,Kunal Mehta,LOW,MEDIUM_DTI,90.91,False,,REJECTION,MEDIUM_DTI,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000610) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000620,Pooja Bansal,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,83.54,False,,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000620) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000630,Sakshi Patel,LOW,INCOME_MISMATCH,88.34,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000630) is incomplete.
+
+Please provide the following:
+PAN"
+APP000640,Gaurav Pandey,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|BANK_RISK,55.77,True,HIGH,REJECTION,"HIGH_DTI, LOW_CREDIT_SCORE, BANK_RISK","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000640) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000650,Raj Iyer,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,59.57,True,MEDIUM,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000650) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000660,Raj Desai,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|HIGH_ENQUIRIES,54.36,True,HIGH,REJECTION,Policy rules violation,"[""PAN""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000660) is incomplete.
+
+Please provide the following:
+PAN"
+APP000670,Priya Bansal,LOW,MEDIUM_DTI,84.43,False,,REJECTION,MEDIUM_DTI,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000670) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000680,Suresh Chauhan,LOW,MEDIUM_DTI,82.77,False,,REJECTION,MEDIUM_DTI,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000680) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000690,Anjali Menon,LOW,LOW_CREDIT_SCORE,71.98,True,LOW,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000690) is incomplete.
+
+Please provide the following:
+PAN"
+APP000700,Mohit Singh,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|MEDIUM_DTI,70.34,False,,REJECTION,"LOW_CREDIT_SCORE, HIGH_ENQUIRIES, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000700) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, HIGH_ENQUIRIES, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000710,Pooja Rao,LOW,INCOME_MISMATCH,77.98,False,,REJECTION,INCOME_MISMATCH,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000710) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000720,Ritika Shah,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,73.51,False,,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000720) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000730,Rohan Kapoor,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,62.38,False,,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000730) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000740,Deepika Rao,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,67.57,True,LOW,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000740) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000750,Divya Shetty,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,54.42,True,HIGH,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000750) is incomplete.
+
+Please provide the following:
+PAN"
+APP000760,Tanvi Singh,MEDIUM,LOW_CREDIT_SCORE|HIGH_ENQUIRIES|INCOME_MISMATCH,66.47,False,,REJECTION,"LOW_CREDIT_SCORE, HIGH_ENQUIRIES, INCOME_MISMATCH","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000760) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000770,Kunal Kapoor,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,71.46,True,LOW,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],STATUS_UPDATE,"Dear Customer,
+
+Your loan application (ID: APP000770) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000780,Kunal Iyer,MEDIUM,BANK_RISK|INCOME_MISMATCH|MEDIUM_DTI,75.47,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000780) is incomplete.
+
+Please provide the following:
+PAN"
+APP000790,Amit Chopra,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH,61.15,False,,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000790) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000800,Nikhil Malhotra,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK|HIGH_ENQUIRIES,65.35,False,,REJECTION,"LOW_CREDIT_SCORE, BANK_RISK, HIGH_ENQUIRIES","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000800) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000810,Nikhil Gupta,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,53.02,True,HIGH,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000810) is incomplete.
+
+Please provide the following:
+PAN"
+APP000820,Rohan Mishra,MEDIUM,INCOME_MISMATCH|MEDIUM_DTI,61.43,True,LOW,REJECTION,"INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000820) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000830,Neha Desai,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|HIGH_ENQUIRIES,55.93,True,HIGH,REJECTION,"HIGH_DTI, LOW_CREDIT_SCORE, HIGH_ENQUIRIES",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000830) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, LOW_CREDIT_SCORE, HIGH_ENQUIRIES
+
+You may reapply after addressing the above concerns."
+APP000840,Ishita Reddy,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,50.65,True,HIGH,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000840) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000850,Divya Chopra,LOW,INCOME_MISMATCH,75.15,False,,REJECTION,INCOME_MISMATCH,[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000850) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000860,Meera Nambiar,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,67.75,False,,REJECTION,"LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000860) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, INCOME_MISMATCH, MEDIUM_DTI
+
+You may reapply after addressing the above concerns."
+APP000870,Neha Singh,LOW,INCOME_MISMATCH,89.84,False,,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000870) is incomplete.
+
+Please provide the following:
+PAN"
+APP000880,Swati Chopra,LOW,INCOME_MISMATCH,86.65,False,,REJECTION,INCOME_MISMATCH,"[""Income Proof""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000880) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000890,Ishita Pandey,HIGH,HIGH_DTI|LOW_CREDIT_SCORE|INCOME_MISMATCH,52.75,True,HIGH,REJECTION,"HIGH_DTI, LOW_CREDIT_SCORE, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000890) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, LOW_CREDIT_SCORE, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000900,Ravi Singh,HIGH,HIGH_DTI|INCOME_MISMATCH,69.13,True,MEDIUM,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000900) is incomplete.
+
+Please provide the following:
+PAN"
+APP000910,Varun Nambiar,HIGH,HIGH_DTI|INCOME_MISMATCH,58.06,True,HIGH,REJECTION,"HIGH_DTI, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000910) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000920,Tanvi Mehta,LOW,INCOME_MISMATCH,89.2,False,,REJECTION,INCOME_MISMATCH,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000920) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000930,Sneha Bansal,MEDIUM,LOW_CREDIT_SCORE|INCOME_MISMATCH|MEDIUM_DTI,55.63,True,MEDIUM,REJECTION,Policy rules violation,"[""PAN""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000930) is incomplete.
+
+Please provide the following:
+PAN"
+APP000940,Poornima Sharma,MEDIUM,LOW_CREDIT_SCORE|BANK_RISK|HIGH_ENQUIRIES,65.01,True,LOW,REJECTION,"LOW_CREDIT_SCORE, BANK_RISK, HIGH_ENQUIRIES",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000940) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+LOW_CREDIT_SCORE, BANK_RISK, HIGH_ENQUIRIES
+
+You may reapply after addressing the above concerns."
+APP000950,Arjun Thakur,HIGH,HIGH_DTI|INCOME_MISMATCH,69.52,True,MEDIUM,REJECTION,"HIGH_DTI, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000950) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+HIGH_DTI, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000960,Aisha Chopra,LOW,INCOME_MISMATCH,79.51,False,,REJECTION,Policy rules violation,"[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP000960) is incomplete.
+
+Please provide the following:
+Income Proof"
+APP000970,Nisha Reddy,HIGH,DEFAULT_HISTORY|LOW_CREDIT_SCORE|HIGH_ENQUIRIES,49.99,True,HIGH,REJECTION,"DEFAULT_HISTORY, LOW_CREDIT_SCORE, HIGH_ENQUIRIES",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000970) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+DEFAULT_HISTORY, LOW_CREDIT_SCORE, HIGH_ENQUIRIES
+
+You may reapply after addressing the above concerns."
+APP000980,Nisha Agarwal,HIGH,DEFAULT_HISTORY|INCOME_MISMATCH,50.85,True,HIGH,REJECTION,"DEFAULT_HISTORY, INCOME_MISMATCH",[],REJECTION,"Dear Customer,
+
+Your loan application (ID: APP000980) has been reviewed.
+
+We regret to inform you that your application has been declined due to:
+DEFAULT_HISTORY, INCOME_MISMATCH
+
+You may reapply after addressing the above concerns."
+APP000990,Anjali Chopra,HIGH,HIGH_DTI|BANK_RISK|INCOME_MISMATCH,47.48,True,HIGH,REJECTION,Policy rules violation,"[""PAN""]",STATUS_UPDATE,"Dear Customer,
+
+Your application (ID: APP000990) is incomplete.
+
+Please provide the following:
+PAN"
+APP001000,Rohan Reddy,HIGH,HIGH_DTI|INCOME_MISMATCH,67.52,True,MEDIUM,REJECTION,"HIGH_DTI, INCOME_MISMATCH","[""Income Proof""]",REJECTION,"Dear Customer,
+
+Your application (ID: APP001000) is incomplete.
+
+Please provide the following:
+Income Proof"

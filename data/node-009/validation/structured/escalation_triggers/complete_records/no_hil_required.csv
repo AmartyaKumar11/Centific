@@ -1,0 +1,536 @@
+application_id,severity,confidence_score,decision,hil_required_flag,hil_completed_flag,hil_priority,hil_reason
+APP000004,LOW,87.95,APPROVE,False,True,,Routine validation
+APP000006,MEDIUM,80.5,REVIEW,False,True,,Requires manual verification
+APP000009,LOW,89.62,APPROVE,False,True,,Routine validation
+APP000011,LOW,79.85,REVIEW,False,True,,Requires manual verification
+APP000012,LOW,89.51,REJECT,False,True,,Routine validation
+APP000016,MEDIUM,68.25,REJECT,False,True,,Routine validation
+APP000019,MEDIUM,76.77,REVIEW,False,True,,Requires manual verification
+APP000022,MEDIUM,81.37,REJECT,False,True,,Routine validation
+APP000024,LOW,88.17,REVIEW,False,True,,Requires manual verification
+APP000028,LOW,81.52,REVIEW,False,True,,Requires manual verification
+APP000029,MEDIUM,82.85,REVIEW,False,True,,Requires manual verification
+APP000030,NONE,96.7,APPROVE,False,True,,Routine validation
+APP000033,MEDIUM,72.63,REJECT,False,True,,Routine validation
+APP000034,LOW,76.93,REVIEW,False,True,,Requires manual verification
+APP000035,LOW,88.49,APPROVE,False,True,,Routine validation
+APP000036,NONE,88.19,REVIEW,False,True,,Requires manual verification
+APP000037,LOW,75.64,REJECT,False,True,,Routine validation
+APP000038,MEDIUM,72.0,APPROVE,False,True,,Routine validation
+APP000039,MEDIUM,81.44,APPROVE,False,True,,Routine validation
+APP000040,MEDIUM,83.05,REVIEW,False,True,,Requires manual verification
+APP000041,LOW,87.68,APPROVE,False,True,,Routine validation
+APP000045,MEDIUM,79.11,REJECT,False,True,,Routine validation
+APP000047,LOW,84.32,APPROVE,False,True,,Routine validation
+APP000050,MEDIUM,82.17,APPROVE,False,True,,Routine validation
+APP000055,LOW,87.99,APPROVE,False,True,,Routine validation
+APP000057,MEDIUM,70.8,REJECT,False,True,,Routine validation
+APP000059,MEDIUM,76.73,REJECT,False,True,,Routine validation
+APP000061,MEDIUM,81.24,APPROVE,False,True,,Routine validation
+APP000062,LOW,86.86,REVIEW,False,True,,Requires manual verification
+APP000064,LOW,94.36,REVIEW,False,True,,Requires manual verification
+APP000065,LOW,92.54,REJECT,False,True,,Routine validation
+APP000066,LOW,84.74,REVIEW,False,True,,Requires manual verification
+APP000069,MEDIUM,72.98,REJECT,False,True,,Routine validation
+APP000071,NONE,96.95,APPROVE,False,True,,Routine validation
+APP000073,MEDIUM,67.48,REJECT,False,True,,Routine validation
+APP000076,LOW,94.77,REVIEW,False,True,,Requires manual verification
+APP000077,MEDIUM,78.99,APPROVE,False,True,,Routine validation
+APP000078,MEDIUM,71.92,APPROVE,False,True,,Routine validation
+APP000080,LOW,76.71,REVIEW,False,True,,Requires manual verification
+APP000081,MEDIUM,69.76,REJECT,False,True,,Routine validation
+APP000083,LOW,78.19,REVIEW,False,True,,Requires manual verification
+APP000084,MEDIUM,70.81,APPROVE,False,True,,Routine validation
+APP000085,LOW,87.53,REVIEW,False,True,,Requires manual verification
+APP000086,LOW,93.54,REVIEW,False,True,,Requires manual verification
+APP000087,MEDIUM,81.32,REVIEW,False,True,,Requires manual verification
+APP000088,LOW,88.68,APPROVE,False,True,,Routine validation
+APP000089,MEDIUM,65.68,REJECT,False,True,,Routine validation
+APP000092,MEDIUM,68.79,REJECT,False,True,,Routine validation
+APP000093,MEDIUM,66.89,APPROVE,False,True,,Routine validation
+APP000094,MEDIUM,81.41,REVIEW,False,True,,Requires manual verification
+APP000099,NONE,96.93,APPROVE,False,True,,Routine validation
+APP000100,MEDIUM,80.71,APPROVE,False,True,,Routine validation
+APP000103,LOW,77.42,REVIEW,False,True,,Requires manual verification
+APP000105,MEDIUM,65.62,REJECT,False,True,,Routine validation
+APP000109,MEDIUM,81.53,REVIEW,False,True,,Requires manual verification
+APP000110,LOW,86.99,APPROVE,False,True,,Routine validation
+APP000112,NONE,95.87,APPROVE,False,True,,Routine validation
+APP000113,MEDIUM,77.13,APPROVE,False,True,,Routine validation
+APP000114,LOW,89.59,APPROVE,False,True,,Routine validation
+APP000116,MEDIUM,83.21,REJECT,False,True,,Routine validation
+APP000117,MEDIUM,81.47,APPROVE,False,True,,Routine validation
+APP000119,LOW,82.38,APPROVE,False,True,,Routine validation
+APP000121,MEDIUM,62.88,REJECT,False,True,,Routine validation
+APP000124,MEDIUM,81.61,REJECT,False,True,,Routine validation
+APP000125,NONE,97.97,REVIEW,False,True,,Requires manual verification
+APP000128,NONE,86.29,APPROVE,False,True,,Routine validation
+APP000131,MEDIUM,78.48,REVIEW,False,True,,Requires manual verification
+APP000132,LOW,87.82,APPROVE,False,True,,Routine validation
+APP000133,MEDIUM,84.62,APPROVE,False,True,,Routine validation
+APP000134,MEDIUM,83.72,APPROVE,False,True,,Routine validation
+APP000139,LOW,89.75,APPROVE,False,True,,Routine validation
+APP000140,LOW,86.9,REVIEW,False,True,,Requires manual verification
+APP000142,MEDIUM,66.86,REJECT,False,True,,Routine validation
+APP000144,LOW,88.67,REVIEW,False,True,,Requires manual verification
+APP000145,LOW,77.25,REJECT,False,True,,Routine validation
+APP000147,LOW,92.49,APPROVE,False,True,,Routine validation
+APP000148,MEDIUM,66.9,REJECT,False,True,,Routine validation
+APP000149,MEDIUM,65.19,APPROVE,False,True,,Routine validation
+APP000150,MEDIUM,76.3,APPROVE,False,True,,Routine validation
+APP000152,LOW,86.26,APPROVE,False,True,,Routine validation
+APP000155,LOW,89.37,APPROVE,False,True,,Routine validation
+APP000156,NONE,99.65,APPROVE,False,True,,Routine validation
+APP000157,LOW,82.08,APPROVE,False,True,,Routine validation
+APP000158,LOW,94.74,APPROVE,False,True,,Routine validation
+APP000159,MEDIUM,69.84,APPROVE,False,True,,Routine validation
+APP000162,MEDIUM,70.73,APPROVE,False,True,,Routine validation
+APP000163,LOW,90.68,APPROVE,False,True,,Routine validation
+APP000164,LOW,80.81,APPROVE,False,True,,Routine validation
+APP000165,MEDIUM,69.62,REJECT,False,True,,Routine validation
+APP000166,LOW,93.52,REVIEW,False,True,,Requires manual verification
+APP000167,MEDIUM,79.31,REVIEW,False,True,,Requires manual verification
+APP000169,MEDIUM,81.78,REVIEW,False,True,,Requires manual verification
+APP000170,MEDIUM,76.49,APPROVE,False,True,,Routine validation
+APP000171,MEDIUM,71.65,REJECT,False,True,,Routine validation
+APP000172,NONE,96.41,APPROVE,False,True,,Routine validation
+APP000173,MEDIUM,66.11,REJECT,False,True,,Routine validation
+APP000176,LOW,74.86,REJECT,False,True,,Routine validation
+APP000177,LOW,80.86,REVIEW,False,True,,Requires manual verification
+APP000179,LOW,93.43,APPROVE,False,True,,Routine validation
+APP000181,MEDIUM,68.02,REJECT,False,True,,Routine validation
+APP000183,MEDIUM,65.24,REJECT,False,True,,Routine validation
+APP000185,MEDIUM,66.05,REJECT,False,True,,Routine validation
+APP000186,NONE,86.55,REVIEW,False,True,,Requires manual verification
+APP000189,LOW,78.63,REVIEW,False,True,,Requires manual verification
+APP000191,MEDIUM,66.44,REJECT,False,True,,Routine validation
+APP000193,LOW,76.57,REVIEW,False,True,,Requires manual verification
+APP000194,LOW,88.5,APPROVE,False,True,,Routine validation
+APP000195,MEDIUM,80.5,APPROVE,False,True,,Routine validation
+APP000198,MEDIUM,79.11,APPROVE,False,True,,Routine validation
+APP000199,LOW,92.32,APPROVE,False,True,,Routine validation
+APP000200,MEDIUM,84.58,APPROVE,False,True,,Routine validation
+APP000204,LOW,89.6,APPROVE,False,True,,Routine validation
+APP000205,LOW,88.11,REVIEW,False,True,,Requires manual verification
+APP000206,MEDIUM,61.43,REJECT,False,True,,Routine validation
+APP000208,MEDIUM,84.1,APPROVE,False,True,,Routine validation
+APP000209,NONE,86.41,APPROVE,False,True,,Routine validation
+APP000211,MEDIUM,61.3,APPROVE,False,True,,Routine validation
+APP000212,MEDIUM,84.14,REJECT,False,True,,Routine validation
+APP000215,MEDIUM,78.75,REJECT,False,True,,Routine validation
+APP000216,MEDIUM,81.02,APPROVE,False,True,,Routine validation
+APP000218,LOW,76.11,REVIEW,False,True,,Requires manual verification
+APP000219,MEDIUM,73.97,REJECT,False,True,,Routine validation
+APP000220,MEDIUM,69.65,REJECT,False,True,,Routine validation
+APP000222,LOW,92.46,REVIEW,False,True,,Requires manual verification
+APP000223,LOW,94.39,APPROVE,False,True,,Routine validation
+APP000224,MEDIUM,65.31,REJECT,False,True,,Routine validation
+APP000226,MEDIUM,67.55,REJECT,False,True,,Routine validation
+APP000227,MEDIUM,65.49,REJECT,False,True,,Routine validation
+APP000229,LOW,89.34,REVIEW,False,True,,Requires manual verification
+APP000231,MEDIUM,76.17,REJECT,False,True,,Routine validation
+APP000236,MEDIUM,82.77,REVIEW,False,True,,Requires manual verification
+APP000239,LOW,77.95,REVIEW,False,True,,Requires manual verification
+APP000241,MEDIUM,66.85,REJECT,False,True,,Routine validation
+APP000242,LOW,89.81,APPROVE,False,True,,Routine validation
+APP000244,MEDIUM,60.53,REJECT,False,True,,Routine validation
+APP000245,MEDIUM,60.96,REJECT,False,True,,Routine validation
+APP000250,LOW,77.15,APPROVE,False,True,,Routine validation
+APP000251,MEDIUM,70.01,REJECT,False,True,,Routine validation
+APP000255,MEDIUM,84.66,REVIEW,False,True,,Requires manual verification
+APP000256,LOW,92.96,APPROVE,False,True,,Routine validation
+APP000258,LOW,91.36,REVIEW,False,True,,Requires manual verification
+APP000259,MEDIUM,66.76,REJECT,False,True,,Routine validation
+APP000260,MEDIUM,83.63,REVIEW,False,True,,Requires manual verification
+APP000265,NONE,97.96,APPROVE,False,True,,Routine validation
+APP000268,NONE,96.39,APPROVE,False,True,,Routine validation
+APP000270,LOW,86.68,APPROVE,False,True,,Routine validation
+APP000272,MEDIUM,66.0,REJECT,False,True,,Routine validation
+APP000273,MEDIUM,66.35,REJECT,False,True,,Routine validation
+APP000274,LOW,80.58,APPROVE,False,True,,Routine validation
+APP000275,MEDIUM,65.49,REJECT,False,True,,Routine validation
+APP000276,MEDIUM,70.02,REJECT,False,True,,Routine validation
+APP000277,LOW,91.76,REJECT,False,True,,Routine validation
+APP000278,MEDIUM,84.37,REVIEW,False,True,,Requires manual verification
+APP000280,LOW,82.41,REVIEW,False,True,,Requires manual verification
+APP000282,LOW,94.4,APPROVE,False,True,,Routine validation
+APP000284,MEDIUM,70.97,APPROVE,False,True,,Routine validation
+APP000289,LOW,91.5,APPROVE,False,True,,Routine validation
+APP000291,LOW,89.25,APPROVE,False,True,,Routine validation
+APP000292,MEDIUM,82.77,APPROVE,False,True,,Routine validation
+APP000297,LOW,83.6,REVIEW,False,True,,Requires manual verification
+APP000298,MEDIUM,83.34,REVIEW,False,True,,Requires manual verification
+APP000299,NONE,97.01,APPROVE,False,True,,Routine validation
+APP000300,LOW,84.23,APPROVE,False,True,,Routine validation
+APP000302,LOW,77.23,REVIEW,False,True,,Requires manual verification
+APP000307,MEDIUM,73.86,APPROVE,False,True,,Routine validation
+APP000309,LOW,89.79,APPROVE,False,True,,Routine validation
+APP000314,MEDIUM,73.17,REJECT,False,True,,Routine validation
+APP000315,MEDIUM,81.36,REVIEW,False,True,,Requires manual verification
+APP000318,MEDIUM,70.95,REJECT,False,True,,Routine validation
+APP000320,MEDIUM,68.66,REJECT,False,True,,Routine validation
+APP000322,LOW,78.93,APPROVE,False,True,,Routine validation
+APP000328,NONE,95.81,REVIEW,False,True,,Requires manual verification
+APP000331,LOW,91.61,REVIEW,False,True,,Requires manual verification
+APP000332,MEDIUM,64.31,APPROVE,False,True,,Routine validation
+APP000334,MEDIUM,80.9,APPROVE,False,True,,Routine validation
+APP000337,MEDIUM,83.28,REVIEW,False,True,,Requires manual verification
+APP000341,NONE,99.58,APPROVE,False,True,,Routine validation
+APP000344,LOW,89.14,APPROVE,False,True,,Routine validation
+APP000346,NONE,86.44,APPROVE,False,True,,Routine validation
+APP000347,NONE,97.1,APPROVE,False,True,,Routine validation
+APP000348,MEDIUM,79.8,REVIEW,False,True,,Requires manual verification
+APP000349,MEDIUM,69.16,REJECT,False,True,,Routine validation
+APP000350,MEDIUM,80.91,APPROVE,False,True,,Routine validation
+APP000351,LOW,92.19,APPROVE,False,True,,Routine validation
+APP000353,LOW,88.14,APPROVE,False,True,,Routine validation
+APP000354,MEDIUM,63.6,REJECT,False,True,,Routine validation
+APP000356,MEDIUM,65.67,REJECT,False,True,,Routine validation
+APP000357,LOW,90.98,REVIEW,False,True,,Requires manual verification
+APP000360,MEDIUM,76.23,APPROVE,False,True,,Routine validation
+APP000361,LOW,76.26,REVIEW,False,True,,Requires manual verification
+APP000362,NONE,96.62,APPROVE,False,True,,Routine validation
+APP000365,LOW,89.59,APPROVE,False,True,,Routine validation
+APP000367,LOW,75.41,APPROVE,False,True,,Routine validation
+APP000368,MEDIUM,78.69,REVIEW,False,True,,Requires manual verification
+APP000369,MEDIUM,64.24,REJECT,False,True,,Routine validation
+APP000370,LOW,82.62,REVIEW,False,True,,Requires manual verification
+APP000371,LOW,88.68,REVIEW,False,True,,Requires manual verification
+APP000372,NONE,89.27,APPROVE,False,True,,Routine validation
+APP000375,NONE,98.74,APPROVE,False,True,,Routine validation
+APP000377,MEDIUM,64.05,REJECT,False,True,,Routine validation
+APP000380,MEDIUM,76.0,REVIEW,False,True,,Requires manual verification
+APP000381,MEDIUM,64.07,APPROVE,False,True,,Routine validation
+APP000382,MEDIUM,76.19,REVIEW,False,True,,Requires manual verification
+APP000383,MEDIUM,80.86,REVIEW,False,True,,Requires manual verification
+APP000386,MEDIUM,81.34,APPROVE,False,True,,Routine validation
+APP000387,LOW,93.44,APPROVE,False,True,,Routine validation
+APP000388,NONE,96.11,REVIEW,False,True,,Requires manual verification
+APP000390,LOW,86.8,APPROVE,False,True,,Routine validation
+APP000396,LOW,83.5,REVIEW,False,True,,Requires manual verification
+APP000397,LOW,90.53,APPROVE,False,True,,Routine validation
+APP000402,LOW,92.58,APPROVE,False,True,,Routine validation
+APP000406,MEDIUM,73.87,REJECT,False,True,,Routine validation
+APP000408,NONE,76.72,APPROVE,False,True,,Routine validation
+APP000409,MEDIUM,66.04,APPROVE,False,True,,Routine validation
+APP000413,MEDIUM,66.08,REJECT,False,True,,Routine validation
+APP000414,LOW,89.41,REVIEW,False,True,,Requires manual verification
+APP000415,MEDIUM,61.26,REJECT,False,True,,Routine validation
+APP000416,MEDIUM,83.47,REVIEW,False,True,,Requires manual verification
+APP000417,MEDIUM,66.46,REJECT,False,True,,Routine validation
+APP000419,MEDIUM,80.97,REJECT,False,True,,Routine validation
+APP000420,LOW,90.95,APPROVE,False,True,,Routine validation
+APP000421,LOW,90.84,APPROVE,False,True,,Routine validation
+APP000422,LOW,83.67,REVIEW,False,True,,Requires manual verification
+APP000427,NONE,95.83,APPROVE,False,True,,Routine validation
+APP000428,LOW,77.77,REVIEW,False,True,,Requires manual verification
+APP000430,MEDIUM,82.05,APPROVE,False,True,,Routine validation
+APP000432,LOW,77.36,APPROVE,False,True,,Routine validation
+APP000435,MEDIUM,81.95,REVIEW,False,True,,Requires manual verification
+APP000436,NONE,99.76,REVIEW,False,True,,Requires manual verification
+APP000437,LOW,74.17,REJECT,False,True,,Routine validation
+APP000438,LOW,89.82,APPROVE,False,True,,Routine validation
+APP000440,MEDIUM,76.2,REJECT,False,True,,Routine validation
+APP000443,LOW,92.99,APPROVE,False,True,,Routine validation
+APP000448,MEDIUM,71.11,APPROVE,False,True,,Routine validation
+APP000450,LOW,85.54,APPROVE,False,True,,Routine validation
+APP000452,MEDIUM,80.65,REVIEW,False,True,,Requires manual verification
+APP000453,MEDIUM,67.89,APPROVE,False,True,,Routine validation
+APP000455,MEDIUM,84.83,REVIEW,False,True,,Requires manual verification
+APP000456,MEDIUM,82.08,REVIEW,False,True,,Requires manual verification
+APP000457,LOW,78.97,REVIEW,False,True,,Requires manual verification
+APP000458,LOW,81.45,APPROVE,False,True,,Routine validation
+APP000459,MEDIUM,74.61,REJECT,False,True,,Routine validation
+APP000462,MEDIUM,75.01,REVIEW,False,True,,Requires manual verification
+APP000463,NONE,97.08,APPROVE,False,True,,Routine validation
+APP000465,MEDIUM,74.64,REJECT,False,True,,Routine validation
+APP000472,LOW,89.33,REVIEW,False,True,,Requires manual verification
+APP000475,LOW,83.02,APPROVE,False,True,,Routine validation
+APP000476,LOW,88.33,REVIEW,False,True,,Requires manual verification
+APP000477,LOW,89.44,REVIEW,False,True,,Requires manual verification
+APP000479,MEDIUM,65.33,REJECT,False,True,,Routine validation
+APP000482,MEDIUM,64.68,REJECT,False,True,,Routine validation
+APP000484,LOW,82.1,REVIEW,False,True,,Requires manual verification
+APP000487,LOW,87.36,APPROVE,False,True,,Routine validation
+APP000492,MEDIUM,67.05,REJECT,False,True,,Routine validation
+APP000493,MEDIUM,63.97,REJECT,False,True,,Routine validation
+APP000494,LOW,87.99,APPROVE,False,True,,Routine validation
+APP000495,LOW,91.75,APPROVE,False,True,,Routine validation
+APP000496,MEDIUM,81.88,REJECT,False,True,,Routine validation
+APP000498,MEDIUM,64.54,REJECT,False,True,,Routine validation
+APP000500,MEDIUM,66.09,REJECT,False,True,,Routine validation
+APP000504,LOW,76.56,REVIEW,False,True,,Requires manual verification
+APP000505,MEDIUM,82.02,REVIEW,False,True,,Requires manual verification
+APP000508,MEDIUM,80.58,REJECT,False,True,,Routine validation
+APP000510,MEDIUM,76.02,REJECT,False,True,,Routine validation
+APP000511,MEDIUM,62.54,REJECT,False,True,,Routine validation
+APP000520,MEDIUM,66.96,REJECT,False,True,,Routine validation
+APP000521,LOW,89.42,APPROVE,False,True,,Routine validation
+APP000522,LOW,90.55,APPROVE,False,True,,Routine validation
+APP000524,MEDIUM,73.49,APPROVE,False,True,,Routine validation
+APP000527,MEDIUM,75.52,APPROVE,False,True,,Routine validation
+APP000531,LOW,86.16,APPROVE,False,True,,Routine validation
+APP000532,LOW,77.81,REJECT,False,True,,Routine validation
+APP000534,MEDIUM,72.64,REJECT,False,True,,Routine validation
+APP000536,MEDIUM,65.74,REJECT,False,True,,Routine validation
+APP000537,MEDIUM,79.38,REJECT,False,True,,Routine validation
+APP000538,MEDIUM,74.77,REJECT,False,True,,Routine validation
+APP000539,MEDIUM,81.96,APPROVE,False,True,,Routine validation
+APP000541,MEDIUM,73.84,APPROVE,False,True,,Routine validation
+APP000545,MEDIUM,84.81,APPROVE,False,True,,Routine validation
+APP000547,LOW,81.94,APPROVE,False,True,,Routine validation
+APP000548,MEDIUM,81.09,APPROVE,False,True,,Routine validation
+APP000551,MEDIUM,75.09,APPROVE,False,True,,Routine validation
+APP000552,LOW,90.62,APPROVE,False,True,,Routine validation
+APP000554,MEDIUM,84.48,APPROVE,False,True,,Routine validation
+APP000557,LOW,92.45,APPROVE,False,True,,Routine validation
+APP000562,LOW,91.72,APPROVE,False,True,,Routine validation
+APP000563,LOW,87.52,APPROVE,False,True,,Routine validation
+APP000564,MEDIUM,67.24,REJECT,False,True,,Routine validation
+APP000565,MEDIUM,80.7,REJECT,False,True,,Routine validation
+APP000566,MEDIUM,61.91,REJECT,False,True,,Routine validation
+APP000568,LOW,91.38,APPROVE,False,True,,Routine validation
+APP000569,LOW,91.63,APPROVE,False,True,,Routine validation
+APP000570,MEDIUM,82.22,REVIEW,False,True,,Requires manual verification
+APP000571,MEDIUM,81.0,REVIEW,False,True,,Requires manual verification
+APP000572,MEDIUM,82.39,REVIEW,False,True,,Requires manual verification
+APP000573,MEDIUM,64.35,REJECT,False,True,,Routine validation
+APP000574,MEDIUM,74.22,REJECT,False,True,,Routine validation
+APP000575,LOW,86.6,APPROVE,False,True,,Routine validation
+APP000576,MEDIUM,81.44,REVIEW,False,True,,Requires manual verification
+APP000577,LOW,90.77,APPROVE,False,True,,Routine validation
+APP000579,LOW,87.72,APPROVE,False,True,,Routine validation
+APP000580,MEDIUM,62.96,APPROVE,False,True,,Routine validation
+APP000581,MEDIUM,74.31,REJECT,False,True,,Routine validation
+APP000582,LOW,79.53,REVIEW,False,True,,Requires manual verification
+APP000583,NONE,97.34,REVIEW,False,True,,Requires manual verification
+APP000584,NONE,87.97,APPROVE,False,True,,Routine validation
+APP000585,LOW,80.52,APPROVE,False,True,,Routine validation
+APP000588,NONE,97.52,REVIEW,False,True,,Requires manual verification
+APP000591,MEDIUM,79.29,APPROVE,False,True,,Routine validation
+APP000594,LOW,77.05,REVIEW,False,True,,Requires manual verification
+APP000595,LOW,82.64,REVIEW,False,True,,Requires manual verification
+APP000599,LOW,87.33,APPROVE,False,True,,Routine validation
+APP000601,MEDIUM,84.37,REVIEW,False,True,,Requires manual verification
+APP000603,MEDIUM,64.42,APPROVE,False,True,,Routine validation
+APP000604,MEDIUM,71.01,APPROVE,False,True,,Routine validation
+APP000605,MEDIUM,75.51,REVIEW,False,True,,Requires manual verification
+APP000606,NONE,97.18,APPROVE,False,True,,Routine validation
+APP000607,LOW,89.05,REVIEW,False,True,,Requires manual verification
+APP000608,NONE,97.62,APPROVE,False,True,,Routine validation
+APP000610,LOW,90.91,REVIEW,False,True,,Requires manual verification
+APP000613,MEDIUM,84.83,APPROVE,False,True,,Routine validation
+APP000615,MEDIUM,82.48,APPROVE,False,True,,Routine validation
+APP000619,LOW,81.35,REVIEW,False,True,,Requires manual verification
+APP000620,MEDIUM,83.54,REVIEW,False,True,,Requires manual verification
+APP000621,LOW,88.15,REVIEW,False,True,,Requires manual verification
+APP000622,MEDIUM,72.8,REJECT,False,True,,Routine validation
+APP000623,MEDIUM,70.69,APPROVE,False,True,,Routine validation
+APP000624,MEDIUM,80.44,REVIEW,False,True,,Requires manual verification
+APP000626,MEDIUM,62.81,REJECT,False,True,,Routine validation
+APP000627,LOW,89.46,REVIEW,False,True,,Requires manual verification
+APP000628,MEDIUM,80.77,REVIEW,False,True,,Requires manual verification
+APP000629,MEDIUM,80.6,REVIEW,False,True,,Requires manual verification
+APP000630,LOW,88.34,APPROVE,False,True,,Routine validation
+APP000632,LOW,93.42,APPROVE,False,True,,Routine validation
+APP000633,MEDIUM,81.02,APPROVE,False,True,,Routine validation
+APP000634,MEDIUM,84.72,REVIEW,False,True,,Requires manual verification
+APP000638,MEDIUM,73.91,REJECT,False,True,,Routine validation
+APP000639,NONE,99.68,APPROVE,False,True,,Routine validation
+APP000641,MEDIUM,80.51,REVIEW,False,True,,Requires manual verification
+APP000644,MEDIUM,72.21,APPROVE,False,True,,Routine validation
+APP000645,MEDIUM,70.31,REJECT,False,True,,Routine validation
+APP000646,LOW,93.85,APPROVE,False,True,,Routine validation
+APP000647,MEDIUM,77.63,REVIEW,False,True,,Requires manual verification
+APP000648,MEDIUM,68.42,REJECT,False,True,,Routine validation
+APP000649,MEDIUM,68.69,REJECT,False,True,,Routine validation
+APP000651,MEDIUM,84.84,REVIEW,False,True,,Requires manual verification
+APP000653,LOW,78.63,REVIEW,False,True,,Requires manual verification
+APP000656,MEDIUM,70.33,APPROVE,False,True,,Routine validation
+APP000657,MEDIUM,76.34,REJECT,False,True,,Routine validation
+APP000658,LOW,89.73,APPROVE,False,True,,Routine validation
+APP000663,MEDIUM,72.12,REJECT,False,True,,Routine validation
+APP000666,LOW,93.3,APPROVE,False,True,,Routine validation
+APP000667,NONE,86.95,APPROVE,False,True,,Routine validation
+APP000668,MEDIUM,82.15,REVIEW,False,True,,Requires manual verification
+APP000670,LOW,84.43,REVIEW,False,True,,Requires manual verification
+APP000671,LOW,90.68,REVIEW,False,True,,Requires manual verification
+APP000673,LOW,87.09,APPROVE,False,True,,Routine validation
+APP000675,LOW,93.99,APPROVE,False,True,,Routine validation
+APP000676,NONE,98.98,APPROVE,False,True,,Routine validation
+APP000677,LOW,71.05,APPROVE,False,True,,Routine validation
+APP000679,MEDIUM,80.55,APPROVE,False,True,,Routine validation
+APP000680,LOW,82.77,REVIEW,False,True,,Requires manual verification
+APP000682,LOW,88.35,REJECT,False,True,,Routine validation
+APP000683,MEDIUM,68.1,APPROVE,False,True,,Routine validation
+APP000684,LOW,87.2,REVIEW,False,True,,Requires manual verification
+APP000685,NONE,97.44,APPROVE,False,True,,Routine validation
+APP000686,LOW,88.62,REVIEW,False,True,,Requires manual verification
+APP000688,LOW,86.08,APPROVE,False,True,,Routine validation
+APP000692,LOW,88.65,REVIEW,False,True,,Requires manual verification
+APP000693,NONE,85.93,REVIEW,False,True,,Requires manual verification
+APP000695,LOW,94.4,REVIEW,False,True,,Requires manual verification
+APP000698,LOW,81.55,REVIEW,False,True,,Requires manual verification
+APP000700,MEDIUM,70.34,REJECT,False,True,,Routine validation
+APP000702,LOW,87.38,APPROVE,False,True,,Routine validation
+APP000705,MEDIUM,78.85,REVIEW,False,True,,Requires manual verification
+APP000707,LOW,91.87,APPROVE,False,True,,Routine validation
+APP000709,LOW,76.88,REVIEW,False,True,,Requires manual verification
+APP000710,LOW,77.98,REVIEW,False,True,,Requires manual verification
+APP000711,MEDIUM,73.09,APPROVE,False,True,,Routine validation
+APP000715,MEDIUM,72.39,APPROVE,False,True,,Routine validation
+APP000717,LOW,91.14,APPROVE,False,True,,Routine validation
+APP000720,MEDIUM,73.51,APPROVE,False,True,,Routine validation
+APP000724,MEDIUM,63.73,REJECT,False,True,,Routine validation
+APP000726,NONE,99.41,APPROVE,False,True,,Routine validation
+APP000727,MEDIUM,67.53,REJECT,False,True,,Routine validation
+APP000730,MEDIUM,62.38,REJECT,False,True,,Routine validation
+APP000732,MEDIUM,67.9,REJECT,False,True,,Routine validation
+APP000734,LOW,77.8,REVIEW,False,True,,Requires manual verification
+APP000736,LOW,82.01,REJECT,False,True,,Routine validation
+APP000738,MEDIUM,81.52,REVIEW,False,True,,Requires manual verification
+APP000739,LOW,94.02,APPROVE,False,True,,Routine validation
+APP000741,MEDIUM,80.71,APPROVE,False,True,,Routine validation
+APP000742,MEDIUM,67.69,REJECT,False,True,,Routine validation
+APP000743,LOW,89.06,APPROVE,False,True,,Routine validation
+APP000744,LOW,92.74,REVIEW,False,True,,Requires manual verification
+APP000745,MEDIUM,83.78,APPROVE,False,True,,Routine validation
+APP000752,MEDIUM,72.47,APPROVE,False,True,,Routine validation
+APP000753,MEDIUM,69.43,REJECT,False,True,,Routine validation
+APP000754,LOW,77.75,APPROVE,False,True,,Routine validation
+APP000757,LOW,82.1,REVIEW,False,True,,Requires manual verification
+APP000758,MEDIUM,76.36,APPROVE,False,True,,Routine validation
+APP000760,MEDIUM,66.47,REJECT,False,True,,Routine validation
+APP000761,MEDIUM,83.52,REVIEW,False,True,,Requires manual verification
+APP000762,LOW,75.51,REJECT,False,True,,Routine validation
+APP000763,NONE,99.52,APPROVE,False,True,,Routine validation
+APP000764,LOW,82.07,APPROVE,False,True,,Routine validation
+APP000766,LOW,83.1,REVIEW,False,True,,Requires manual verification
+APP000767,LOW,86.03,APPROVE,False,True,,Routine validation
+APP000768,LOW,84.52,REVIEW,False,True,,Requires manual verification
+APP000771,NONE,86.47,APPROVE,False,True,,Routine validation
+APP000772,LOW,92.72,APPROVE,False,True,,Routine validation
+APP000773,LOW,87.2,REJECT,False,True,,Routine validation
+APP000774,LOW,84.43,REVIEW,False,True,,Requires manual verification
+APP000775,NONE,95.71,APPROVE,False,True,,Routine validation
+APP000779,LOW,75.16,REVIEW,False,True,,Requires manual verification
+APP000780,MEDIUM,75.47,APPROVE,False,True,,Routine validation
+APP000781,MEDIUM,64.94,REJECT,False,True,,Routine validation
+APP000782,MEDIUM,64.72,REJECT,False,True,,Routine validation
+APP000784,LOW,81.86,REVIEW,False,True,,Requires manual verification
+APP000788,MEDIUM,83.59,REVIEW,False,True,,Requires manual verification
+APP000790,MEDIUM,61.15,REJECT,False,True,,Routine validation
+APP000792,LOW,86.34,APPROVE,False,True,,Routine validation
+APP000795,LOW,87.23,APPROVE,False,True,,Routine validation
+APP000796,MEDIUM,67.16,REJECT,False,True,,Routine validation
+APP000799,MEDIUM,83.4,REVIEW,False,True,,Requires manual verification
+APP000800,MEDIUM,65.35,REJECT,False,True,,Routine validation
+APP000803,MEDIUM,81.31,APPROVE,False,True,,Routine validation
+APP000807,LOW,82.86,REVIEW,False,True,,Requires manual verification
+APP000808,MEDIUM,82.38,REVIEW,False,True,,Requires manual verification
+APP000809,LOW,91.68,APPROVE,False,True,,Routine validation
+APP000811,MEDIUM,81.66,REVIEW,False,True,,Requires manual verification
+APP000812,MEDIUM,71.35,REJECT,False,True,,Routine validation
+APP000813,MEDIUM,63.14,APPROVE,False,True,,Routine validation
+APP000815,MEDIUM,65.88,REJECT,False,True,,Routine validation
+APP000816,MEDIUM,80.62,APPROVE,False,True,,Routine validation
+APP000817,LOW,94.57,APPROVE,False,True,,Routine validation
+APP000818,MEDIUM,82.06,APPROVE,False,True,,Routine validation
+APP000819,LOW,79.2,REJECT,False,True,,Routine validation
+APP000821,NONE,97.75,APPROVE,False,True,,Routine validation
+APP000823,MEDIUM,64.28,APPROVE,False,True,,Routine validation
+APP000824,LOW,87.32,APPROVE,False,True,,Routine validation
+APP000825,MEDIUM,80.72,REVIEW,False,True,,Requires manual verification
+APP000826,LOW,89.34,APPROVE,False,True,,Routine validation
+APP000827,NONE,85.6,REJECT,False,True,,Routine validation
+APP000828,LOW,93.17,APPROVE,False,True,,Routine validation
+APP000832,LOW,86.11,APPROVE,False,True,,Routine validation
+APP000833,LOW,85.59,APPROVE,False,True,,Routine validation
+APP000835,MEDIUM,73.79,REJECT,False,True,,Routine validation
+APP000838,MEDIUM,66.73,REJECT,False,True,,Routine validation
+APP000839,LOW,77.34,REVIEW,False,True,,Requires manual verification
+APP000841,MEDIUM,81.37,REVIEW,False,True,,Requires manual verification
+APP000842,LOW,60.91,APPROVE,False,True,,Routine validation
+APP000843,LOW,75.78,REVIEW,False,True,,Requires manual verification
+APP000846,NONE,85.21,REJECT,False,True,,Routine validation
+APP000848,LOW,94.41,APPROVE,False,True,,Routine validation
+APP000850,LOW,75.15,APPROVE,False,True,,Routine validation
+APP000851,MEDIUM,66.69,REJECT,False,True,,Routine validation
+APP000853,NONE,99.72,REVIEW,False,True,,Requires manual verification
+APP000855,MEDIUM,67.75,REJECT,False,True,,Routine validation
+APP000856,MEDIUM,74.25,APPROVE,False,True,,Routine validation
+APP000857,MEDIUM,84.06,APPROVE,False,True,,Routine validation
+APP000858,LOW,82.57,REJECT,False,True,,Routine validation
+APP000860,MEDIUM,67.75,APPROVE,False,True,,Routine validation
+APP000862,LOW,77.89,APPROVE,False,True,,Routine validation
+APP000863,MEDIUM,65.59,REJECT,False,True,,Routine validation
+APP000865,LOW,88.97,REVIEW,False,True,,Requires manual verification
+APP000866,LOW,93.4,REVIEW,False,True,,Requires manual verification
+APP000867,LOW,94.3,REVIEW,False,True,,Requires manual verification
+APP000869,LOW,80.82,REJECT,False,True,,Routine validation
+APP000870,LOW,89.84,REVIEW,False,True,,Requires manual verification
+APP000872,MEDIUM,72.86,REJECT,False,True,,Routine validation
+APP000874,LOW,87.42,REJECT,False,True,,Routine validation
+APP000875,MEDIUM,80.88,REVIEW,False,True,,Requires manual verification
+APP000878,MEDIUM,74.67,REJECT,False,True,,Routine validation
+APP000879,MEDIUM,82.87,REJECT,False,True,,Routine validation
+APP000880,LOW,86.65,REJECT,False,True,,Routine validation
+APP000881,LOW,94.46,REVIEW,False,True,,Requires manual verification
+APP000884,LOW,77.18,REVIEW,False,True,,Requires manual verification
+APP000885,LOW,84.08,REVIEW,False,True,,Requires manual verification
+APP000887,MEDIUM,71.76,REJECT,False,True,,Routine validation
+APP000889,LOW,82.84,REJECT,False,True,,Routine validation
+APP000891,MEDIUM,84.39,REVIEW,False,True,,Requires manual verification
+APP000892,NONE,96.71,APPROVE,False,True,,Routine validation
+APP000893,NONE,96.67,APPROVE,False,True,,Routine validation
+APP000895,LOW,84.1,REVIEW,False,True,,Requires manual verification
+APP000896,LOW,74.77,REJECT,False,True,,Routine validation
+APP000897,LOW,84.15,REJECT,False,True,,Routine validation
+APP000899,NONE,98.14,APPROVE,False,True,,Routine validation
+APP000903,MEDIUM,77.59,REVIEW,False,True,,Requires manual verification
+APP000905,LOW,81.58,APPROVE,False,True,,Routine validation
+APP000906,LOW,91.13,APPROVE,False,True,,Routine validation
+APP000907,MEDIUM,61.01,REJECT,False,True,,Routine validation
+APP000911,MEDIUM,84.39,APPROVE,False,True,,Routine validation
+APP000912,LOW,71.37,REJECT,False,True,,Routine validation
+APP000917,MEDIUM,72.54,REJECT,False,True,,Routine validation
+APP000920,LOW,89.2,APPROVE,False,True,,Routine validation
+APP000921,LOW,80.08,APPROVE,False,True,,Routine validation
+APP000922,MEDIUM,69.27,REJECT,False,True,,Routine validation
+APP000923,MEDIUM,84.67,APPROVE,False,True,,Routine validation
+APP000924,MEDIUM,74.76,APPROVE,False,True,,Routine validation
+APP000925,MEDIUM,69.6,REJECT,False,True,,Routine validation
+APP000926,MEDIUM,84.45,APPROVE,False,True,,Routine validation
+APP000927,LOW,79.58,REVIEW,False,True,,Requires manual verification
+APP000928,MEDIUM,82.33,APPROVE,False,True,,Routine validation
+APP000933,MEDIUM,76.77,REVIEW,False,True,,Requires manual verification
+APP000935,MEDIUM,65.33,REJECT,False,True,,Routine validation
+APP000936,MEDIUM,64.62,REJECT,False,True,,Routine validation
+APP000938,LOW,78.51,REJECT,False,True,,Routine validation
+APP000941,MEDIUM,80.75,APPROVE,False,True,,Routine validation
+APP000942,MEDIUM,82.78,APPROVE,False,True,,Routine validation
+APP000947,LOW,93.44,APPROVE,False,True,,Routine validation
+APP000949,LOW,81.16,REJECT,False,True,,Routine validation
+APP000952,MEDIUM,83.97,APPROVE,False,True,,Routine validation
+APP000955,NONE,99.62,APPROVE,False,True,,Routine validation
+APP000956,LOW,93.77,APPROVE,False,True,,Routine validation
+APP000957,LOW,87.86,REVIEW,False,True,,Requires manual verification
+APP000958,MEDIUM,82.16,REVIEW,False,True,,Requires manual verification
+APP000959,LOW,93.18,APPROVE,False,True,,Routine validation
+APP000960,LOW,79.51,REVIEW,False,True,,Requires manual verification
+APP000962,MEDIUM,72.7,APPROVE,False,True,,Routine validation
+APP000963,MEDIUM,75.91,REVIEW,False,True,,Requires manual verification
+APP000969,LOW,89.71,REVIEW,False,True,,Requires manual verification
+APP000971,MEDIUM,82.2,REJECT,False,True,,Routine validation
+APP000973,NONE,96.1,APPROVE,False,True,,Routine validation
+APP000974,NONE,97.06,APPROVE,False,True,,Routine validation
+APP000976,MEDIUM,84.8,REVIEW,False,True,,Requires manual verification
+APP000977,MEDIUM,68.46,APPROVE,False,True,,Routine validation
+APP000981,LOW,75.89,REVIEW,False,True,,Requires manual verification
+APP000982,LOW,84.02,REVIEW,False,True,,Requires manual verification
+APP000984,NONE,99.81,APPROVE,False,True,,Routine validation
+APP000985,MEDIUM,64.88,REJECT,False,True,,Routine validation
+APP000989,LOW,67.54,REJECT,False,True,,Routine validation
+APP000991,LOW,94.05,APPROVE,False,True,,Routine validation
+APP000992,LOW,82.27,APPROVE,False,True,,Routine validation
+APP000994,LOW,91.1,APPROVE,False,True,,Routine validation
